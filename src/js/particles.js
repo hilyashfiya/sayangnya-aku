@@ -47,7 +47,7 @@ export function initParticleEngine() {
 
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(184, 118, 128, ${p.alpha})`;
+      ctx.fillStyle = `rgba(196, 204, 212, ${p.alpha})`;
       ctx.fill();
     }
 

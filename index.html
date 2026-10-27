@@ -4,38 +4,39 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sayangnya, Aku — Untuk Kamu</title>
-  <meta name="description" content="Surat pribadi dari Hilyatul Ashfiya untuk seseorang yang selalu punya tempat paling hangat di hati." />
+  <meta name="description" content="Surat pribadi dari Hilyatul Ashfiya. Arsip malam tentang perjalanan, kenangan, dan perasaan yang sesungguhnya." />
   
-  <!-- Google Fonts: Cormorant Garamond (Editorial Serif) & Plus Jakarta Sans (Clean Modern Sans) -->
+  <!-- Google Fonts: Playfair Display (Editorial Serif) & Inter (Clean Sans) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="./src/css/main.css" />
 </head>
 <body>
 
-  <!-- Subtle Ambient Paper Grain Overlay -->
+  <!-- Subtle ambient grain overlay -->
   <canvas id="canvas-grain" aria-hidden="true"></canvas>
 
   <!-- ═══════════════════════════════════════════════════════════
-       INTRO ENVELOPE SCREEN
-       Layar pembuka yang lembut dengan efek ketik personal
+       INTRO — THE SEALED LETTER
+       Layar pembuka gelap, intim, seperti amplop yang belum dibuka
        ═══════════════════════════════════════════════════════════ -->
   <div id="intro-screen">
     <div class="intro-card" id="intro-card">
       <div class="intro-header-row">
-        <div class="intro-stamp">
-          <span class="stamp-heart">&#10084;</span>
-          <span class="stamp-text">Pribadi & Rahasia</span>
+        <div class="intro-mark">
+          <span class="intro-mark-line"></span>
+          <span class="intro-mark-label">Pribadi</span>
+          <span class="intro-mark-line"></span>
         </div>
         <button id="intro-skip-btn" class="intro-skip-btn" type="button" title="Lewati animasi ketik">
-          Tampilkan Semua &rarr;
+          Lewati &rarr;
         </button>
       </div>
 
       <div id="tw-output" class="intro-text" aria-live="polite">
-        <span class="tw-cursor">_</span>
+        <span class="tw-cursor">|</span>
       </div>
 
       <div id="intro-enter" class="intro-action hidden">
@@ -48,11 +49,11 @@
   </div>
 
   <!-- ═══════════════════════════════════════════════════════════
-       MAIN LETTER EXPERIENCE
+       MAIN EXPERIENCE — MIDNIGHT LETTERS
        ═══════════════════════════════════════════════════════════ -->
   <div id="main-experience" class="hidden">
 
-    <!-- FLOATING MUSIC PLAYER PILL -->
+    <!-- FLOATING MUSIC PLAYER -->
     <aside id="music-pill" class="music-pill" aria-label="Pemutar Musik Latar">
       <button id="bgm-btn" class="music-btn" type="button" aria-label="Putar atau jeda musik: Mahalini — Mencintaimu" title="Mahalini — Mencintaimu">
         <div class="music-note-wrap">
@@ -67,30 +68,32 @@
       </button>
     </aside>
 
-    <!-- ─── HERO HEADER ──────────────────────────────────────── -->
+    <!-- ─── HERO — COVER OF THE LETTER ──────────────────────── -->
     <header id="s-hero" class="s-hero">
       <div class="hero-inner">
-        <div class="hero-envelope-mark">
-          <span class="envelope-icon">&#9993;</span>
+        <p class="hero-archive-label">Midnight Letters</p>
+        <div class="hero-title-group">
+          <h1 class="hero-title">
+            <span class="hero-title-line hero-title-main">Sayangnya,</span>
+            <span class="hero-title-line hero-title-accent">aku.</span>
+          </h1>
         </div>
-        <h1 class="hero-title">
-          <span class="hero-title-main">Sayangnya,</span>
-          <span class="hero-title-sub">aku.</span>
-        </h1>
-        <div class="hero-divider"></div>
-        <p class="hero-subtitle">Untuk kamu yang selalu punya tempat paling hangat di hatiku.</p>
-        <div class="hero-scroll-indicator">
-          <span class="scroll-text">gulir perlahan ke bawah</span>
-          <div class="scroll-arrow">&#8595;</div>
+        <div class="hero-rule"></div>
+        <p class="hero-tagline">Ada hal yang sudah lama ingin kusampaikan.</p>
+        <div class="hero-scroll-cue">
+          <div class="scroll-line"></div>
         </div>
       </div>
     </header>
 
     <!-- ─── BAGIAN 1: DARI SEBUAH PERTEMUAN SEDERHANA ────────── -->
-    <section id="s-pertemuan" class="section section-ivory">
+    <section id="s-pertemuan" class="section section-dark">
       <div class="section-container">
         <div class="section-header rev">
-          <span class="section-tag" id="tag-ch1">01</span>
+          <div class="section-label-row">
+            <span class="section-num" id="tag-ch1">01</span>
+            <span class="section-rule-h"></span>
+          </div>
           <h2 class="section-title" id="title-ch1">Dari Sebuah Pertemuan Sederhana</h2>
           <p class="section-subtitle" id="sub-ch1"></p>
         </div>
@@ -101,21 +104,23 @@
     </section>
 
     <!-- ─── BAGIAN 2: MAAF, KARENA AKU BELUM SELALU TAHU CARANYA ─ -->
-    <section id="s-maaf" class="section section-cream">
+    <section id="s-maaf" class="section section-light">
       <div class="section-container">
         <div class="section-header rev">
-          <span class="section-tag" id="tag-ch2">02</span>
-          <h2 class="section-title" id="title-ch2">Maaf, Karena Aku Belum Selalu Tahu Caranya</h2>
-          <p class="section-subtitle" id="sub-ch2"></p>
+          <div class="section-label-row">
+            <span class="section-num" id="tag-ch2">02</span>
+            <span class="section-rule-h"></span>
+          </div>
+          <h2 class="section-title section-title-dark" id="title-ch2">Maaf, Karena Aku Belum Selalu Tahu Caranya</h2>
+          <p class="section-subtitle section-subtitle-dark" id="sub-ch2"></p>
         </div>
         <div class="letter-paper-wrap rev">
           <div class="letter-paper">
-            <div class="letter-flourish">&#10086;</div>
             <div id="letter-body-container" class="letter-paragraphs">
-              <!-- Rendered dynamically as flowing unified letter from data.js -->
+              <!-- Rendered dynamically from data.js -->
             </div>
-            <div id="letter-closing-reflect" class="letter-quote-box">
-              <!-- Dynamic closing reflection quote -->
+            <div id="letter-closing-reflect" class="letter-reflect-block">
+              <!-- Dynamic closing reflection -->
             </div>
           </div>
         </div>
@@ -123,41 +128,48 @@
     </section>
 
     <!-- ─── BAGIAN 3: KALAU AKU MASIH BOLEH BELAJAR MENCINTAIMU ── -->
-    <section id="s-belajar" class="section section-ivory">
+    <section id="s-belajar" class="section section-dark">
       <div class="section-container">
         <div class="section-header rev">
-          <span class="section-tag" id="tag-ch3">03</span>
+          <div class="section-label-row">
+            <span class="section-num" id="tag-ch3">03</span>
+            <span class="section-rule-h"></span>
+          </div>
           <h2 class="section-title" id="title-ch3">Kalau Aku Masih Boleh Belajar Mencintaimu</h2>
           <p class="section-subtitle" id="sub-ch3"></p>
         </div>
         
         <div id="learning-content" class="learning-prose rev">
-          <!-- Prose paragraphs about continuous effort and commitment -->
+          <!-- Prose paragraphs -->
         </div>
 
-        <!-- SCRAPBOOK ALBUM SECTION -->
-        <div class="scrapbook-section rev">
-          <div class="scrapbook-intro">
-            <h3 class="scrapbook-title" id="scrapbook-title">Scrapbook Kecil Tentang Kita</h3>
-            <p class="scrapbook-subtitle" id="scrapbook-subtitle">19 dokumentasi dan cerita yang selalu kupeluk dalam ingatan. Klik foto mana saja untuk membaca cerita lengkapnya.</p>
+        <!-- MEMORY ARCHIVE -->
+        <div class="archive-section rev">
+          <div class="archive-header">
+            <span class="archive-label">Arsip Kenangan</span>
+            <h3 class="archive-title" id="scrapbook-title">Scrapbook Kecil Tentang Kita</h3>
+            <p class="archive-subtitle" id="scrapbook-subtitle">19 dokumentasi dan cerita yang selalu kupeluk dalam ingatan. Klik foto mana saja untuk membaca cerita lengkapnya.</p>
           </div>
-          <div id="scrapbook-grid" class="scrapbook-grid">
-            <!-- 19 Polaroid cards rendered dynamically from data.js -->
+          <div id="scrapbook-grid" class="memory-grid">
+            <!-- 19 memory cards rendered dynamically from data.js -->
           </div>
         </div>
       </div>
     </section>
 
     <!-- ─── BAGIAN 4: AKU HANYA INGIN KAMU TAHU ───────────────── -->
-    <section id="s-penutup" class="section section-warm">
+    <section id="s-penutup" class="section section-light">
       <div class="section-container">
         <div class="section-header rev">
-          <span class="section-tag" id="tag-ch4">04</span>
-          <h2 class="section-title" id="title-ch4">Aku Hanya Ingin Kamu Tahu</h2>
-          <p class="section-subtitle" id="sub-ch4"></p>
+          <div class="section-label-row">
+            <span class="section-num" id="tag-ch4">04</span>
+            <span class="section-rule-h"></span>
+          </div>
+          <h2 class="section-title section-title-dark" id="title-ch4">Aku Hanya Ingin Kamu Tahu</h2>
+          <p class="section-subtitle section-subtitle-dark" id="sub-ch4"></p>
         </div>
 
-        <div class="closing-card rev">
+        <div class="closing-letter rev">
           <div id="closing-paragraphs" class="closing-text">
             <!-- Dynamic final paragraphs -->
           </div>
@@ -169,30 +181,28 @@
       </div>
     </section>
 
-    <!-- ─── MINIMAL FOOTER ───────────────────────────────────── -->
-    <footer class="site-footer">
-      <div class="footer-inner">
-        <p class="footer-note">Sebuah surat kecil tentang rasa yang sebenarnya.</p>
-        <p class="footer-sig">&mdash; Hilya &#129293;</p>
+    <!-- ─── FINAL CLOSING — THE LAST THING HE READS ───────────── -->
+    <section id="s-final" class="section-final">
+      <div class="final-inner rev">
+        <p class="final-line" id="final-line1">aku mencintai kamu, sungguh,</p>
+        <p class="final-name" id="final-name">Muhammad Rafli Al Kaylaniy</p>
+        <p class="final-heart" id="final-heart">&#9825;</p>
       </div>
-    </footer>
+    </section>
 
   </div>
 
   <!-- ═══════════════════════════════════════════════════════════
-       SCRAPBOOK DETAIL MODAL (LIGHTBOX)
+       MEMORY DETAIL MODAL (LIGHTBOX)
        ═══════════════════════════════════════════════════════════ -->
-  <div id="lightbox" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-label="Lihat Dokumentasi Scrapbook">
+  <div id="lightbox" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-label="Lihat Dokumentasi">
     <div class="lightbox-dialog">
-      <!-- Close button -->
       <button id="lb-close" class="lightbox-close" type="button" aria-label="Tutup detail foto">&times;</button>
       
-      <!-- Photo display frame -->
       <div class="lb-image-frame">
         <img id="lb-img" class="detail-img" src="" alt="Foto kenangan" />
       </div>
 
-      <!-- Navigation & Caption Area -->
       <div class="lb-caption-frame">
         <div class="lb-meta-row">
           <span id="lb-counter" class="lb-counter">1 / 19</span>
@@ -201,7 +211,6 @@
         <h3 id="lb-title" class="lb-title"></h3>
         <p id="lb-desc" class="lb-desc"></p>
         
-        <!-- Next / Prev Controls -->
         <div class="lb-nav-row">
           <button id="lb-prev" class="lb-nav-btn" type="button" aria-label="Foto sebelumnya">
             &larr; Sebelumnya

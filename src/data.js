@@ -57,7 +57,7 @@ export const siteData = {
       {
         date: "17 April 2026",
         title: "Pesan Pertama setelah Jumat Menanam",
-        description: "Setelah kegiatan Jumat Menanam, momen ketika kamu keluar dari grup. Kamu yang pertama kali mengirim pesan dan menyapa. Dari percakapan sederhana itu, entah bagaimana obrolan kita mengalir begitu saja—terasa nyambung, hangat, dan tanpa beban. Dari situlah semuanya benar-benar dimulai.",
+        description: "Setelah kegiatan Jumat Menanam, ada satu hal kecil yang ternyata menjadi awal dari cerita kita. Waktu itu, kamu nggak ikut rombongan yang lanjut makan bersama di hutan. Lalu, kamu mengirim pesan untuk menanyakan aku ada di mana dan meminta tolong dibungkuskan nasi.\n\nSesederhana itu awalnya. Cuma obrolan kecil yang mungkin waktu itu nggak pernah kita sangka akan membawa kita sejauh ini. Tapi dari pesan itu, percakapan kita mulai mengalir, terasa nyambung, hangat, dan tanpa beban. Siapa sangka, dari urusan mencari lokasi dan nasi bungkus, kita justru menemukan awal dari sesuatu yang begitu berarti.",
         note: "Kamu yang memulai obrolan itu, dan aku yang diam-diam senang."
       },
       {
@@ -258,5 +258,15 @@ export const siteData = {
     ],
     closingSalutation: "Dengan segenap cinta dan ketulusan,",
     signature: "— Hilya 🤍"
+  },
+
+  // ─────────────────────────────────────────────────────────────
+  // FINAL CLOSING — THE LAST THING HE READS
+  // Penutup emosional akhir, kalimat terakhir dari surat ini.
+  // ─────────────────────────────────────────────────────────────
+  finalClosing: {
+    line1: "aku mencintai kamu, sungguh,",
+    dedicatedTo: "Muhammad Rafli Al Kaylaniy",
+    symbol: "♡"
   }
 };
