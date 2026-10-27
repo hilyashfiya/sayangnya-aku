@@ -143,7 +143,7 @@ function startIntroTypewriter() {
 /* ─── HERO REVEAL ────────────────────────────────────────── */
 function triggerHeroReveal() {
   const elems = document.querySelectorAll(
-    '.hero-archive-label, .hero-title, .hero-rule, .hero-tagline, .hero-scroll-cue'
+    '.hero-archive-label, .hero-title-group, .hero-title, .hero-rule, .hero-tagline, .hero-scroll-cue'
   );
   elems.forEach((el, idx) => {
     setTimeout(() => {

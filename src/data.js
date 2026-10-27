@@ -1,7 +1,8 @@
 /**
  * SAYANGNYA, AKU — DATA FILE
- * Surat cinta digital personal dari Hilyatul Ashfiya untuk pasangannya.
- * Memuat cerita nyata, surat permintaan maaf yang mengalir,
+ * Surat cinta digital personal dari Hilyatul Ashfiya untuk Muhammad Rafli Al Kaylaniy.
+ * Bahasa yang jujur, alami, personal, dan mengalir seperti surat sungguhan.
+ * Memuat cerita nyata, surat permintaan maaf yang tulus tanpa pembelaan diri,
  * dan 19 dokumentasi scrapbook personal dengan caption asli.
  */
 
@@ -32,8 +33,8 @@ export const siteData = {
   // ─────────────────────────────────────────────────────────────
   hero: {
     title: "Sayangnya, Aku",
-    subtitle: "Untuk kamu yang selalu punya tempat paling hangat di hatiku.",
-    scrollPrompt: "gulir perlahan ke bawah"
+    tagline: "Ada hal yang sudah lama ingin kusampaikan.",
+    scrollPrompt: "Gulir perlahan"
   },
 
   // ─────────────────────────────────────────────────────────────
@@ -46,24 +47,24 @@ export const siteData = {
   chapter1: {
     tag: "01",
     title: "Dari Sebuah Pertemuan Sederhana",
-    subtitle: "Bukan awal yang rumit, hanya sebuah perjalanan kecil yang diam-diam mengubah segalanya.",
+    subtitle: "Mengingat kembali hari-hari pertama kita, sebelum semuanya berjalan sejauh ini.",
     timeline: [
       {
         date: "13 April 2026",
         title: "Hari Pertama, Di Ruangan yang Sama",
-        description: "Hari pertama magang. Kita masih dua orang asing yang kebetulan duduk di ruangan yang sama. Waktu itu aku hanya diam dan memperhatikan, tanpa pernah menyangka bahwa orang yang duduk di sana kelak akan jadi seseorang yang paling sering hadir di pikiranku.",
-        note: "Ada hal-hal yang bermula tanpa kita sadari artinya."
+        description: "Hari pertama magang. Kita masih dua orang asing yang kebetulan duduk di ruangan yang sama. Waktu itu aku cuma diam dan memperhatikan, tanpa pernah menyangka kalau orang yang duduk di sana kelak bakal jadi seseorang yang paling sering kupikirkan.",
+        note: "Waktu itu kita bahkan belum saling menyapa."
       },
       {
         date: "17 April 2026",
         title: "Pesan Pertama setelah Jumat Menanam",
-        description: "Setelah kegiatan Jumat Menanam, ada satu hal kecil yang ternyata menjadi awal dari cerita kita. Waktu itu, kamu nggak ikut rombongan yang lanjut makan bersama di hutan. Lalu, kamu mengirim pesan untuk menanyakan aku ada di mana dan meminta tolong dibungkuskan nasi.\n\nSesederhana itu awalnya. Cuma obrolan kecil yang mungkin waktu itu nggak pernah kita sangka akan membawa kita sejauh ini. Tapi dari pesan itu, percakapan kita mulai mengalir, terasa nyambung, hangat, dan tanpa beban. Siapa sangka, dari urusan mencari lokasi dan nasi bungkus, kita justru menemukan awal dari sesuatu yang begitu berarti.",
+        description: "Setelah kegiatan Jumat Menanam, ada satu hal kecil yang ternyata menjadi awal cerita kita. Waktu itu kamu nggak ikut rombongan yang lanjut makan bersama di hutan. Lalu kamu mengirim pesan, menanyakan aku ada di mana dan meminta tolong dibungkuskan nasi.\n\nSesederhana itu awalnya. Cuma obrolan kecil yang waktu itu sama sekali nggak kita sangka bakal membawa kita sejauh ini. Tapi dari pesan itu, percakapan kita mulai mengalir, terasa nyambung, hangat, dan ringan. Lucu ya, dari urusan mencari lokasi dan nasi bungkus, obrolan kita berlanjut sampai hari ini.",
         note: "Kamu yang memulai obrolan itu, dan aku yang diam-diam senang."
       },
       {
         date: "29 April 2026",
         title: "Malam Truth or Dare",
-        description: "Malam itu, lewat permainan Truth or Dare, ada dinding yang perlahan runtuh di antara kita. Kita mulai bercerita lebih dalam, membicarakan hal-hal yang biasanya tidak mudah diucapkan ke orang lain. Di situ aku mulai merasa sangat nyaman, dan aku sadar kamu bukan orang biasa bagiku.",
+        description: "Malam itu, lewat permainan Truth or Dare, ada dinding yang pelan-pelan runtuh di antara kita. Kita mulai cerita hal-hal yang lebih dalam, hal-hal yang biasanya susah untuk diungkapkan ke orang lain. Di situ aku mulai merasa sangat nyaman, dan aku sadar kamu bukan sekadar teman biasa bagiku.",
         note: "Malam di mana aku tahu, aku bisa jujur bersamamu."
       }
     ]
@@ -77,17 +78,17 @@ export const siteData = {
   chapter2: {
     tag: "02",
     title: "Maaf, Karena Aku Belum Selalu Tahu Caranya",
-    subtitle: "Ini adalah pengakuan jujur dari hatiku, tanpa pembelaan dan tanpa alasan.",
+    subtitle: "Surat jujur dari aku, tentang hal-hal yang pernah salah dan menyakitimu.",
     paragraphs: [
-      "Sayang, kalau boleh jujur dari lubuk hatiku yang paling dalam, ada banyak hal yang selama ini mengganjal dan ingin kuakui di depanmu. Surat ini kutulis bukan untuk membela diri, bukan untuk mencari pembenaran atas apa yang kulakukan, melainkan karena aku sadar bahwa sikap dan tindakanku telah menyakiti hatimu.",
-      "Aku menyesal karena pernah membahas masa lalumu. Rasa insecure dan kebiasaanku membandingkan diri sering kali membuatku memikirkan hal-hal yang seharusnya tidak terus kubawa ke dalam hubungan kita. Itu tidak adil untukmu. Kamu hadir di hari ini untuk membangun cerita baru bersamaku, bukan untuk terus-menerus dihakimi oleh bayang-bayang masa lalu yang sudah selesai.",
-      "Dan ada satu hal yang paling membuatku menyesal hingga hari ini—saat emosiku sedang kacau dan rasa takut menguasaiku, aku pernah menyuruhmu untuk bersama orang lain. Padahal demi Tuhan, itu sama sekali bukan yang kuinginkan. Kata-kata itu keluar dari rasa frustrasi dan ketakutanku kehilangan dirimu, tetapi aku tahu itu tetap salah dan sangat menyakitkan untuk didengar. Maafkan aku juga karena tidak selalu memanggilmu “sayang” seperti yang kamu sukai. Aku ingin belajar lebih peka terhadap hal-hal kecil yang membuatmu merasa dicintai dan diinginkan.",
-      "Aku juga minta maaf karena sering kali kurang memahami saat kamu sedang lelah, punya banyak pikiran, atau membutuhkan dukungan. Aku terlalu sibuk dengan perasaanku sendiri, sampai lupa bahwa kamu juga punya batas kemampuan, punya hari-hari yang berat, dan punya beban yang harus kamu pikul sendiri. Kamu juga manusia biasa yang punya perasaan, yang berhak merasa capek, berhak didengarkan, dipahami, dan ditemani tanpa harus dituntut selalu ada untukku.",
-      "Aku mengakui bahwa aku terkadang gengsi, keras kepala, dan terlalu mempertahankan ego. Ada momen di mana aku lebih memilih membela diri daripada benar-benar mendengarkan apa yang kamu rasakan. Aku juga menyesal ketika sulit menerima arahan atau nasihat darimu, padahal di balik itu kamu memiliki maksud yang baik. Kesalahpahaman saat kita sama-sama lelah akhirnya malah membuat kita saling melukai kata-kata.",
-      "Aku ingin menjadi prioritas bagimu, tentu saja. Tetapi aku harus belajar memahami bahwa kamu juga memiliki tanggung jawab, pekerjaan, dan hal-hal lain dalam hidupmu. Aku ingin belajar menyampaikan apa yang kubutuhkan tanpa membuatmu merasa tertekan atau harus selalu memilih antara aku dan kewajibanmu.",
-      "Aku sangat menghargai setiap waktu, perhatian, usaha, dan hal-hal yang telah kamu berikan untukku. Maaf jika rasa cemas dan insecure-ku membuatku tampak seperti orang yang tidak tahu berterima kasih. Aku sadar, sebuah hubungan tidak akan pernah sehat jika aku hanya berharap untuk selalu dimengerti. Aku juga perlu belajar mengerti, menghargai, mendukung, dan membuatmu merasa aman untuk mengungkapkan perasaanmu tanpa takut dihakimi."
+      "Sayang, kalau boleh jujur dari hatiku, ada banyak hal yang selama ini mengganjal dan ingin kuakui di depanmu. Surat ini kutulis bukan untuk membela diri atau mencari pembenaran atas apa yang kulakukan, tapi karena aku sadar bahwa sikap dan tindakanku telah menyakiti hatimu.",
+      "Aku menyesal karena pernah mengungkit masa lalumu. Rasa insecure dan kebiasaanku membanding-bandingkan diri sering kali membuatku memikirkan hal-hal yang tidak semestinya kubawa ke dalam hubungan kita. Itu tidak adil buatmu. Kamu hadir di hari ini untuk membangun cerita baru bersamaku, bukan untuk terus-menerus dihakimi oleh masa lalu yang sudah selesai.",
+      "Dan ada satu hal yang paling membuatku merasa bersalah sampai hari ini—saat emosiku sedang kacau dan rasa takut menguasaiku, aku pernah menyuruhmu pergi bersama orang lain. Padahal demi Tuhan, itu sama sekali bukan yang kuinginkan. Kata-kata itu keluar karena rasa panik dan ketakutanku kehilangan dirimu, tapi aku tahu itu tetap salah dan sangat menyakitkan untuk didengar. Maafkan aku juga karena tidak selalu memanggilmu “sayang” seperti yang kamu suka. Aku ingin belajar lebih peka terhadap hal-hal kecil yang membuatmu merasa dicintai dan diinginkan.",
+      "Aku juga minta maaf karena sering kurang memahami saat kamu sedang lelah, banyak pikiran, atau butuh dukungan. Waktu itu aku terlalu sibuk dengan perasaanku sendiri, sampai lupa bahwa kamu juga punya batas, punya hari-hari yang berat, dan punya beban yang harus kamu pikul sendiri. Kamu juga manusia biasa yang punya perasaan, yang berhak merasa capek, berhak didengarkan, dan ditemani tanpa harus dituntut selalu ada untukku.",
+      "Aku mengakui kalau aku terkadang gengsi, keras kepala, dan mempertahankan ego. Ada saat-saat di mana aku lebih memilih membela diri daripada benar-benar mendengarkan apa yang kamu rasakan. Aku juga menyesal ketika sulit menerima arahan atau masukan darimu, padahal di balik itu niatmu baik. Kesalahpahaman saat kita sama-sama lelah akhirnya malah membuat kita saling melukai kata-kata.",
+      "Aku ingin menjadi prioritas bagimu, tapi aku juga harus belajar memahami bahwa kamu punya tanggung jawab, pekerjaan, dan hal-hal lain dalam hidupmu. Aku ingin belajar menyampaikan apa yang kubutuhkan tanpa membuatmu merasa tertekan atau harus selalu memilih.",
+      "Aku sangat menghargai setiap waktu, perhatian, usaha, dan hal-hal yang telah kamu berikan untukku. Maaf jika rasa cemas dan insecure-ku sempat membuatku tampak seperti orang yang tidak bersyukur. Aku sadar, sebuah hubungan tidak akan pernah sehat jika aku hanya berharap untuk selalu dimengerti. Aku juga perlu belajar mengerti, menghargai, mendukung, dan membuatmu merasa aman untuk terbuka tanpa takut dihakimi."
     ],
-    closingReflect: "Aku tahu meminta maaf tidak serta-merta menghapus luka yang terlanjur ada. Tapi aku ingin kamu tahu bahwa aku benar-benar menyadari kesalahanku, dan aku ingin berubah—bukan sekadar karena takut kehilanganmu, tapi karena kamu pantas diperlakukan dengan jauh lebih baik."
+    closingReflect: "Aku tahu meminta maaf tidak serta-merta menghapus rasa sakit yang pernah ada. Tapi aku ingin kamu tahu bahwa aku benar-benar menyadari kesalahanku, dan aku mau berubah—bukan sekadar karena takut kehilanganmu, tapi karena kamu pantas diperlakukan dengan jauh lebih baik."
   },
 
   // ─────────────────────────────────────────────────────────────
@@ -97,11 +98,11 @@ export const siteData = {
   chapter3: {
     tag: "03",
     title: "Kalau Aku Masih Boleh Belajar Mencintaimu",
-    subtitle: "Bukan tentang janji menjadi sempurna, tapi tentang kemauan untuk hadir dengan cara yang lebih baik.",
+    subtitle: "Bukan janji muluk-muluk, hanya niat sederhana untuk hadir dengan cara yang lebih baik.",
     paragraphs: [
-      "Bagian ini bukan pengulangan kata maaf. Aku menulis ini karena di balik semua kekurangan dan kesalahanku, perasaanku kepadamu tidak pernah berkurang. Aku masih menyayangimu, dengan tulus dan dengan seluruh hatiku.",
+      "Bagian ini bukan pengulangan kata maaf. Aku menulis ini karena di balik semua kekurangan dan kesalahanku, perasaanku kepadamu tidak pernah berkurang. Aku masih menyayangimu, sungguh-sungguh dan dengan seluruh hatiku.",
       "Aku tidak ingin membuat janji manis bahwa aku akan tiba-tiba menjadi sosok yang sempurna atau tidak akan pernah berbuat salah lagi. Itu janji yang tidak realistis. Namun, yang bisa kupastikan adalah kemauanku untuk terus belajar dan bertanggung jawab atas sikapku.",
-      "Aku ingin membuktikan perubahan ini melalui tindakan nyata yang konsisten: lebih sabar, lebih mau mendengarkan sebelum berbicara, lebih menghargai setiap usahamu, dan lebih mampu mendukungmu ketika harimu terasa berat. Aku ingin mencintaimu dengan cara yang membuatmu merasa tenang, bukan lelah."
+      "Aku ingin membuktikan ini pelan-pelan lewat tindakan nyata: lebih sabar, lebih mau mendengarkan sebelum berbicara, lebih menghargai setiap usahamu, dan ada untukmu ketika harimu terasa berat. Aku ingin mencintaimu dengan cara yang membuatmu merasa tenang, bukan lelah."
     ],
     scrapbookTitle: "Scrapbook Kecil Tentang Kita",
     scrapbookSubtitle: "19 dokumentasi dan cerita yang selalu kupeluk dalam ingatan. Klik foto mana saja untuk membaca cerita lengkapnya.",
@@ -256,7 +257,7 @@ export const siteData = {
       "Aku hanya ingin kamu tahu: aku menyayangimu, aku sungguh-sungguh menyesali hal-hal yang menyakitimu, aku sangat menghargai kehadiranmu dalam hidupku, dan aku masih ada di sini—sedang belajar untuk menjadi seseorang yang lebih baik untukmu.",
       "Ambillah waktu sebanyak apa pun yang kamu butuhkan. Perasaanmu, ketenanganmu, dan ruang hatimu jauh lebih penting daripada apa pun."
     ],
-    closingSalutation: "Dengan segenap cinta dan ketulusan,",
+    closingSalutation: "Dengan segenap sayang dan ketulusan,",
     signature: "— Hilya 🤍"
   },
 

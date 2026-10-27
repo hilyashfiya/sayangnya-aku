@@ -1,62 +1,70 @@
 /* ============================================================
-   SAYANGNYA, AKU — REDESIGN TOTAL
+   SAYANGNYA, AKU — REVISI TOTAL
    Art Direction: "THE HOURS BETWEEN US"
    A love letter written between golden dusk and midnight.
    Curated Palette:
-     - Warm Paper:       #F3EFE7
-     - Soft Ivory:       #E8E0D4
-     - Midnight Ink:     #192A40
-     - Twilight Blue:    #344B65
-     - Muted Slate:      #657385
-     - Moonlight Silver: #C7D0D9
-     - Faded Champagne:  #CDB99F
-     - Deep Ink:         #202A36
+     - Warm Paper:       #F3EFE7 (Latar membaca utama, hangat & bersahabat)
+     - Soft Ivory:       #E8E0D4 (Transisi & aksen mount kartu arsip)
+     - Midnight Ink:     #192A40 (Kedalaman malam pembuka & penutup)
+     - Twilight Blue:    #344B65 (Biru senja lembut & penanda bab)
+     - Muted Slate:      #657385 (Subtitle, tanggal, teks reflektif)
+     - Moonlight Silver: #C7D0D9 (Pendar perak & kontrol mikro)
+     - Faded Champagne:  #CDB99F (Aksen emas senja & watermark hati)
+     - Deep Ink:         #202A36 (Teks bacaan tajam & berkarakter)
+
+   Key Refinements:
+     - Peralihan bab diperkecil (ruang antar-bab lebih rapat dan mengalir)
+     - Foto-foto 100% full kelihatan utuh (object-fit: contain, tidak terpotong)
+     - Font rapi dengan alignment sama sisi sama (justified / rata kanan-kiri)
+     - Mobile-first & desktop-intentional layout
    ============================================================ */
 
 /* ─── CSS VARIABLES & DESIGN TOKENS ─────────────────────── */
 :root {
   /* Exact Curated Palette */
-  --warm-paper:        #F3EFE7; /* Latar utama area membaca */
-  --soft-ivory:        #E8E0D4; /* Gading lembut untuk kartu, transisi & border */
-  --midnight-ink:      #192A40; /* Biru malam pekat untuk opening & closing */
-  --twilight-blue:     #344B65; /* Biru senja / malam lembut */
-  --muted-slate:       #657385; /* Biru slate tenang untuk metadata & subtitle */
-  --moonlight-silver:  #C7D0D9; /* Perak lembut sinar bulan */
-  --faded-champagne:   #CDB99F; /* Aksen emas senja / champagne */
-  --deep-ink:          #202A36; /* Teks gelap kontras tinggi & tajam */
+  --warm-paper:        #F3EFE7;
+  --soft-ivory:        #E8E0D4;
+  --midnight-ink:      #192A40;
+  --twilight-blue:     #344B65;
+  --muted-slate:       #657385;
+  --moonlight-silver:  #C7D0D9;
+  --faded-champagne:   #CDB99F;
+  --deep-ink:          #202A36;
 
-  /* Derived Tones */
+  /* Derived Tones & Utilities */
   --midnight-deep:     #101A27;
-  --ivory-stationery:  #FAF8F5; /* Kertas surat santuari di Bab 2 & 4 */
+  --ivory-stationery:  #FAF8F5;
+  --archival-matte:    #EAE5DC;
   --champagne-line:    rgba(205, 185, 159, 0.42);
   --silver-line:       rgba(199, 208, 217, 0.28);
   --twilight-line:     rgba(52, 75, 101, 0.22);
-  --paper-shadow:      rgba(25, 42, 64, 0.07);
+  --paper-shadow:      rgba(25, 42, 64, 0.06);
 
   /* Typography */
   --font-serif:        'Playfair Display', Georgia, 'Times New Roman', serif;
   --font-sans:         'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
-  /* Type Scale */
-  --fs-hero-title:     clamp(4.2rem, 11vw, 7.6rem);
-  --fs-h2:             clamp(1.85rem, 3.8vw, 2.7rem);
-  --fs-h3:             clamp(1.25rem, 2.5vw, 1.7rem);
-  --fs-body:           clamp(1rem, 1.45vw, 1.1rem);
+  /* Type Scale — Fluid & Balanced */
+  --fs-hero-title:     clamp(2.8rem, 10vw, 7.5rem);
+  --fs-h2:             clamp(1.75rem, 3.8vw, 2.7rem);
+  --fs-h3:             clamp(1.22rem, 2.5vw, 1.65rem);
+  --fs-body:           clamp(1rem, 1.4vw, 1.08rem);
   --fs-small:          0.92rem;
   --fs-label:          0.8rem;
   --fs-micro:          0.72rem;
 
-  /* Spacing */
-  --section-pad:       clamp(6rem, 10vw, 9.5rem);
-  --inner-max:         840px;
-  --inner-wide:        1240px;
+  /* Layout Dimensions — Measured & Cohesive (Peralihan Bab Diperkecil) */
+  --inner-max:         860px;
+  --inner-wide:        1260px;
+  --section-pad-mobile: clamp(1.8rem, 3.5vw, 2.5rem);
+  --section-pad-desk:   clamp(2.4rem, 4.5vw, 3.6rem);
 
   /* Smooth Easing */
   --ease:              cubic-bezier(0.16, 1, 0.3, 1);
   --ease-out:          cubic-bezier(0.33, 1, 0.68, 1);
 }
 
-/* ─── RESET & BASE ───────────────────────────────────────── */
+/* ─── RESET & BASE (MOBILE-FIRST) ────────────────────────── */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -72,6 +80,7 @@ html {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
@@ -92,6 +101,7 @@ button {
   border: none;
   font-family: inherit;
   color: inherit;
+  touch-action: manipulation;
 }
 
 a {
@@ -115,7 +125,7 @@ a {
 }
 
 :focus-visible {
-  outline: 1.5px solid var(--twilight-blue);
+  outline: 2px solid var(--twilight-blue);
   outline-offset: 3px;
 }
 
@@ -152,7 +162,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: clamp(1.2rem, 5vw, 2.5rem);
   transition: opacity 0.85s var(--ease), visibility 0.85s var(--ease);
 }
 
@@ -168,7 +178,7 @@ a {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 2.6rem;
+  gap: 2.2rem;
   position: relative;
   margin: auto;
 }
@@ -206,6 +216,11 @@ a {
   color: var(--moonlight-silver);
   letter-spacing: 0.08em;
   transition: color 0.3s ease;
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 0.3rem 0.6rem;
 }
 .intro-skip-btn:hover {
@@ -214,7 +229,7 @@ a {
 
 .intro-text {
   font-family: var(--font-serif);
-  font-size: clamp(1.22rem, 3vw, 1.6rem);
+  font-size: clamp(1.18rem, 3.2vw, 1.55rem);
   font-weight: 400;
   color: var(--warm-paper);
   line-height: 1.85;
@@ -251,8 +266,10 @@ a {
 .btn-open-letter {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.95rem;
-  padding: 1rem 2.8rem;
+  min-height: 48px;
+  padding: 0.95rem 2.8rem;
   background: rgba(243, 239, 231, 0.08);
   color: var(--warm-paper);
   border: 1px solid var(--champagne-line);
@@ -293,11 +310,12 @@ a {
 
 /* ═══════════════════════════════════════════════════════════
    FLOATING MUSIC PLAYER — MAHALINI (MENCINTAIMU)
+   Touch-friendly, non-obtrusive, accessible
    ═══════════════════════════════════════════════════════════ */
 .music-pill {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: 1.25rem;
+  right: 1.25rem;
   z-index: 500;
   animation: fadeInMusic 0.8s var(--ease) 0.8s both;
 }
@@ -309,11 +327,12 @@ a {
 .music-btn {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  padding: 0.65rem 1.25rem;
+  gap: 0.75rem;
+  min-height: 44px;
+  padding: 0.55rem 1.15rem;
   background: rgba(25, 42, 64, 0.94);
   border: 1px solid var(--champagne-line);
-  border-radius: 30px;
+  border-radius: 28px;
   backdrop-filter: blur(16px);
   box-shadow: 0 8px 30px rgba(16, 26, 39, 0.35);
   transition: all 0.3s var(--ease);
@@ -375,13 +394,14 @@ a {
    Flows seamlessly at the bottom into Soft Ivory (#E8E0D4).
    ═══════════════════════════════════════════════════════════ */
 .s-hero {
+  min-height: 100svh;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 7.5rem 2rem 5.5rem;
+  padding: clamp(4.5rem, 8svh, 6.5rem) 1.5rem clamp(2.5rem, 4svh, 3.8rem);
   background: 
-    radial-gradient(ellipse at 50% 36%, rgba(205, 185, 159, 0.2) 0%, rgba(52, 75, 101, 0.4) 45%, rgba(25, 42, 64, 0.85) 75%, #192A40 100%),
+    radial-gradient(ellipse at 50% 36%, rgba(205, 185, 159, 0.22) 0%, rgba(52, 75, 101, 0.42) 45%, rgba(25, 42, 64, 0.88) 75%, #192A40 100%),
     linear-gradient(180deg, #101A27 0%, #192A40 45%, #344B65 72%, #657385 86%, #C2B7A8 95%, #E8E0D4 100%);
   position: relative;
   overflow: hidden;
@@ -400,12 +420,12 @@ a {
 }
 
 .hero-archive-label {
-  font-size: 0.85rem;
+  font-size: clamp(0.75rem, 2vw, 0.85rem);
   font-weight: 500;
   letter-spacing: 0.32em;
   text-transform: uppercase;
   color: var(--faded-champagne);
-  margin-bottom: 2rem;
+  margin-bottom: clamp(1.2rem, 3vh, 1.8rem);
   opacity: 0;
   transform: translateY(8px);
   transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
@@ -417,7 +437,7 @@ a {
 
 .hero-title-group {
   opacity: 0;
-  transform: translateY(22px);
+  transform: translateY(20px);
   transition: opacity 0.9s var(--ease) 0.15s, transform 0.9s var(--ease) 0.15s;
 }
 .hero-title-group.visible {
@@ -454,7 +474,7 @@ a {
   width: 0;
   height: 1.5px;
   background: linear-gradient(90deg, transparent, var(--faded-champagne), transparent);
-  margin: 2.2rem auto 1.8rem;
+  margin: clamp(1.4rem, 3vh, 1.8rem) auto clamp(1rem, 2.5vh, 1.5rem);
   opacity: 0;
   transition: width 1.2s var(--ease) 0.4s, opacity 0.6s ease 0.4s;
 }
@@ -465,11 +485,11 @@ a {
 
 .hero-tagline {
   font-family: var(--font-serif);
-  font-size: clamp(1.25rem, 2.5vw, 1.7rem);
+  font-size: clamp(1.15rem, 2.5vw, 1.65rem);
   font-weight: 400;
   font-style: italic;
   color: var(--soft-ivory);
-  line-height: 1.7;
+  line-height: 1.65;
   max-width: 620px;
   margin: 0 auto;
   opacity: 0;
@@ -482,7 +502,7 @@ a {
 }
 
 .hero-scroll-cue {
-  margin-top: 4.5rem;
+  margin-top: clamp(2.4rem, 5vh, 3.8rem);
   opacity: 0;
   display: flex;
   flex-direction: column;
@@ -493,9 +513,18 @@ a {
   opacity: 1;
 }
 
+.scroll-cue-text {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--faded-champagne);
+  margin-bottom: 0.65rem;
+  font-weight: 500;
+}
+
 .scroll-line {
   width: 1.5px;
-  height: 52px;
+  height: 48px;
   background: linear-gradient(to bottom, var(--faded-champagne), transparent);
   animation: scrollPulse 2.5s ease-in-out infinite;
 }
@@ -511,10 +540,10 @@ a {
    → Bab 1, 2, 3, 4 (Warm Paper #F3EFE7 & Soft Ivory #E8E0D4 Sanctuary)
    → Bab 4 Ending (Dusk Twilight Descent)
    → Final Closing (Nocturnal Midnight Ink #192A40)
-   Zero harsh cuts. Zero abrupt dividing bars.
+   Measured & cohesive spacing — No excessive empty voids
    ═══════════════════════════════════════════════════════════ */
 .section {
-  padding: var(--section-pad) 1.5rem;
+  padding: var(--section-pad-mobile) 1.25rem;
   position: relative;
 }
 
@@ -596,42 +625,44 @@ a {
    ───────────────────────────────────────────────────────────── */
 .section-final {
   background: radial-gradient(ellipse at 50% 36%, #344B65 0%, #192A40 52%, #101A27 100%);
-  min-height: 85vh;
+  min-height: 60svh;
+  min-height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(6.5rem, 14vh, 12rem) 1.5rem;
+  padding: clamp(3.5rem, 8vh, 6rem) 1.25rem;
   position: relative;
 }
 
-/* Containers */
+/* Containers — Symmetrical & Balanced Margins */
 .section-container {
   max-width: var(--inner-max);
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 3.4rem;
+  gap: 1.6rem;
 }
 
 .archive-container-wide {
   max-width: var(--inner-wide);
   width: 100%;
-  margin: 4.5rem auto 0;
-  padding: 0 1rem;
+  margin: 2rem auto 0;
+  padding: 0 0.5rem;
 }
 
 /* Section Headers — Tender Editorial */
 .section-header {
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+  gap: 0.65rem;
 }
 
 .section-label-row {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 0.2rem;
+  gap: 0.85rem;
+  margin-bottom: 0.15rem;
 }
 
 .section-num {
@@ -644,7 +675,7 @@ a {
 
 .section-rule-h {
   display: block;
-  width: 38px;
+  width: 36px;
   height: 1px;
   background: var(--twilight-line);
 }
@@ -665,8 +696,12 @@ a {
 .section-subtitle {
   font-size: var(--fs-body);
   line-height: 1.75;
-  max-width: 640px;
+  max-width: 680px;
   color: var(--muted-slate);
+  text-align: justify;
+  text-justify: inter-word;
+  text-align-last: left;
+  hyphens: auto;
 }
 
 .section-subtitle-dark {
@@ -676,8 +711,8 @@ a {
 /* ─── SCROLL REVEALS ─────────────────────────────────────── */
 .rev {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
+  transform: translateY(16px);
+  transition: opacity 0.75s var(--ease), transform 0.75s var(--ease);
 }
 .rev.visible {
   opacity: 1;
@@ -691,17 +726,17 @@ a {
   display: flex;
   flex-direction: column;
   position: relative;
-  padding-left: 2.4rem;
+  padding-left: 1.8rem;
   border-left: 1.5px solid rgba(52, 75, 101, 0.22);
-  margin-left: 0.6rem;
+  margin-left: 0.2rem;
 }
 
 .timeline-item {
   position: relative;
-  padding-bottom: 3.8rem;
+  padding-bottom: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.65rem;
 }
 .timeline-item:last-child {
   padding-bottom: 0;
@@ -710,7 +745,7 @@ a {
 .timeline-item::before {
   content: '';
   position: absolute;
-  left: -2.85rem;
+  left: -2.25rem;
   top: 0.35rem;
   width: 10px;
   height: 10px;
@@ -735,11 +770,16 @@ a {
   line-height: 1.35;
 }
 
+/* Alignment Sama Sisi Sama (Justified / Rata Kanan-Kiri Rapi) */
 .tl-desc {
   font-size: var(--fs-body);
   color: var(--deep-ink);
-  line-height: 1.95;
-  opacity: 0.95;
+  line-height: 1.88;
+  opacity: 0.96;
+  text-align: justify;
+  text-justify: inter-word;
+  text-align-last: left;
+  hyphens: auto;
 }
 
 .tl-note {
@@ -747,14 +787,15 @@ a {
   font-style: italic;
   font-size: var(--fs-small);
   color: var(--muted-slate);
-  margin-top: 0.4rem;
-  padding-left: 1.1rem;
+  margin-top: 0.35rem;
+  padding-left: 1rem;
   border-left: 2px solid var(--faded-champagne);
 }
 
 /* ═══════════════════════════════════════════════════════════
    BAB 2 & 4: SURAT PRIBADI (WARM EDITORIAL STATIONERY)
    Tactile, intimate, warm ivory stationery paper
+   Symmetrical margins & Justified text (sama sisi sama)
    ═══════════════════════════════════════════════════════════ */
 .letter-paper-wrap {
   width: 100%;
@@ -765,13 +806,13 @@ a {
   background: var(--ivory-stationery);
   border: 1px solid var(--champagne-line);
   border-radius: 4px;
-  padding: clamp(3.2rem, 7vw, 5.5rem) clamp(2.4rem, 6vw, 4.6rem);
-  box-shadow: 0 18px 55px var(--paper-shadow);
+  padding: 2.2rem 1.35rem;
+  box-shadow: 0 16px 48px var(--paper-shadow);
   display: flex;
   flex-direction: column;
   gap: 0;
   position: relative;
-  max-width: 840px;
+  max-width: 860px;
   margin: 0 auto;
 }
 
@@ -783,7 +824,7 @@ a {
   text-align: center;
   font-size: 1.35rem;
   color: var(--faded-champagne);
-  margin-bottom: 2.2rem;
+  margin-bottom: 1.8rem;
   opacity: 0.85;
   line-height: 1;
 }
@@ -792,46 +833,54 @@ a {
 .closing-text {
   display: flex;
   flex-direction: column;
-  gap: 1.7rem;
+  gap: 1.4rem;
 }
 
+/* Alignment Sama Sisi Sama (Justified Text / Rata Kanan-Kiri Rapi) */
 .letter-paragraphs p,
 .closing-text p {
   font-size: var(--fs-body);
   color: var(--deep-ink);
-  line-height: 1.95;
-  text-align: left;
-  opacity: 0.95;
+  line-height: 1.88;
+  text-align: justify;
+  text-justify: inter-word;
+  text-align-last: left;
+  hyphens: auto;
+  opacity: 0.96;
 }
 
 .letter-paragraphs p:first-of-type {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(1.1rem, 1.8vw, 1.25rem);
+  font-size: clamp(1.08rem, 2vw, 1.22rem);
   color: var(--midnight-ink);
   line-height: 1.85;
 }
 
 .letter-reflect-block {
-  margin-top: 2.6rem;
-  padding: 1.9rem 0 0;
+  margin-top: 2rem;
+  padding: 1.6rem 0 0;
   border-top: 1px solid var(--champagne-line);
 }
 .letter-reflect-block p {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: var(--fs-h3);
+  font-size: clamp(1.15rem, 2.2vw, 1.4rem);
   color: var(--midnight-ink);
   line-height: 1.7;
+  text-align: justify;
+  text-justify: inter-word;
+  text-align-last: left;
+  hyphens: auto;
 }
 
 .closing-signature-block {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.5rem;
-  padding-top: 2.2rem;
-  margin-top: 0.5rem;
+  gap: 0.45rem;
+  padding-top: 1.8rem;
+  margin-top: 0.4rem;
 }
 
 .closing-salutation {
@@ -843,7 +892,7 @@ a {
 
 .closing-signature {
   font-family: var(--font-serif);
-  font-size: clamp(1.45rem, 3vw, 1.9rem);
+  font-size: clamp(1.4rem, 3vw, 1.85rem);
   font-style: italic;
   color: var(--midnight-ink);
   letter-spacing: 0.01em;
@@ -857,27 +906,32 @@ a {
 .learning-prose {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.4rem;
 }
 
+/* Alignment Sama Sisi Sama (Justified Text) */
 .learning-prose p {
   font-size: var(--fs-body);
   color: var(--deep-ink);
-  line-height: 1.95;
-  opacity: 0.95;
+  line-height: 1.88;
+  opacity: 0.96;
+  text-align: justify;
+  text-justify: inter-word;
+  text-align-last: left;
+  hyphens: auto;
 }
 
 .archive-section {
   display: flex;
   flex-direction: column;
-  gap: 3.2rem;
+  gap: 1.8rem;
   width: 100%;
 }
 
 .archive-header {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.55rem;
 }
 
 .archive-label {
@@ -899,20 +953,25 @@ a {
   font-size: var(--fs-small);
   color: var(--muted-slate);
   line-height: 1.75;
-  max-width: 660px;
+  max-width: 680px;
+  text-align: justify;
+  text-justify: inter-word;
+  text-align-last: left;
+  hyphens: auto;
 }
 
-/* ─── MEMORY GRID — 12-COLUMN DISCIPLINED EDITORIAL SYSTEM ─ */
+/* ─── MEMORY GRID — MOBILE-FIRST SYSTEM ──────────────────── */
 .memory-grid {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 1.8rem;
+  grid-template-columns: 1fr;
+  gap: 1.6rem;
+  max-width: 480px;
   width: 100%;
+  margin: 0 auto;
 }
 
-/* Default card spans 4 columns (3 per row) — Luminous Archival Mount */
+/* Card Styling — Warm Archival Mount */
 .memory-card {
-  grid-column: span 4;
   background: var(--ivory-stationery);
   border: 1px solid var(--champagne-line);
   border-radius: 4px;
@@ -921,64 +980,72 @@ a {
   flex-direction: column;
   cursor: pointer;
   position: relative;
-  transition: transform 0.4s var(--ease), border-color 0.4s ease, box-shadow 0.4s ease;
+  transition: transform 0.35s var(--ease), border-color 0.35s ease, box-shadow 0.35s ease;
   user-select: none;
-  box-shadow: 0 8px 30px var(--paper-shadow);
+  box-shadow: 0 8px 28px var(--paper-shadow);
+  touch-action: manipulation;
 }
 
 .memory-card:hover {
-  transform: translateY(-5px);
   border-color: var(--faded-champagne);
-  box-shadow: 0 16px 44px rgba(25, 42, 64, 0.12);
-  z-index: 5;
+  box-shadow: 0 14px 40px rgba(25, 42, 64, 0.12);
 }
 
-/* Image Wrapper with Clean Archival Matte */
+/* ─── IMAGE WRAPPER — 100% FULL VISIBLE (TIDAK TERPOTONG) ─── */
 .memory-img-wrap {
   width: 100%;
   aspect-ratio: 4 / 3;
   overflow: hidden;
   position: relative;
-  background: var(--soft-ivory);
-  border: 1px solid rgba(205, 185, 159, 0.35);
+  background: var(--archival-matte);
+  border: 1px solid rgba(205, 185, 159, 0.45);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+}
+
+/* CRITICAL: object-fit: contain menjamin seluruh foto 100% utuh tanpa cropping */
+.memory-img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Full uncropped: kepala, wajah, detail tetap utuh */
+  object-position: center;
+  transition: transform 0.4s var(--ease);
+  filter: none !important;
   border-radius: 2px;
 }
 
-.memory-img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transition: transform 0.7s var(--ease);
-  filter: none !important; /* Preserves natural warm colors, skin tones, memories */
-}
-
 .memory-card:hover .memory-img {
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
 /* Archival number badge */
 .memory-stamp {
   position: absolute;
-  top: 0.65rem;
-  right: 0.65rem;
+  top: 0.55rem;
+  right: 0.55rem;
   font-family: var(--font-sans);
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   color: #FFFFFF;
-  background: rgba(25, 42, 64, 0.85);
+  background: rgba(25, 42, 64, 0.88);
   border: 1px solid var(--champagne-line);
-  padding: 0.2rem 0.55rem;
+  padding: 0.18rem 0.55rem;
   border-radius: 2px;
   backdrop-filter: blur(6px);
   pointer-events: none;
+  z-index: 2;
 }
 
 /* Card metadata */
 .memory-meta {
-  padding-top: 1rem;
+  padding-top: 0.95rem;
   display: flex;
   flex-direction: column;
   gap: 0.38rem;
@@ -1017,6 +1084,7 @@ a {
   margin-top: 0.1rem;
 }
 
+/* Alignment Sama Sisi Sama (Justified Text) */
 .memory-caption-preview {
   font-size: var(--fs-small);
   color: #384858;
@@ -1025,7 +1093,10 @@ a {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  opacity: 0.92;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  opacity: 0.94;
 }
 
 .memory-read-hint {
@@ -1034,68 +1105,16 @@ a {
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  margin-top: 0.6rem;
+  margin-top: 0.5rem;
+  min-height: 44px;
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.4rem;
   transition: color 0.3s ease;
 }
 
 .memory-card:hover .memory-read-hint {
   color: var(--deep-ink);
-}
-
-/* ─── LAYOUT VARIATIONS ──────────────────────────────────── */
-
-/* Wide Layout (8 columns) */
-.memory-card[data-layout="wide"] {
-  grid-column: span 8;
-}
-.memory-card[data-layout="wide"] .memory-img-wrap {
-  aspect-ratio: 16 / 10;
-}
-.memory-card[data-layout="wide"] .memory-title {
-  font-size: 1.28rem;
-}
-.memory-card[data-layout="wide"] .memory-caption-preview {
-  -webkit-line-clamp: 3;
-}
-
-/* Editorial Layout (12 columns) — Landmark Milestones */
-.memory-card[data-layout="editorial"] {
-  grid-column: span 12;
-  flex-direction: row;
-  align-items: stretch;
-  gap: 2.6rem;
-  padding: 1.6rem;
-  background: #FFFFFF;
-}
-
-.memory-card[data-layout="editorial"] .memory-img-wrap {
-  flex: 0 0 54%;
-  aspect-ratio: 16 / 10;
-  min-height: 320px;
-}
-
-.memory-card[data-layout="editorial"] .memory-meta {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0.8rem 1rem;
-  gap: 0.65rem;
-}
-
-.memory-card[data-layout="editorial"] .memory-title {
-  font-size: 1.48rem;
-  line-height: 1.3;
-}
-
-.memory-card[data-layout="editorial"] .memory-caption-preview {
-  -webkit-line-clamp: 4;
-  font-size: 1rem;
-  opacity: 0.94;
-  line-height: 1.75;
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -1115,24 +1134,24 @@ a {
 
 .final-line {
   font-family: var(--font-serif);
-  font-size: clamp(2.3rem, 5.8vw, 4rem);
+  font-size: clamp(2rem, 5.8vw, 3.8rem);
   font-weight: 400;
   font-style: italic;
   color: var(--warm-paper);
   line-height: 1.35;
   letter-spacing: -0.015em;
-  margin-bottom: 2.2rem;
+  margin-bottom: 1.8rem;
   text-shadow: 0 4px 30px rgba(243, 239, 231, 0.22);
 }
 
 .final-name {
   font-family: var(--font-sans);
-  font-size: clamp(0.95rem, 2vw, 1.25rem);
+  font-size: clamp(0.9rem, 2vw, 1.25rem);
   font-weight: 500;
   letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--moonlight-silver);
-  margin-bottom: 3.2rem;
+  margin-bottom: 2.5rem;
   opacity: 0.95;
 }
 
@@ -1145,6 +1164,8 @@ a {
 
 /* ═══════════════════════════════════════════════════════════
    MEMORY DETAIL MODAL (LIGHTBOX)
+   Accessible, mobile-scrollable, comfortable reading
+   Full uncropped image display
    ═══════════════════════════════════════════════════════════ */
 .modal-overlay {
   position: fixed;
@@ -1153,12 +1174,12 @@ a {
   width: 100%;
   height: 100%;
   z-index: 1000;
-  background: rgba(16, 26, 39, 0.9);
+  background: rgba(16, 26, 39, 0.92);
   backdrop-filter: blur(18px);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem;
+  padding: 1rem;
   animation: fadeInModal 0.3s var(--ease) forwards;
 }
 @keyframes fadeInModal {
@@ -1167,12 +1188,15 @@ a {
 }
 
 .lightbox-dialog {
-  max-width: 740px;
+  max-width: 760px;
   width: 100%;
+  max-height: 90svh;
+  max-height: 90vh;
   background: var(--midnight-ink);
   border: 1px solid var(--champagne-line);
-  border-radius: 4px;
-  overflow: hidden;
+  border-radius: 6px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
   position: relative;
   display: flex;
@@ -1182,15 +1206,15 @@ a {
 
 .lightbox-close {
   position: absolute;
-  top: 0.85rem;
-  right: 0.95rem;
-  font-size: 1.6rem;
+  top: 0.75rem;
+  right: 0.75rem;
+  font-size: 1.8rem;
   line-height: 1;
   color: var(--warm-paper);
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0.6);
   border-radius: 50%;
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1199,27 +1223,30 @@ a {
 }
 .lightbox-close:hover {
   background: var(--twilight-blue);
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 
 .lb-image-frame {
   width: 100%;
-  max-height: 65vh;
+  max-height: 52vh;
   overflow: hidden;
   background: #0B141F;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0.5rem;
 }
 .detail-img {
   max-width: 100%;
-  max-height: 65vh;
-  object-fit: contain;
+  max-height: 50vh;
+  width: auto;
+  height: auto;
+  object-fit: contain; /* Full uncropped */
   display: block;
 }
 
 .lb-caption-frame {
-  padding: 1.6rem 1.8rem;
+  padding: 1.4rem 1.4rem 1.6rem;
   background: var(--midnight-ink);
   display: flex;
   flex-direction: column;
@@ -1253,11 +1280,16 @@ a {
   line-height: 1.3;
 }
 
+/* Alignment Sama Sisi Sama di Modal */
 .lb-desc {
   font-size: var(--fs-small);
   color: var(--warm-paper);
   line-height: 1.8;
-  opacity: 0.95;
+  opacity: 0.96;
+  text-align: justify;
+  text-justify: inter-word;
+  text-align-last: left;
+  hyphens: auto;
 }
 
 .lb-nav-row {
@@ -1273,7 +1305,8 @@ a {
   font-size: var(--fs-micro);
   font-weight: 500;
   color: var(--moonlight-silver);
-  padding: 0.5rem 0.95rem;
+  min-height: 44px;
+  padding: 0.55rem 1rem;
   border-radius: 3px;
   border: 1px solid var(--silver-line);
   transition: all 0.2s ease;
@@ -1289,144 +1322,172 @@ a {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   RESPONSIVE — DESKTOP, TABLET, MOBILE
+   TABLET & INTERMEDIATE BREAKPOINT (min-width: 681px)
    ═══════════════════════════════════════════════════════════ */
-
-/* Tablet & Intermediate */
-@media (max-width: 960px) {
-  .memory-grid {
-    grid-template-columns: repeat(6, 1fr);
-    gap: 1.4rem;
-  }
-
-  .memory-card {
-    grid-column: span 3 !important;
-  }
-
-  .memory-card[data-layout="wide"] {
-    grid-column: span 6 !important;
-  }
-
-  .memory-card[data-layout="editorial"] {
-    grid-column: span 6 !important;
-    flex-direction: column;
-    gap: 1.4rem;
-  }
-
-  .memory-card[data-layout="editorial"] .memory-img-wrap {
-    flex: none;
-    aspect-ratio: 16 / 10;
-  }
-}
-
-/* Mobile Screens */
-@media (max-width: 680px) {
-  .memory-grid {
-    grid-template-columns: 1fr;
-    gap: 1.8rem;
-    max-width: 460px;
-    margin: 0 auto;
-  }
-
-  .memory-card,
-  .memory-card[data-layout="wide"],
-  .memory-card[data-layout="editorial"] {
-    grid-column: span 1 !important;
-    flex-direction: column !important;
-    padding: 0.95rem;
-    gap: 0;
-  }
-
-  .memory-card .memory-img-wrap,
-  .memory-card[data-layout="wide"] .memory-img-wrap,
-  .memory-card[data-layout="editorial"] .memory-img-wrap {
-    aspect-ratio: 4 / 3;
-    min-height: unset;
-  }
-
+@media (min-width: 681px) {
   .section {
-    padding: clamp(4rem, 8vw, 5.5rem) 1.2rem;
-  }
-
-  .hero-inner {
-    align-items: center;
-    text-align: center;
-  }
-
-  .hero-tagline {
-    text-align: center;
-  }
-
-  .hero-archive-label {
-    text-align: center;
-  }
-
-  .s-hero {
-    padding: 5.5rem 1.2rem 4rem;
-  }
-
-  .intro-card {
-    gap: 1.8rem;
-  }
-
-  .btn-open-letter {
-    width: 100%;
-    justify-content: center;
+    padding: clamp(2.2rem, 4vw, 3rem) 1.5rem;
   }
 
   .timeline-wrap {
-    padding-left: 1.8rem;
+    padding-left: 2.2rem;
+    margin-left: 0.4rem;
   }
   .timeline-item::before {
-    left: -2.25rem;
+    left: -2.65rem;
   }
 
   .letter-paper,
   .closing-letter {
-    padding: 2.4rem 1.4rem;
+    padding: clamp(2.5rem, 5vw, 3.8rem) clamp(2rem, 4vw, 3.2rem);
+  }
+
+  .memory-grid {
+    grid-template-columns: repeat(6, 1fr);
+    max-width: 100%;
+    gap: 1.5rem;
+  }
+
+  .memory-card {
+    grid-column: span 3;
+  }
+
+  .memory-card[data-layout="wide"] {
+    grid-column: span 6;
+  }
+
+  .memory-card[data-layout="editorial"] {
+    grid-column: span 6;
+  }
+
+  .lb-image-frame {
+    max-height: 55vh;
+  }
+  .detail-img {
+    max-height: 55vh;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   DESKTOP EDITORIAL CANVAS (min-width: 1025px)
+   Peralihan bab ringkas, terukur, dan harmonis
+   ═══════════════════════════════════════════════════════════ */
+@media (min-width: 1025px) {
+  .section {
+    padding: var(--section-pad-desk) 1.5rem;
+  }
+
+  .section-container {
+    gap: 2rem;
+  }
+
+  .timeline-wrap {
+    padding-left: 2.6rem;
+    margin-left: 0.6rem;
+  }
+  .timeline-item::before {
+    left: -3.05rem;
+  }
+
+  .letter-paper,
+  .closing-letter {
+    padding: clamp(3rem, 5vw, 4.4rem) clamp(2.4rem, 5vw, 4rem);
   }
 
   .music-pill {
-    bottom: 1.4rem;
-    right: 1.4rem;
+    bottom: 2rem;
+    right: 2rem;
   }
 
   .music-btn {
-    padding: 0.5rem 0.85rem;
+    padding: 0.65rem 1.25rem;
   }
 
-  .lb-caption-frame {
-    padding: 1.2rem 1.1rem;
+  .archive-container-wide {
+    padding: 0 1rem;
+    margin-top: 2.5rem;
   }
 
-  .section-final {
-    min-height: 65vh;
-    padding: 5rem 1.2rem;
+  /* 12-Column Asymmetric Curated Gallery */
+  .memory-grid {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.8rem;
+    max-width: var(--inner-wide);
   }
 
-  .final-line {
-    font-size: clamp(1.8rem, 6vw, 2.4rem);
+  .memory-card {
+    grid-column: span 4;
   }
 
-  .final-name {
-    font-size: clamp(0.85rem, 3.2vw, 1rem);
+  .memory-card:hover {
+    transform: translateY(-4px);
   }
-}
 
-/* Very Small Mobile */
-@media (max-width: 380px) {
-  .intro-header-row {
+  /* Wide Layout (8 columns) — 100% Full Uncropped Image */
+  .memory-card[data-layout="wide"] {
+    grid-column: span 8;
+  }
+  .memory-card[data-layout="wide"] .memory-img-wrap {
+    aspect-ratio: 16 / 10;
+  }
+  .memory-card[data-layout="wide"] .memory-title {
+    font-size: 1.28rem;
+  }
+  .memory-card[data-layout="wide"] .memory-caption-preview {
+    -webkit-line-clamp: 3;
+  }
+
+  /* Editorial Layout (12 columns) — Side-by-Side Milestone Showcase */
+  .memory-card[data-layout="editorial"] {
+    grid-column: span 12;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 2.2rem;
+    padding: 1.5rem;
+    background: #FFFFFF;
+  }
+
+  .memory-card[data-layout="editorial"] .memory-img-wrap {
+    flex: 0 0 52%;
+    aspect-ratio: 16 / 10;
+    min-height: 320px;
+  }
+
+  .memory-card[data-layout="editorial"] .memory-meta {
+    flex: 1;
+    display: flex;
     flex-direction: column;
-    gap: 0.8rem;
-    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 0.8rem;
+    gap: 0.65rem;
   }
 
-  .hero-title {
-    font-size: clamp(2.4rem, 12vw, 3.2rem);
+  .memory-card[data-layout="editorial"] .memory-title {
+    font-size: 1.48rem;
+    line-height: 1.3;
+  }
+
+  .memory-card[data-layout="editorial"] .memory-caption-preview {
+    -webkit-line-clamp: 4;
+    font-size: 1rem;
+    opacity: 0.94;
+    line-height: 1.75;
+  }
+
+  .lb-image-frame {
+    max-height: 60vh;
+  }
+  .detail-img {
+    max-height: 58vh;
+  }
+  .lb-caption-frame {
+    padding: 1.6rem 2rem;
   }
 }
 
-/* ─── PREFERS REDUCED MOTION ─────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════
+   PREFERS REDUCED MOTION
+   ═══════════════════════════════════════════════════════════ */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
