@@ -18,17 +18,18 @@ export function initParticleEngine() {
   });
 
   // Keep count very gentle and unobtrusive (16 motes)
-  const particleCount = 16;
+  const particleCount = 18;
   const particles = [];
 
   for (let i = 0; i < particleCount; i++) {
     particles.push({
       x: Math.random() * width,
       y: Math.random() * height,
-      radius: Math.random() * 1.2 + 0.6,
-      alpha: Math.random() * 0.12 + 0.04,
+      radius: Math.random() * 1.3 + 0.5,
+      alpha: Math.random() * 0.12 + 0.05,
       speedX: (Math.random() - 0.5) * 0.12,
-      speedY: (Math.random() - 0.5) * 0.15 - 0.05
+      speedY: (Math.random() - 0.5) * 0.14 - 0.04,
+      isWarm: i % 2 === 0
     });
   }
 
@@ -47,7 +48,9 @@ export function initParticleEngine() {
 
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(196, 204, 212, ${p.alpha})`;
+      ctx.fillStyle = p.isWarm 
+        ? `rgba(243, 241, 235, ${p.alpha})`
+        : `rgba(210, 220, 230, ${p.alpha})`;
       ctx.fill();
     }
 
