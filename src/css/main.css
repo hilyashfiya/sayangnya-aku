@@ -1,45 +1,45 @@
 /* ============================================================
    SAYANGNYA, AKU — MIDNIGHT LETTERS
    Art Direction: "A Private Archive of Us"
-   Palet: Midnight Navy, Deep Slate, Soft Silver, Moon White, Pale Moon
-   Tipografi: Playfair Display (editorial serif) & Inter (clean sans)
+   Personal Digital Love Letter & Memory Archive for Muhammad Rafli Al Kaylaniy
+   Palet: Midnight Navy, Deep Slate Blue, Muted Slate, Soft Silver, Moon White, Pale Moon, Ink Navy
    ============================================================ */
 
 /* ─── CSS VARIABLES & DESIGN TOKENS ─────────────────────── */
 :root {
   /* Midnight Palette */
-  --midnight:       #182638;
-  --deep-slate:     #243448;
-  --slate-muted:    #526579;
-  --silver:         #C4CCD4;
-  --moon-white:     #F3F1EB;
-  --pale-moon:      #E9E8E2;
-  --ink-navy:       #202B38;
+  --midnight:       #182638; /* Warna utama */
+  --deep-slate:     #243448; /* Latar gelap sekunder */
+  --slate-muted:    #526579; /* Biru perantara */
+  --silver:         #C4CCD4; /* Aksen lembut */
+  --moon-white:     #F3F1EB; /* Teks terang */
+  --pale-moon:      #E9E8E2; /* Latar surat */
+  --ink-navy:       #202B38; /* Teks gelap pada latar terang */
 
-  /* Derived tones */
-  --midnight-soft:  #1E2F44;
-  --midnight-deep:  #121E2C;
+  /* Derived tones & alpha accents */
+  --midnight-deep:  #101A2A;
+  --midnight-mid:   #1A2B42;
+  --midnight-glow:  #34475C;
   --silver-dim:     rgba(196, 204, 212, 0.12);
-  --silver-line:    rgba(196, 204, 212, 0.25);
+  --silver-line:    rgba(196, 204, 212, 0.22);
   --silver-glow:    rgba(196, 204, 212, 0.06);
-  --warm-paper:     #EDECE6;
 
   /* Typography */
   --font-serif:     'Playfair Display', Georgia, 'Times New Roman', serif;
   --font-sans:      'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   /* Type Scale */
-  --fs-display:     clamp(3rem, 8vw, 5.5rem);
-  --fs-display-sm:  clamp(2.2rem, 5vw, 3.5rem);
-  --fs-h2:          clamp(1.6rem, 3.5vw, 2.4rem);
-  --fs-h3:          clamp(1.2rem, 2.4vw, 1.55rem);
-  --fs-body:        clamp(0.95rem, 1.5vw, 1.05rem);
+  --fs-display:     clamp(2.8rem, 7.5vw, 5.2rem);
+  --fs-display-sm:  clamp(2rem, 4.5vw, 3.2rem);
+  --fs-h2:          clamp(1.5rem, 3.2vw, 2.2rem);
+  --fs-h3:          clamp(1.15rem, 2.2vw, 1.5rem);
+  --fs-body:        clamp(0.95rem, 1.4vw, 1.05rem);
   --fs-small:       0.875rem;
   --fs-label:       0.75rem;
   --fs-micro:       0.68rem;
 
   /* Spacing */
-  --section-pad:    clamp(5rem, 10vw, 9rem);
+  --section-pad:    clamp(5rem, 9vw, 8.5rem);
   --inner-max:      760px;
   --inner-wide:     1080px;
 
@@ -115,44 +115,44 @@ a {
   display: none !important;
 }
 
-/* ─── AMBIENT GRAIN OVERLAY ──────────────────────────────── */
+/* ─── AMBIENT GRAIN / STARDUST CANVAS ────────────────────── */
 #canvas-grain {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
-  z-index: 9999;
-  opacity: 0.06;
-  mix-blend-mode: screen;
+  z-index: 1000;
+  opacity: 0.65;
 }
 
 /* ═══════════════════════════════════════════════════════════
    INTRO — THE SEALED LETTER
-   Dark, intimate, like an envelope waiting to be opened
+   Dark, quiet, intimate atmosphere
    ═══════════════════════════════════════════════════════════ */
 #intro-screen {
   position: fixed;
-  inset: 0;
-  background: var(--midnight-deep);
-  z-index: 10000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 900;
+  background: linear-gradient(145deg, #0D1622 0%, #182638 60%, #203044 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem 1.5rem;
-  overflow-y: auto;
-  transition: opacity 1s var(--ease), filter 1s ease;
+  padding: 2rem;
+  transition: opacity 0.85s var(--ease), visibility 0.85s var(--ease);
 }
 
 #intro-screen.fade-out {
   opacity: 0;
-  filter: blur(12px);
-  pointer-events: none;
+  visibility: hidden;
 }
 
 .intro-card {
-  max-width: 560px;
+  max-width: 580px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -203,7 +203,7 @@ a {
 
 .intro-text {
   font-family: var(--font-serif);
-  font-size: clamp(1.15rem, 2.8vw, 1.5rem);
+  font-size: clamp(1.15rem, 2.8vw, 1.45rem);
   font-weight: 400;
   color: var(--silver);
   line-height: 1.75;
@@ -270,7 +270,7 @@ a {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   FLOATING MUSIC PLAYER
+   FLOATING MUSIC PLAYER — MAHALINI (MENCINTAIMU)
    ═══════════════════════════════════════════════════════════ */
 .music-pill {
   position: fixed;
@@ -347,7 +347,8 @@ a {
 
 /* ═══════════════════════════════════════════════════════════
    HERO — COVER OF THE LETTER
-   Full midnight navy, the first breath of the letter
+   Opening gradient: midnight navy toward deep slate blue
+   linear-gradient(135deg, #101A2A 0%, #1A2B42 48%, #34475C 100%)
    ═══════════════════════════════════════════════════════════ */
 .s-hero {
   min-height: 100vh;
@@ -355,21 +356,21 @@ a {
   align-items: center;
   justify-content: center;
   padding: 6rem 1.5rem 4rem;
-  background: var(--midnight);
+  background: linear-gradient(135deg, #101A2A 0%, #1A2B42 48%, #34475C 100%);
   position: relative;
   overflow: hidden;
 }
 
-/* Subtle radial light — like moonlight through a window */
+/* Subtle soft moonlight glow */
 .s-hero::before {
   content: '';
   position: absolute;
   top: 15%;
   left: 50%;
   transform: translateX(-50%);
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(196, 204, 212, 0.04) 0%, transparent 70%);
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(196, 204, 212, 0.06) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -390,7 +391,7 @@ a {
   letter-spacing: 0.35em;
   text-transform: uppercase;
   color: var(--slate-muted);
-  margin-bottom: 2.5rem;
+  margin-bottom: 2.2rem;
   opacity: 0;
   transform: translateY(8px);
   transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
@@ -444,25 +445,25 @@ a {
 
 .hero-tagline {
   font-family: var(--font-serif);
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-size: clamp(1rem, 2vw, 1.25rem);
   font-weight: 400;
   font-style: italic;
-  color: var(--slate-muted);
+  color: var(--silver);
   line-height: 1.6;
-  max-width: 420px;
+  max-width: 480px;
   opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.8s var(--ease) 0.5s, transform 0.8s var(--ease) 0.5s;
+  transform: translateY(12px);
+  transition: opacity 0.9s var(--ease) 0.3s, transform 0.9s var(--ease) 0.3s;
 }
 .hero-tagline.visible {
-  opacity: 1;
+  opacity: 0.9;
   transform: translateY(0);
 }
 
 .hero-scroll-cue {
-  margin-top: 4rem;
+  margin-top: 4.5rem;
   opacity: 0;
-  transition: opacity 1s ease 0.8s;
+  transition: opacity 1s var(--ease) 0.6s;
 }
 .hero-scroll-cue.visible {
   opacity: 1;
@@ -481,28 +482,52 @@ a {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   SECTION SYSTEM — ALTERNATING DARK/LIGHT RHYTHM
+   SECTION SYSTEM & GRADIENT CONNECTIONS
+   Alternating rhythm with purposeful emotional transitions
    ═══════════════════════════════════════════════════════════ */
 .section {
   padding: var(--section-pad) 1.5rem;
+  position: relative;
 }
 
-.section-dark {
-  background-color: var(--midnight);
+/* Bagian 1: Smooth dark transition from hero */
+#s-pertemuan {
+  background: linear-gradient(180deg, #1A2B42 0%, #182638 40%, #121E2C 100%);
   color: var(--moon-white);
 }
 
-.section-light {
-  background-color: var(--pale-moon);
+/* Bagian 2: Soft Pale Moon Letter Section */
+#s-maaf {
+  background: linear-gradient(155deg, #E9E8E2 0%, #F3F1EB 55%, #D9E0E6 100%);
   color: var(--ink-navy);
 }
 
+/* Bagian 3: Deep Slate & Midnight Memory Archive */
+#s-belajar {
+  background: linear-gradient(175deg, #121E2C 0%, #182638 25%, #243448 65%, #15202E 100%);
+  color: var(--moon-white);
+}
+
+/* Bagian 4: Soft Pale Moon Closing Letter */
+#s-penutup {
+  background: linear-gradient(155deg, #E9E8E2 0%, #F3F1EB 55%, #D9E0E6 100%);
+  color: var(--ink-navy);
+}
+
+/* Containers */
 .section-container {
   max-width: var(--inner-max);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 3rem;
+}
+
+.archive-container-wide {
+  max-width: var(--inner-wide);
+  width: 100%;
+  margin: 3.5rem auto 0;
+  padding: 0 0.5rem;
 }
 
 /* Section Headers — Editorial */
@@ -633,7 +658,7 @@ a {
   font-size: var(--fs-body);
   color: var(--silver);
   line-height: 1.8;
-  opacity: 0.85;
+  opacity: 0.88;
 }
 
 .tl-note {
@@ -648,25 +673,24 @@ a {
 
 /* ═══════════════════════════════════════════════════════════
    BAGIAN 2 — SURAT / LETTER (ON LIGHT BACKGROUND)
-   A quiet, personal space
+   A quiet, personal space with high contrast reading
    ═══════════════════════════════════════════════════════════ */
 .letter-paper-wrap {
   width: 100%;
 }
 
 .letter-paper {
-  background: var(--moon-white);
-  border: none;
-  border-radius: 0;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(82, 101, 121, 0.12);
+  border-radius: 2px;
   padding: clamp(2.5rem, 6vw, 4.5rem) clamp(2rem, 5vw, 3.5rem);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 24px rgba(32, 43, 56, 0.05);
   display: flex;
   flex-direction: column;
   gap: 0;
   position: relative;
 }
 
-/* Thin top line — like the edge of a page */
 .letter-paper::before {
   content: '';
   position: absolute;
@@ -674,7 +698,7 @@ a {
   left: 2rem;
   right: 2rem;
   height: 1px;
-  background: rgba(32, 43, 56, 0.12);
+  background: rgba(32, 43, 56, 0.15);
 }
 
 .letter-paragraphs {
@@ -688,11 +712,11 @@ a {
   color: var(--ink-navy);
   line-height: 1.9;
   text-align: left;
-  opacity: 0.88;
+  opacity: 0.9;
 }
 
 .letter-paragraphs p:first-of-type {
-  font-size: clamp(1rem, 1.8vw, 1.1rem);
+  font-size: clamp(1rem, 1.8vw, 1.12rem);
   color: var(--ink-navy);
   opacity: 1;
 }
@@ -700,7 +724,7 @@ a {
 .letter-reflect-block {
   margin-top: 2rem;
   padding: 1.5rem 0 0;
-  border-top: 1px solid rgba(32, 43, 56, 0.1);
+  border-top: 1px solid rgba(32, 43, 56, 0.12);
 }
 .letter-reflect-block p {
   font-family: var(--font-serif);
@@ -708,11 +732,12 @@ a {
   font-size: var(--fs-h3);
   color: var(--ink-navy);
   line-height: 1.65;
-  opacity: 0.7;
+  opacity: 0.75;
 }
 
 /* ═══════════════════════════════════════════════════════════
    BAGIAN 3 — LEARNING PROSE & MEMORY ARCHIVE (ON DARK)
+   19 Fotografik Kenangan dengan Ritme Editorial yang Tertata
    ═══════════════════════════════════════════════════════════ */
 .learning-prose {
   display: flex;
@@ -724,15 +749,15 @@ a {
   font-size: var(--fs-body);
   color: var(--silver);
   line-height: 1.85;
-  opacity: 0.85;
+  opacity: 0.88;
 }
 
 /* Archive Section Header */
 .archive-section {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
-  margin-top: 2rem;
+  gap: 2.8rem;
+  width: 100%;
 }
 
 .archive-header {
@@ -760,93 +785,49 @@ a {
   font-size: var(--fs-small);
   color: var(--slate-muted);
   line-height: 1.6;
-  max-width: 520px;
+  max-width: 580px;
 }
 
-/* ─── MEMORY GRID — EDITORIAL VARIED LAYOUT ──────────────── */
+/* ─── MEMORY GRID — 12-COLUMN DISCIPLINED EDITORIAL SYSTEM ─ */
 .memory-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: 1.2rem;
+  gap: 1.5rem;
+  width: 100%;
 }
 
 /* Default card spans 4 columns (3 per row) */
 .memory-card {
   grid-column: span 4;
+  background: rgba(36, 52, 72, 0.38);
+  border: 1px solid rgba(196, 204, 212, 0.12);
+  border-radius: 2px;
+  padding: 0.85rem;
   display: flex;
   flex-direction: column;
   cursor: pointer;
   position: relative;
-  transition: transform 0.5s var(--ease), opacity 0.4s ease;
+  transition: transform 0.4s var(--ease), border-color 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
   user-select: none;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
 }
 
 .memory-card:hover {
   transform: translateY(-4px);
+  border-color: rgba(196, 204, 212, 0.35);
+  background: rgba(36, 52, 72, 0.65);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
   z-index: 5;
 }
 
-/* Editorial layout variations — deliberately varied rhythm */
-/* Hero memory: spans 6 columns */
-.memory-card[data-layout="hero"] {
-  grid-column: span 6;
-}
-
-/* Wide memory: spans 8 columns */
-.memory-card[data-layout="wide"] {
-  grid-column: span 8;
-}
-
-/* Small offset: spans 4 with left offset */
-.memory-card[data-layout="offset"] {
-  grid-column: 5 / span 4;
-}
-
-/* Full width single */
-.memory-card[data-layout="full"] {
-  grid-column: span 12;
-  max-width: 100%;
-}
-
-/* Full editorial — side-by-side photo and text */
-.memory-card[data-layout="editorial"] {
-  grid-column: span 12;
-  flex-direction: row;
-  align-items: stretch;
-  gap: 2rem;
-}
-
-.memory-card[data-layout="editorial"] .memory-img-wrap {
-  flex: 0 0 52%;
-  aspect-ratio: 4 / 3;
-  min-height: 280px;
-}
-
-.memory-card[data-layout="editorial"] .memory-meta {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 1.5rem 0;
-}
-
-/* Photo frame */
+/* Image Wrapper with Archival Mounting */
 .memory-img-wrap {
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   position: relative;
-  background: var(--deep-slate);
-}
-
-.memory-card[data-layout="hero"] .memory-img-wrap,
-.memory-card[data-layout="wide"] .memory-img-wrap {
-  aspect-ratio: 3 / 2;
-}
-
-.memory-card[data-layout="full"] .memory-img-wrap {
-  aspect-ratio: 16 / 9;
-  max-height: 500px;
+  background: #111A24;
+  border: 1px solid rgba(196, 204, 212, 0.08);
 }
 
 .memory-img {
@@ -856,40 +837,61 @@ a {
   object-fit: cover;
   object-position: center;
   transition: transform 0.7s var(--ease);
+  filter: none; /* Keep natural colors */
 }
 
 .memory-card:hover .memory-img {
   transform: scale(1.03);
 }
 
-/* Photo number overlay */
-.memory-img-wrap::after {
-  content: attr(data-num);
+/* Archival number badge */
+.memory-stamp {
   position: absolute;
-  bottom: 0.6rem;
+  top: 0.6rem;
   right: 0.6rem;
-  font-family: var(--font-serif);
-  font-size: var(--fs-micro);
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.5);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
+  color: var(--moon-white);
+  background: rgba(16, 26, 40, 0.75);
+  border: 1px solid rgba(196, 204, 212, 0.2);
+  padding: 0.15rem 0.45rem;
+  border-radius: 2px;
+  backdrop-filter: blur(4px);
   pointer-events: none;
 }
 
-/* Meta info */
+/* Card metadata */
 .memory-meta {
-  padding-top: 0.8rem;
+  padding-top: 0.85rem;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.3rem;
+}
+
+.memory-meta-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
 }
 
 .memory-date {
   font-size: var(--fs-micro);
   font-weight: 400;
   color: var(--slate-muted);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.memory-tag-archive {
+  font-family: var(--font-serif);
+  font-size: var(--fs-micro);
+  font-weight: 500;
+  color: var(--silver);
+  letter-spacing: 0.12em;
+  opacity: 0.6;
 }
 
 .memory-title {
@@ -898,12 +900,7 @@ a {
   font-weight: 500;
   color: var(--moon-white);
   line-height: 1.35;
-}
-
-.memory-card[data-layout="hero"] .memory-title,
-.memory-card[data-layout="wide"] .memory-title,
-.memory-card[data-layout="editorial"] .memory-title {
-  font-size: 1.2rem;
+  margin-top: 0.1rem;
 }
 
 .memory-caption-preview {
@@ -914,13 +911,7 @@ a {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  opacity: 0.7;
-  margin-top: 0.15rem;
-}
-
-.memory-card[data-layout="editorial"] .memory-caption-preview {
-  -webkit-line-clamp: 4;
-  opacity: 0.8;
+  opacity: 0.78;
 }
 
 .memory-read-hint {
@@ -928,21 +919,79 @@ a {
   color: var(--slate-muted);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  margin-top: 0.6rem;
+  margin-top: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   transition: color 0.3s ease;
 }
 
 .memory-card:hover .memory-read-hint {
-  color: var(--silver);
+  color: var(--moon-white);
+}
+
+/* ─── LAYOUT VARIATIONS ──────────────────────────────────── */
+
+/* Wide Layout (8 columns) */
+.memory-card[data-layout="wide"] {
+  grid-column: span 8;
+}
+.memory-card[data-layout="wide"] .memory-img-wrap {
+  aspect-ratio: 16 / 10;
+}
+.memory-card[data-layout="wide"] .memory-title {
+  font-size: 1.2rem;
+}
+.memory-card[data-layout="wide"] .memory-caption-preview {
+  -webkit-line-clamp: 3;
+}
+
+/* Editorial Layout (12 columns) — Landmark Milestones */
+.memory-card[data-layout="editorial"] {
+  grid-column: span 12;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 2.2rem;
+  padding: 1.35rem;
+  background: rgba(36, 52, 72, 0.5);
+}
+
+.memory-card[data-layout="editorial"] .memory-img-wrap {
+  flex: 0 0 54%;
+  aspect-ratio: 16 / 10;
+  min-height: 280px;
+}
+
+.memory-card[data-layout="editorial"] .memory-meta {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.5rem 0.8rem;
+  gap: 0.55rem;
+}
+
+.memory-card[data-layout="editorial"] .memory-title {
+  font-size: 1.35rem;
+  line-height: 1.3;
+}
+
+.memory-card[data-layout="editorial"] .memory-caption-preview {
+  -webkit-line-clamp: 4;
+  font-size: var(--fs-body);
+  opacity: 0.86;
+  line-height: 1.7;
 }
 
 /* ═══════════════════════════════════════════════════════════
    BAGIAN 4 — CLOSING LETTER (ON LIGHT)
    ═══════════════════════════════════════════════════════════ */
 .closing-letter {
-  background: var(--moon-white);
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(82, 101, 121, 0.12);
+  border-radius: 2px;
   padding: clamp(2.5rem, 6vw, 4.5rem) clamp(2rem, 5vw, 3.5rem);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 24px rgba(32, 43, 56, 0.05);
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -956,7 +1005,7 @@ a {
   left: 2rem;
   right: 2rem;
   height: 1px;
-  background: rgba(32, 43, 56, 0.12);
+  background: rgba(32, 43, 56, 0.15);
 }
 
 .closing-text {
@@ -969,7 +1018,7 @@ a {
   font-size: var(--fs-body);
   color: var(--ink-navy);
   line-height: 1.9;
-  opacity: 0.88;
+  opacity: 0.9;
 }
 
 .closing-signature-block {
@@ -997,11 +1046,13 @@ a {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   FINAL CLOSING — THE LAST THING HE READS
-   Returns to midnight navy, like the letter being sealed again
+   FINAL CLOSING — THE LAST LETTER
+   Radial gradient: midnight navy with soft slate glow in center
+   radial-gradient(ellipse at 50% 38%, #34475C 0%, #1A2B42 43%, #101A2A 100%)
+   Absolute final element on the page
    ═══════════════════════════════════════════════════════════ */
 .section-final {
-  background: var(--midnight);
+  background: radial-gradient(ellipse at 50% 38%, #34475C 0%, #1A2B42 43%, #101A2A 100%);
   min-height: 85vh;
   display: flex;
   align-items: center;
@@ -1051,20 +1102,22 @@ a {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   LIGHTBOX / MODAL — MIDNIGHT THEME
+   MEMORY DETAIL MODAL (LIGHTBOX)
    ═══════════════════════════════════════════════════════════ */
 .modal-overlay {
   position: fixed;
-  inset: 0;
-  background: rgba(18, 30, 44, 0.92);
-  backdrop-filter: blur(12px);
-  z-index: 99999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background: rgba(16, 26, 42, 0.88);
+  backdrop-filter: blur(16px);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
-  overflow-y: auto;
-  animation: fadeInModal 0.3s var(--ease);
+  animation: fadeInModal 0.3s var(--ease) forwards;
 }
 @keyframes fadeInModal {
   from { opacity: 0; }
@@ -1072,11 +1125,11 @@ a {
 }
 
 .lightbox-dialog {
-  background: var(--midnight);
-  border: 1px solid var(--silver-line);
-  border-radius: 4px;
   max-width: 720px;
   width: 100%;
+  background: var(--midnight);
+  border: 1px solid var(--silver-line);
+  border-radius: 2px;
   overflow: hidden;
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
   position: relative;
@@ -1162,7 +1215,7 @@ a {
   font-size: var(--fs-small);
   color: var(--silver);
   line-height: 1.7;
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
 .lb-nav-row {
@@ -1194,21 +1247,20 @@ a {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   RESPONSIVE — MOBILE & TABLET
+   RESPONSIVE — DESKTOP, TABLET, MOBILE
    ═══════════════════════════════════════════════════════════ */
 
-/* Tablet */
-@media (max-width: 900px) {
+/* Tablet & Intermediate */
+@media (max-width: 960px) {
   .memory-grid {
     grid-template-columns: repeat(6, 1fr);
-    gap: 1rem;
+    gap: 1.2rem;
   }
 
   .memory-card {
     grid-column: span 3 !important;
   }
 
-  .memory-card[data-layout="hero"],
   .memory-card[data-layout="wide"] {
     grid-column: span 6 !important;
   }
@@ -1216,46 +1268,38 @@ a {
   .memory-card[data-layout="editorial"] {
     grid-column: span 6 !important;
     flex-direction: column;
+    gap: 1.2rem;
   }
 
   .memory-card[data-layout="editorial"] .memory-img-wrap {
     flex: none;
-    aspect-ratio: 3 / 2;
-  }
-
-  .memory-card[data-layout="full"] {
-    grid-column: span 6 !important;
+    aspect-ratio: 16 / 10;
   }
 }
 
-/* Mobile */
-@media (max-width: 580px) {
+/* Mobile Screens */
+@media (max-width: 680px) {
   .memory-grid {
     grid-template-columns: 1fr;
-    gap: 1.8rem;
-    max-width: 400px;
+    gap: 1.6rem;
+    max-width: 440px;
     margin: 0 auto;
   }
 
   .memory-card,
-  .memory-card[data-layout="hero"],
   .memory-card[data-layout="wide"],
-  .memory-card[data-layout="full"],
-  .memory-card[data-layout="editorial"],
-  .memory-card[data-layout="offset"] {
+  .memory-card[data-layout="editorial"] {
     grid-column: span 1 !important;
     flex-direction: column !important;
+    padding: 0.75rem;
+    gap: 0;
   }
 
-  .memory-card[data-layout="editorial"] .memory-img-wrap {
-    aspect-ratio: 4 / 5;
-  }
-
-  .memory-card[data-layout="hero"] .memory-img-wrap,
+  .memory-card .memory-img-wrap,
   .memory-card[data-layout="wide"] .memory-img-wrap,
-  .memory-card[data-layout="full"] .memory-img-wrap {
-    aspect-ratio: 4 / 5;
-    max-height: none;
+  .memory-card[data-layout="editorial"] .memory-img-wrap {
+    aspect-ratio: 4 / 3;
+    min-height: unset;
   }
 
   .section {
@@ -1276,7 +1320,7 @@ a {
   }
 
   .s-hero {
-    padding: 4rem 1.2rem 3rem;
+    padding: 4.5rem 1.2rem 3rem;
   }
 
   .intro-card {
@@ -1297,12 +1341,12 @@ a {
 
   .letter-paper,
   .closing-letter {
-    padding: 2rem 1.4rem;
+    padding: 2rem 1.35rem;
   }
 
   .music-pill {
-    bottom: 1rem;
-    right: 1rem;
+    bottom: 1.2rem;
+    right: 1.2rem;
   }
 
   .music-btn {
@@ -1314,12 +1358,12 @@ a {
   }
 
   .section-final {
-    min-height: 60vh;
+    min-height: 65vh;
     padding: 5rem 1.2rem;
   }
 
   .final-line {
-    font-size: clamp(1.6rem, 6vw, 2.2rem);
+    font-size: clamp(1.65rem, 6vw, 2.2rem);
   }
 
   .final-name {
@@ -1327,7 +1371,7 @@ a {
   }
 }
 
-/* Very small screens */
+/* Very Small Mobile */
 @media (max-width: 380px) {
   .intro-header-row {
     flex-direction: column;

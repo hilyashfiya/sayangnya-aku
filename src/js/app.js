@@ -266,19 +266,23 @@ function renderChapter3() {
              tabindex="0" 
              role="button" 
              aria-label="Buka arsip kenangan nomor ${item.id}: ${item.title}">
-          <div class="memory-img-wrap polaroid-img-wrap" data-num="#${numStr}">
+          <div class="memory-img-wrap polaroid-img-wrap">
             <img class="memory-img polaroid-img" 
                  src="./assets/images/${item.id}.jpg" 
                  alt="${item.title}" 
                  loading="lazy" 
                  onerror="this.onerror=null; this.src='./assets/images/${item.id}.jpeg';" />
+            <span class="memory-stamp">#${numStr}</span>
           </div>
           <div class="memory-meta polaroid-meta">
-            <span class="memory-date">${item.date}</span>
+            <div class="memory-meta-header">
+              <span class="memory-date">${item.date}</span>
+              <span class="memory-tag-archive">ARSIP #${numStr}</span>
+            </div>
             <h4 class="memory-title polaroid-title">${item.title}</h4>
             <p class="memory-caption-preview polaroid-caption-preview">${item.caption}</p>
             <div class="memory-read-hint polaroid-action-hint">
-              <span>baca cerita</span> &rarr;
+              <span>Buka Cerita</span> &rarr;
             </div>
           </div>
         </div>
