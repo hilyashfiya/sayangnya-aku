@@ -1,59 +1,48 @@
 /* ============================================================
-   SAYANGNYA, AKU — CONTINUOUS ATMOSPHERIC ROMANCE
-   Art Direction: "Midnight Letters — A Private Archive of Us"
-   Personal Digital Love Letter & Memory Archive for Muhammad Rafli Al Kaylaniy
-   Palet: Midnight Navy, Deep Slate Blue, Muted Slate, Soft Silver, Moon White, Pale Moon, Ink Navy
+   SAYANGNYA, AKU — MOONLIT ROMANCE & EDITORIAL ARCHIVE
+   Art Direction: "A Love Letter Written in Moonlight"
+   Palet: Midnight Ink, Moonlit Blue, Muted Slate, Moonlight Silver, Silver Mist, Warm Ivory, Faded Champagne, Ink Navy
    ============================================================ */
 
 /* ─── CSS VARIABLES & DESIGN TOKENS ─────────────────────── */
 :root {
-  /* Midnight Palette */
-  --midnight:       #182638; /* Warna utama */
-  --deep-slate:     #243448; /* Latar gelap sekunder */
-  --slate-muted:    #526579; /* Biru perantara */
-  --silver:         #C4CCD4; /* Aksen lembut */
-  --silver-soft:    #D5DCE2; /* Silver hangat */
-  --moon-white:     #F3F1EB; /* Teks terang */
-  --pale-moon:      #E9E8E2; /* Latar surat */
-  --warm-ivory:     #FAF8F2; /* Kertas surat hangat */
-  --ink-navy:       #202B38; /* Teks gelap pada kertas surat */
+  /* Exact Curated Palette */
+  --midnight-ink:      #17263B; /* Latar gelap identitas */
+  --moonlit-blue:      #354A63; /* Biru malam lembut & moonlight glow */
+  --muted-slate:       #526579; /* Biru perantara */
+  --moonlight-silver:  #B9C4D0; /* Perak sinar bulan */
+  --silver-mist:       #DCE2E8; /* Perak kabut lembut (terang) */
+  --warm-ivory:        #F1EDE5; /* Gading hangat (kertas surat & cerita) */
+  --faded-champagne:   #D8C9B8; /* Aksen champagne lembut */
+  --ink-navy:          #202B38; /* Teks gelap kontras tinggi */
 
-  /* Atmosphere transition stops */
-  --night-deep:     #0E1724;
-  --night-mid:      #152232;
-  --night-soft:     #1A2B42;
-  --slate-bridge:   #203144;
-  --twilight-mid:   #445970;
-  --silver-mist:    #9EAFBF;
-  --silver-light:   #CFD8E0;
-
-  /* Alpha accents */
-  --silver-dim:     rgba(196, 204, 212, 0.12);
-  --silver-line:    rgba(196, 204, 212, 0.22);
-  --silver-glow:    rgba(196, 204, 212, 0.08);
+  /* Derived Tones */
+  --midnight-deep:     #101A28;
+  --ivory-paper:       #FAF8F2;
+  --silver-line:       rgba(185, 196, 208, 0.28);
+  --silver-glow:       rgba(185, 196, 208, 0.08);
 
   /* Typography */
-  --font-serif:     'Playfair Display', Georgia, 'Times New Roman', serif;
-  --font-sans:      'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-serif:        'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-sans:         'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   /* Type Scale */
-  --fs-display:     clamp(2.8rem, 7.5vw, 5.2rem);
-  --fs-display-sm:  clamp(2rem, 4.5vw, 3.2rem);
-  --fs-h2:          clamp(1.5rem, 3.2vw, 2.2rem);
-  --fs-h3:          clamp(1.15rem, 2.2vw, 1.5rem);
-  --fs-body:        clamp(0.96rem, 1.4vw, 1.06rem);
-  --fs-small:       0.875rem;
-  --fs-label:       0.75rem;
-  --fs-micro:       0.68rem;
+  --fs-hero-title:     clamp(3.8rem, 10vw, 6.8rem);
+  --fs-h2:             clamp(1.7rem, 3.5vw, 2.5rem);
+  --fs-h3:             clamp(1.2rem, 2.4vw, 1.6rem);
+  --fs-body:           clamp(0.98rem, 1.45vw, 1.08rem);
+  --fs-small:          0.9rem;
+  --fs-label:          0.78rem;
+  --fs-micro:          0.7rem;
 
   /* Spacing */
-  --section-pad:    clamp(5.5rem, 9.5vw, 9rem);
-  --inner-max:      760px;
-  --inner-wide:     1080px;
+  --section-pad:       clamp(6rem, 10vw, 9.5rem);
+  --inner-max:         820px;
+  --inner-wide:        1220px;
 
   /* Smooth Easing */
-  --ease:           cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-out:       cubic-bezier(0.33, 1, 0.68, 1);
+  --ease:              cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out:          cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 /* ─── RESET & BASE ───────────────────────────────────────── */
@@ -65,8 +54,8 @@
 
 html {
   font-size: 16px;
-  background-color: var(--night-deep);
-  color: var(--moon-white);
+  background-color: var(--midnight-deep);
+  color: var(--ink-navy);
   font-family: var(--font-sans);
   scroll-behavior: smooth;
   overflow-x: hidden;
@@ -77,8 +66,8 @@ html {
 body {
   min-height: 100vh;
   overflow-x: hidden;
-  background-color: var(--night-deep);
-  line-height: 1.75;
+  background-color: var(--midnight-deep);
+  line-height: 1.8;
 }
 
 img {
@@ -99,23 +88,23 @@ a {
   color: inherit;
 }
 
-/* Custom scrollbar — midnight silver theme */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--night-deep);
+  background: var(--midnight-deep);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--slate-muted);
+  background: var(--muted-slate);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--silver);
+  background: var(--moonlight-silver);
 }
 
 :focus-visible {
-  outline: 1px solid var(--silver);
+  outline: 1.5px solid var(--moonlit-blue);
   outline-offset: 3px;
 }
 
@@ -123,7 +112,7 @@ a {
   display: none !important;
 }
 
-/* ─── AMBIENT STARDUST & MOONLIGHT GRAIN ─────────────────── */
+/* ─── AMBIENT MOONLIGHT & STARDUST CANVAS ────────────────── */
 #canvas-grain {
   position: fixed;
   top: 0;
@@ -132,11 +121,11 @@ a {
   height: 100%;
   pointer-events: none;
   z-index: 1000;
-  opacity: 0.7;
+  opacity: 0.6;
 }
 
 /* ═══════════════════════════════════════════════════════════
-   INTRO — THE SEALED LETTER
+   INTRO — THE SEALED ENVELOPE
    Dark, quiet, intimate atmosphere
    ═══════════════════════════════════════════════════════════ */
 #intro-screen {
@@ -146,7 +135,7 @@ a {
   width: 100%;
   height: 100%;
   z-index: 900;
-  background: linear-gradient(145deg, #0A121C 0%, #152232 55%, #1C2D40 100%);
+  background: linear-gradient(145deg, #0C1522 0%, #17263B 55%, #25394F 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -160,13 +149,13 @@ a {
 }
 
 .intro-card {
-  max-width: 580px;
+  max-width: 600px;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 2.4rem;
+  gap: 2.6rem;
   position: relative;
   margin: auto;
 }
@@ -181,12 +170,12 @@ a {
 .intro-mark {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.85rem;
 }
 
 .intro-mark-line {
   display: block;
-  width: 24px;
+  width: 28px;
   height: 1px;
   background: var(--silver-line);
 }
@@ -196,24 +185,24 @@ a {
   font-weight: 500;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--slate-muted);
+  color: var(--moonlight-silver);
 }
 
 .intro-skip-btn {
   font-size: var(--fs-micro);
-  color: var(--slate-muted);
+  color: var(--muted-slate);
   letter-spacing: 0.05em;
   transition: color 0.3s ease;
 }
 .intro-skip-btn:hover {
-  color: var(--silver);
+  color: var(--moonlight-silver);
 }
 
 .intro-text {
   font-family: var(--font-serif);
-  font-size: clamp(1.15rem, 2.8vw, 1.45rem);
+  font-size: clamp(1.2rem, 3vw, 1.55rem);
   font-weight: 400;
-  color: var(--silver-soft);
+  color: var(--warm-ivory);
   line-height: 1.8;
   white-space: pre-wrap;
   width: 100%;
@@ -223,14 +212,14 @@ a {
 
 .tw-cursor {
   display: inline-block;
-  color: var(--silver);
+  color: var(--moonlight-silver);
   font-weight: 300;
   animation: blinkCursor 1.2s step-end infinite;
   margin-left: 1px;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 @keyframes blinkCursor {
-  0%, 100% { opacity: 0.6; }
+  0%, 100% { opacity: 0.7; }
   50% { opacity: 0; }
 }
 
@@ -248,41 +237,41 @@ a {
 .btn-open-letter {
   display: inline-flex;
   align-items: center;
-  gap: 0.8rem;
-  padding: 0.85rem 2.4rem;
-  background: rgba(196, 204, 212, 0.04);
-  color: var(--moon-white);
+  gap: 0.9rem;
+  padding: 0.95rem 2.6rem;
+  background: rgba(241, 237, 229, 0.06);
+  color: var(--warm-ivory);
   border: 1px solid var(--silver-line);
-  border-radius: 2px;
+  border-radius: 3px;
   font-family: var(--font-sans);
   font-size: var(--fs-small);
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   transition: all 0.4s var(--ease);
 }
 .btn-open-letter:hover {
-  background: rgba(196, 204, 212, 0.1);
-  border-color: var(--silver);
+  background: rgba(241, 237, 229, 0.14);
+  border-color: var(--moonlight-silver);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
 }
 .btn-open-letter:active {
   transform: translateY(0);
 }
 .btn-open-letter .btn-icon {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   transition: transform 0.3s var(--ease);
 }
 .btn-open-letter:hover .btn-icon {
-  transform: translateX(4px);
+  transform: translateX(5px);
 }
 
 /* ═══════════════════════════════════════════════════════════
    MAIN WRAPPER — CONTINUOUS CANVAS
    ═══════════════════════════════════════════════════════════ */
 #main-experience {
-  background-color: var(--night-deep);
+  background-color: var(--midnight-deep);
   position: relative;
   width: 100%;
   overflow: hidden;
@@ -293,8 +282,8 @@ a {
    ═══════════════════════════════════════════════════════════ */
 .music-pill {
   position: fixed;
-  bottom: 1.8rem;
-  right: 1.8rem;
+  bottom: 2rem;
+  right: 2rem;
   z-index: 500;
   animation: fadeInMusic 0.8s var(--ease) 0.8s both;
 }
@@ -306,37 +295,37 @@ a {
 .music-btn {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
-  padding: 0.55rem 1rem;
-  background: rgba(20, 32, 46, 0.92);
+  gap: 0.75rem;
+  padding: 0.6rem 1.15rem;
+  background: rgba(23, 38, 59, 0.92);
   border: 1px solid var(--silver-line);
   border-radius: 28px;
   backdrop-filter: blur(16px);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 6px 24px rgba(16, 26, 40, 0.35);
   transition: all 0.3s var(--ease);
 }
 .music-btn:hover {
-  background: rgba(30, 46, 64, 0.95);
-  border-color: var(--silver);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+  background: rgba(36, 56, 80, 0.96);
+  border-color: var(--moonlight-silver);
+  box-shadow: 0 8px 32px rgba(16, 26, 40, 0.45);
   transform: translateY(-2px);
 }
 
 .music-note-wrap {
   display: flex;
   align-items: flex-end;
-  gap: 2px;
+  gap: 2.5px;
   height: 14px;
 }
 .music-bar {
-  width: 2px;
+  width: 2.5px;
   height: 4px;
-  background: var(--slate-muted);
+  background: var(--muted-slate);
   border-radius: 1px;
   transition: all 0.3s ease;
 }
 .music-btn.active .music-bar {
-  background: var(--silver-soft);
+  background: var(--moonlight-silver);
 }
 .music-btn.active .bar-1 { animation: wave 1.2s ease-in-out infinite; }
 .music-btn.active .bar-2 { animation: wave 0.9s ease-in-out infinite 0.2s; }
@@ -356,34 +345,36 @@ a {
 .music-track {
   font-size: var(--fs-micro);
   font-weight: 500;
-  color: var(--moon-white);
+  color: var(--warm-ivory);
   letter-spacing: 0.02em;
 }
 .music-artist {
-  font-size: 0.62rem;
-  color: var(--slate-muted);
+  font-size: 0.65rem;
+  color: var(--moonlight-silver);
 }
 
 /* ═══════════════════════════════════════════════════════════
-   HERO — COVER OF THE LETTER
-   Opening gradient: midnight navy toward deep slate blue
-   Seamlessly ends at #1A2B42 matching Chapter 1
+   OPENING — THE COVER OF THE LETTER
+   Grand, confident, romantic editorial composition
+   Soft moonlight glow fills the space intentionally
+   Seamlessly ends at #24374D matching Bab 1
    ═══════════════════════════════════════════════════════════ */
 .s-hero {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 6.5rem 1.5rem 4.5rem;
+  padding: 7rem 2rem 5rem;
   background: 
-    radial-gradient(circle at 50% 28%, rgba(243, 241, 235, 0.07) 0%, rgba(196, 204, 212, 0.02) 45%, transparent 70%),
-    linear-gradient(180deg, #0E1724 0%, #152232 50%, #1A2B42 100%);
+    radial-gradient(ellipse at 50% 40%, rgba(53, 74, 99, 0.48) 0%, rgba(32, 48, 68, 0.22) 50%, transparent 75%),
+    linear-gradient(180deg, #101A28 0%, #17263B 55%, #24374D 100%);
   position: relative;
   overflow: hidden;
 }
 
 .hero-inner {
-  max-width: 680px;
+  max-width: 860px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -394,12 +385,12 @@ a {
 }
 
 .hero-archive-label {
-  font-size: var(--fs-micro);
+  font-size: 0.82rem;
   font-weight: 500;
-  letter-spacing: 0.35em;
+  letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: var(--slate-muted);
-  margin-bottom: 2.2rem;
+  color: var(--moonlight-silver);
+  margin-bottom: 2rem;
   opacity: 0;
   transform: translateY(8px);
   transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
@@ -411,7 +402,7 @@ a {
 
 .hero-title-group {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(24px);
   transition: opacity 0.9s var(--ease) 0.15s, transform 0.9s var(--ease) 0.15s;
 }
 .hero-title-group.visible {
@@ -421,55 +412,60 @@ a {
 
 .hero-title {
   font-family: var(--font-serif);
-  font-size: var(--fs-display);
+  font-size: var(--fs-hero-title);
   font-weight: 400;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  color: var(--moon-white);
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  color: #F8F6F2;
 }
 
 .hero-title-line {
   display: block;
 }
 
+.hero-title-main {
+  color: #F8F6F2;
+  text-shadow: 0 4px 35px rgba(241, 237, 229, 0.18);
+}
+
 .hero-title-accent {
   font-style: italic;
-  color: var(--silver-soft);
+  color: var(--moonlight-silver);
   font-weight: 400;
 }
 
 .hero-rule {
   width: 0;
-  height: 1px;
-  background: var(--silver-line);
-  margin: 2rem 0 1.8rem;
+  height: 1.5px;
+  background: linear-gradient(to right, var(--moonlight-silver), rgba(185, 196, 208, 0.1));
+  margin: 2.4rem 0 2rem;
   opacity: 0;
   transition: width 1.2s var(--ease) 0.4s, opacity 0.6s ease 0.4s;
 }
 .hero-rule.visible {
-  width: 60px;
+  width: 80px;
   opacity: 1;
 }
 
 .hero-tagline {
   font-family: var(--font-serif);
-  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
   font-weight: 400;
   font-style: italic;
-  color: var(--silver);
-  line-height: 1.6;
-  max-width: 480px;
+  color: var(--warm-ivory);
+  line-height: 1.7;
+  max-width: 600px;
   opacity: 0;
   transform: translateY(12px);
   transition: opacity 0.9s var(--ease) 0.3s, transform 0.9s var(--ease) 0.3s;
 }
 .hero-tagline.visible {
-  opacity: 0.9;
+  opacity: 0.96;
   transform: translateY(0);
 }
 
 .hero-scroll-cue {
-  margin-top: 4.5rem;
+  margin-top: 4.8rem;
   opacity: 0;
   transition: opacity 1s var(--ease) 0.6s;
 }
@@ -478,21 +474,21 @@ a {
 }
 
 .scroll-line {
-  width: 1px;
-  height: 48px;
-  background: linear-gradient(to bottom, var(--silver-line), transparent);
+  width: 1.5px;
+  height: 52px;
+  background: linear-gradient(to bottom, var(--moonlight-silver), transparent);
   animation: scrollPulse 2.5s ease-in-out infinite;
 }
 
 @keyframes scrollPulse {
-  0%, 100% { opacity: 0.3; transform: scaleY(0.7); transform-origin: top; }
-  50%      { opacity: 0.8; transform: scaleY(1); transform-origin: top; }
+  0%, 100% { opacity: 0.35; transform: scaleY(0.7); transform-origin: top; }
+  50%      { opacity: 0.9;  transform: scaleY(1);   transform-origin: top; }
 }
 
 /* ═══════════════════════════════════════════════════════════
    CONTINUOUS ATMOSPHERIC GRADIENT ARCHITECTURE
-   Zero sharp edges, zero horizontal dividing seams.
-   A single poetic canvas flowing from midnight to moonlit dawn.
+   Midnight Ink → Moonlit Blue → Muted Slate → Silver Mist → Warm Ivory
+   Zero dividing lines. Zero harsh cuts.
    ═══════════════════════════════════════════════════════════ */
 .section {
   padding: var(--section-pad) 1.5rem;
@@ -500,96 +496,94 @@ a {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   BAGIAN 1: TIMELINE PERTEMUAN (ON DARK)
-   Starts at #1A2B42 (exact match to hero bottom!)
-   Smoothly deepens through midnight navy to #203144 at the bottom.
+   BAB 1: DARI SEBUAH PERTEMUAN SEDERHANA
+   Starts at #24374D (exact match to hero bottom!)
+   Smoothly transitions through Moonlit Blue & Muted Slate 
+   into Silver Mist (#DCE2E8) at the bottom.
    ───────────────────────────────────────────────────────────── */
 #s-pertemuan {
-  background: linear-gradient(180deg, #1A2B42 0%, #182638 45%, #203144 100%);
-  color: var(--moon-white);
+  background: linear-gradient(180deg, 
+    #24374D 0%, 
+    #30445C 25%, 
+    #465B72 50%, 
+    #768B9E 75%, 
+    #A7B6C4 90%, 
+    #DCE2E8 100%
+  );
+  color: #F8F6F2;
 }
 
 /* ─────────────────────────────────────────────────────────────
-   BAGIAN 2: SURAT PERMINTAAN MAAF (WARM MOONLIGHT PAPER)
-   Top starts at #203144 (exact match to Chapter 1 bottom!)
-   Multi-stop bridge gently brightens through twilight slate and silver mist
-   into warm moonlit ivory (#FAF8F2 / #F3F1EB), then softly returns
-   to #1C2D40 at the bottom.
+   BAB 2: SURAT PERMINTAAN MAAF (WARM IVORY SANCTUARY)
+   Starts at #DCE2E8 (Silver Mist, exact match to Bab 1 bottom!)
+   Flows into Warm Ivory (#F1EDE5 / #FAF8F2) where the letter rests,
+   and ends seamlessly at #DCE2E8 at the bottom.
    ───────────────────────────────────────────────────────────── */
 #s-maaf {
   background: linear-gradient(180deg, 
-    #203144 0%,
-    #2A3C50 8%,
-    #445970 16%,
-    #687E94 25%,
-    #9EAFBF 34%,
-    #CFD8E0 42%,
-    #FAF8F2 50%,
-    #F3F1EB 52%,
-    #CFD8E0 60%,
-    #9EAFBF 68%,
-    #687E94 77%,
-    #445970 85%,
-    #2A3C50 93%,
-    #1C2D40 100%
+    #DCE2E8 0%, 
+    #E6EBEF 20%, 
+    #F1EDE5 45%, 
+    #FAF8F2 50%, 
+    #F1EDE5 55%, 
+    #E6EBEF 80%, 
+    #DCE2E8 100%
   );
   color: var(--ink-navy);
 }
 
 /* ─────────────────────────────────────────────────────────────
-   BAGIAN 3: MEMORY ARCHIVE & LEARNING PROSE
-   Top starts at #1C2D40 (exact match to Chapter 2 bottom!)
-   Flows through open midnight gallery (#182638 and #1E3044)
-   with soft radial moonlight pools, ending at #1C2D40 at the bottom.
+   BAB 3: KALAU AKU MASIH BOLEH BELAJAR MENCINTAIMU & 19 FOTO ARSIP
+   Starts at #DCE2E8 (Silver Mist, exact match to Bab 2 bottom!)
+   Expansive, warm, luminous exhibition space (#F1EDE5 & #DCE2E8)
+   where photos burst with warmth and clarity, ending at #DCE2E8.
    ───────────────────────────────────────────────────────────── */
 #s-belajar {
-  background: 
-    radial-gradient(ellipse at 50% 30%, rgba(196, 204, 212, 0.05) 0%, transparent 65%),
-    linear-gradient(180deg, #1C2D40 0%, #182638 20%, #1E3044 50%, #182638 80%, #1C2D40 100%);
-  color: var(--moon-white);
+  background: linear-gradient(180deg, 
+    #DCE2E8 0%, 
+    #E8ECEF 15%, 
+    #F1EDE5 40%, 
+    #EBF0F3 75%, 
+    #DCE2E8 100%
+  );
+  color: var(--ink-navy);
 }
 
 /* ─────────────────────────────────────────────────────────────
-   BAGIAN 4: SURAT PENUTUP (WARM MOONLIGHT SANCTUARY)
-   Top starts at #1C2D40 (exact match to Chapter 3 bottom!)
-   Multi-stop bridge gently transitions into warm moon ivory
-   and softly descends into nocturnal midnight #142030 at the bottom.
+   BAB 4: SURAT PENUTUP — AKU HANYA INGIN KAMU TAHU
+   Starts at #DCE2E8 (Silver Mist, exact match to Bab 3 bottom!)
+   Flows into Warm Ivory, and towards the bottom gently begins 
+   the peaceful twilight descent back to #22354A!
    ───────────────────────────────────────────────────────────── */
 #s-penutup {
   background: linear-gradient(180deg, 
-    #1C2D40 0%,
-    #2A3C50 8%,
-    #445970 16%,
-    #687E94 25%,
-    #9EAFBF 34%,
-    #CFD8E0 42%,
-    #FAF8F2 50%,
-    #F3F1EB 52%,
-    #CFD8E0 60%,
-    #9EAFBF 68%,
-    #687E94 77%,
-    #445970 85%,
-    #283A4E 93%,
-    #142030 100%
+    #DCE2E8 0%, 
+    #E8ECEF 15%, 
+    #F1EDE5 40%, 
+    #FAF8F2 50%, 
+    #F1EDE5 60%, 
+    #DCE2E8 75%, 
+    #A7B6C4 88%, 
+    #526579 94%, 
+    #22354A 100%
   );
   color: var(--ink-navy);
 }
 
 /* ─────────────────────────────────────────────────────────────
-   FINAL CLOSING: THE LAST LETTER
-   Top starts at #142030 (exact match to Chapter 4 bottom!)
+   FINAL CLOSING — THE LAST LETTER
+   Starts at #22354A (exact match to Bab 4 bottom!)
    Deepens into peaceful midnight with warm, tender slate glow in center.
    Absolute final element on the page.
    ───────────────────────────────────────────────────────────── */
 .section-final {
-  background: radial-gradient(ellipse at 50% 38%, #2A3C52 0%, #1A2838 45%, #0E1622 100%);
+  background: radial-gradient(ellipse at 50% 36%, #354A63 0%, #17263B 48%, #101A28 100%);
   min-height: 85vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(6rem, 14vh, 12rem) 1.5rem;
+  padding: clamp(6.5rem, 14vh, 12rem) 1.5rem;
   position: relative;
-  /* NO borders or dividers */
 }
 
 /* Containers */
@@ -598,83 +592,82 @@ a {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 3.2rem;
+  gap: 3.4rem;
 }
 
 .archive-container-wide {
   max-width: var(--inner-wide);
   width: 100%;
-  margin: 4rem auto 0;
-  padding: 0 0.5rem;
+  margin: 4.5rem auto 0;
+  padding: 0 1rem;
 }
 
 /* Section Headers — Tender Editorial */
 .section-header {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.85rem;
 }
 
 .section-label-row {
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.2rem;
 }
 
 .section-num {
   font-family: var(--font-serif);
   font-size: var(--fs-small);
-  font-weight: 500;
-  color: var(--silver-soft);
+  font-weight: 600;
+  color: var(--moonlit-blue);
   letter-spacing: 0.15em;
 }
 
-.section-light .section-num {
-  color: var(--slate-muted);
+#s-pertemuan .section-num {
+  color: var(--moonlight-silver);
 }
 
 .section-rule-h {
   display: block;
-  width: 32px;
+  width: 36px;
   height: 1px;
   background: var(--silver-line);
 }
 
-.section-light .section-rule-h {
-  background: rgba(32, 43, 56, 0.22);
+.section-light .section-rule-h,
+.section-gallery .section-rule-h {
+  background: rgba(32, 43, 56, 0.25);
 }
 
 .section-title {
   font-family: var(--font-serif);
   font-size: var(--fs-h2);
-  font-weight: 400;
-  color: var(--moon-white);
+  font-weight: 500;
   line-height: 1.25;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
+  color: #F8F6F2;
 }
 
 .section-title-dark {
-  color: var(--ink-navy);
+  color: var(--midnight-ink);
 }
 
 .section-subtitle {
   font-size: var(--fs-body);
-  color: var(--silver);
   line-height: 1.7;
-  max-width: 580px;
-  opacity: 0.85;
+  max-width: 620px;
+  color: var(--silver-mist);
 }
 
 .section-subtitle-dark {
-  color: var(--slate-muted);
-  opacity: 1;
+  color: var(--muted-slate);
 }
 
 /* ─── SCROLL REVEALS ─────────────────────────────────────── */
 .rev {
   opacity: 0;
-  transform: translateY(18px);
+  transform: translateY(20px);
   transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
 }
 .rev.visible {
@@ -683,23 +676,23 @@ a {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   BAGIAN 1 — TIMELINE PERTEMUAN (ON DARK)
+   BAB 1: TIMELINE PERTEMUAN (TRANSITION FROM MIDNIGHT)
    ═══════════════════════════════════════════════════════════ */
 .timeline-wrap {
   display: flex;
   flex-direction: column;
   position: relative;
-  padding-left: 2.2rem;
-  border-left: 1px solid var(--silver-line);
-  margin-left: 0.5rem;
+  padding-left: 2.4rem;
+  border-left: 1.5px solid rgba(185, 196, 208, 0.35);
+  margin-left: 0.6rem;
 }
 
 .timeline-item {
   position: relative;
-  padding-bottom: 3.4rem;
+  padding-bottom: 3.6rem;
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: 0.75rem;
 }
 .timeline-item:last-child {
   padding-bottom: 0;
@@ -708,19 +701,19 @@ a {
 .timeline-item::before {
   content: '';
   position: absolute;
-  left: -2.55rem;
-  top: 0.4rem;
-  width: 8px;
-  height: 8px;
+  left: -2.85rem;
+  top: 0.35rem;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background: var(--silver-soft);
-  box-shadow: 0 0 12px rgba(196, 204, 212, 0.45);
+  background: var(--warm-ivory);
+  box-shadow: 0 0 14px rgba(241, 237, 229, 0.6);
 }
 
 .tl-date {
   font-size: var(--fs-label);
-  font-weight: 500;
-  color: var(--silver-soft);
+  font-weight: 600;
+  color: var(--warm-ivory);
   letter-spacing: 0.15em;
   text-transform: uppercase;
 }
@@ -729,193 +722,216 @@ a {
   font-family: var(--font-serif);
   font-size: var(--fs-h3);
   font-weight: 500;
-  color: var(--moon-white);
+  color: #FFFFFF;
   line-height: 1.35;
 }
 
 .tl-desc {
   font-size: var(--fs-body);
-  color: var(--silver);
-  line-height: 1.85;
-  opacity: 0.9;
+  color: #F1EDE5;
+  line-height: 1.9;
+  opacity: 0.95;
 }
 
 .tl-note {
   font-family: var(--font-serif);
   font-style: italic;
   font-size: var(--fs-small);
-  color: var(--silver-soft);
-  margin-top: 0.35rem;
-  padding-left: 1rem;
+  color: var(--moonlight-silver);
+  margin-top: 0.4rem;
+  padding-left: 1.1rem;
   border-left: 2px solid var(--silver-line);
-  opacity: 0.85;
 }
 
 /* ═══════════════════════════════════════════════════════════
-   BAGIAN 2 — SURAT PERMINTAAN MAAF (WARM MOONLIGHT STATIONERY)
+   BAB 2 & 4: SURAT PRIBADI (WARM MOONLIGHT STATIONERY)
    Tactile, intimate, warm ivory stationery paper
    ═══════════════════════════════════════════════════════════ */
 .letter-paper-wrap {
   width: 100%;
 }
 
-.letter-paper {
-  background: rgba(253, 251, 247, 0.94);
-  border: 1px solid rgba(196, 204, 212, 0.35);
-  border-radius: 3px;
-  padding: clamp(2.8rem, 6vw, 4.8rem) clamp(2.2rem, 5vw, 3.8rem);
-  box-shadow: 0 16px 48px rgba(16, 26, 42, 0.08), 0 2px 8px rgba(0, 0, 0, 0.02);
+.letter-paper,
+.closing-letter {
+  background: var(--ivory-paper);
+  border: 1px solid rgba(82, 101, 121, 0.18);
+  border-radius: 4px;
+  padding: clamp(3.2rem, 7vw, 5.5rem) clamp(2.4rem, 6vw, 4.6rem);
+  box-shadow: 0 16px 50px rgba(23, 38, 59, 0.08);
   display: flex;
   flex-direction: column;
   gap: 0;
   position: relative;
-  backdrop-filter: blur(12px);
+  max-width: 840px;
+  margin: 0 auto;
 }
 
-/* Tender minimal heart seal at head of the letter */
-.letter-paper::before {
+/* Tender heart watermark at head of letter */
+.letter-paper::before,
+.closing-letter::before {
   content: '♡';
   display: block;
   text-align: center;
-  font-size: 1.25rem;
-  color: #7B90A4;
+  font-size: 1.35rem;
+  color: var(--muted-slate);
   margin-bottom: 2.2rem;
   opacity: 0.75;
   line-height: 1;
 }
 
-.letter-paragraphs {
+.letter-paragraphs,
+.closing-text {
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
+  gap: 1.7rem;
 }
 
-.letter-paragraphs p {
+.letter-paragraphs p,
+.closing-text p {
   font-size: var(--fs-body);
   color: var(--ink-navy);
   line-height: 1.95;
   text-align: left;
-  opacity: 0.92;
+  opacity: 0.95;
 }
 
 .letter-paragraphs p:first-of-type {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(1.05rem, 1.8vw, 1.16rem);
-  color: #142030;
+  font-size: clamp(1.08rem, 1.8vw, 1.2rem);
+  color: var(--midnight-ink);
   line-height: 1.85;
-  opacity: 1;
 }
 
 .letter-reflect-block {
-  margin-top: 2.4rem;
-  padding: 1.8rem 0 0;
-  border-top: 1px solid rgba(82, 101, 121, 0.16);
+  margin-top: 2.6rem;
+  padding: 1.9rem 0 0;
+  border-top: 1px solid rgba(82, 101, 121, 0.18);
 }
 .letter-reflect-block p {
   font-family: var(--font-serif);
   font-style: italic;
   font-size: var(--fs-h3);
-  color: #1A2838;
+  color: var(--midnight-ink);
   line-height: 1.7;
-  opacity: 0.85;
+}
+
+.closing-signature-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding-top: 2.2rem;
+  margin-top: 0.5rem;
+}
+
+.closing-salutation {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--fs-body);
+  color: var(--muted-slate);
+}
+
+.closing-signature {
+  font-family: var(--font-serif);
+  font-size: clamp(1.45rem, 3vw, 1.9rem);
+  font-style: italic;
+  color: var(--midnight-ink);
+  letter-spacing: 0.01em;
 }
 
 /* ═══════════════════════════════════════════════════════════
-   BAGIAN 3 — LEARNING PROSE & 19 MEMORY ARCHIVE
-   Warm analog scrapbook presentation without cold filters
+   BAB 3: KALAU AKU MASIH BOLEH BELAJAR MENCINTAIMU & 19 FOTO ARSIP
+   Luminous, warm, spacious exhibition space
+   Photos mounted on warm ivory archival cards
    ═══════════════════════════════════════════════════════════ */
 .learning-prose {
   display: flex;
   flex-direction: column;
-  gap: 1.4rem;
+  gap: 1.5rem;
 }
 
 .learning-prose p {
   font-size: var(--fs-body);
-  color: var(--silver);
-  line-height: 1.9;
-  opacity: 0.9;
+  color: var(--ink-navy);
+  line-height: 1.95;
+  opacity: 0.95;
 }
 
-/* Archive Section Header */
 .archive-section {
   display: flex;
   flex-direction: column;
-  gap: 2.8rem;
+  gap: 3.2rem;
   width: 100%;
 }
 
 .archive-header {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.6rem;
 }
 
 .archive-label {
   font-size: var(--fs-micro);
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: var(--slate-muted);
+  color: var(--moonlit-blue);
 }
 
 .archive-title {
   font-family: var(--font-serif);
   font-size: var(--fs-h3);
   font-weight: 500;
-  color: var(--moon-white);
+  color: var(--midnight-ink);
 }
 
 .archive-subtitle {
   font-size: var(--fs-small);
-  color: var(--silver-soft);
-  line-height: 1.65;
-  max-width: 580px;
-  opacity: 0.85;
+  color: var(--muted-slate);
+  line-height: 1.7;
+  max-width: 640px;
 }
 
 /* ─── MEMORY GRID — 12-COLUMN DISCIPLINED EDITORIAL SYSTEM ─ */
 .memory-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: 1.5rem;
+  gap: 1.8rem;
   width: 100%;
 }
 
-/* Default card spans 4 columns (3 per row) */
+/* Default card spans 4 columns (3 per row) — Luminous Archival Mount */
 .memory-card {
   grid-column: span 4;
-  background: rgba(24, 36, 50, 0.55);
-  border: 1px solid rgba(196, 204, 212, 0.14);
-  border-radius: 3px;
-  padding: 0.95rem;
+  background: #FAF9F5;
+  border: 1px solid rgba(82, 101, 121, 0.16);
+  border-radius: 4px;
+  padding: 1.15rem;
   display: flex;
   flex-direction: column;
   cursor: pointer;
   position: relative;
-  transition: transform 0.4s var(--ease), border-color 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
+  transition: transform 0.4s var(--ease), border-color 0.4s ease, box-shadow 0.4s ease;
   user-select: none;
-  box-shadow: 0 8px 24px rgba(10, 16, 26, 0.28);
-  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 30px rgba(23, 38, 59, 0.08);
 }
 
 .memory-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(196, 204, 212, 0.38);
-  background: rgba(30, 46, 64, 0.75);
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.4);
+  transform: translateY(-5px);
+  border-color: rgba(53, 74, 99, 0.35);
+  box-shadow: 0 16px 44px rgba(23, 38, 59, 0.14);
   z-index: 5;
 }
 
-/* Image Wrapper with Archival Mounting */
+/* Image Wrapper with Clean Archival Matte */
 .memory-img-wrap {
   width: 100%;
   aspect-ratio: 4 / 3;
   overflow: hidden;
   position: relative;
-  background: #0E1520;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #E8ECEF;
+  border: 1px solid rgba(82, 101, 121, 0.1);
   border-radius: 2px;
 }
 
@@ -926,37 +942,37 @@ a {
   object-fit: cover;
   object-position: center;
   transition: transform 0.7s var(--ease);
-  filter: none !important; /* Preserves genuine, natural, warm photo tones */
+  filter: none !important; /* Preserves natural warm colors, skin tones, memories */
 }
 
 .memory-card:hover .memory-img {
-  transform: scale(1.025);
+  transform: scale(1.03);
 }
 
 /* Archival number badge */
 .memory-stamp {
   position: absolute;
-  top: 0.6rem;
-  right: 0.6rem;
+  top: 0.65rem;
+  right: 0.65rem;
   font-family: var(--font-sans);
-  font-size: 0.68rem;
-  font-weight: 500;
+  font-size: 0.7rem;
+  font-weight: 600;
   letter-spacing: 0.08em;
-  color: var(--moon-white);
-  background: rgba(14, 22, 34, 0.85);
-  border: 1px solid rgba(196, 204, 212, 0.25);
-  padding: 0.15rem 0.5rem;
+  color: #FFFFFF;
+  background: rgba(23, 38, 59, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 0.2rem 0.55rem;
   border-radius: 2px;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(6px);
   pointer-events: none;
 }
 
 /* Card metadata */
 .memory-meta {
-  padding-top: 0.85rem;
+  padding-top: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.38rem;
 }
 
 .memory-meta-header {
@@ -968,8 +984,8 @@ a {
 
 .memory-date {
   font-size: var(--fs-micro);
-  font-weight: 400;
-  color: #97A8B8;
+  font-weight: 500;
+  color: var(--muted-slate);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -977,38 +993,39 @@ a {
 .memory-tag-archive {
   font-family: var(--font-serif);
   font-size: var(--fs-micro);
-  font-weight: 500;
-  color: var(--silver-soft);
+  font-weight: 600;
+  color: var(--moonlit-blue);
   letter-spacing: 0.12em;
-  opacity: 0.65;
+  opacity: 0.85;
 }
 
 .memory-title {
   font-family: var(--font-serif);
-  font-size: 1.08rem;
-  font-weight: 500;
-  color: #F8F6F2;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ink-navy);
   line-height: 1.35;
   margin-top: 0.1rem;
 }
 
 .memory-caption-preview {
   font-size: var(--fs-small);
-  color: #CBD5E0;
-  line-height: 1.6;
+  color: #35475A;
+  line-height: 1.65;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  opacity: 0.82;
+  opacity: 0.9;
 }
 
 .memory-read-hint {
   font-size: var(--fs-micro);
-  color: #94A6B8;
+  color: var(--muted-slate);
+  font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  margin-top: 0.5rem;
+  margin-top: 0.6rem;
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
@@ -1016,7 +1033,7 @@ a {
 }
 
 .memory-card:hover .memory-read-hint {
-  color: #F8F6F2;
+  color: var(--ink-navy);
 }
 
 /* ─── LAYOUT VARIATIONS ──────────────────────────────────── */
@@ -1029,7 +1046,7 @@ a {
   aspect-ratio: 16 / 10;
 }
 .memory-card[data-layout="wide"] .memory-title {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
 }
 .memory-card[data-layout="wide"] .memory-caption-preview {
   -webkit-line-clamp: 3;
@@ -1040,15 +1057,15 @@ a {
   grid-column: span 12;
   flex-direction: row;
   align-items: stretch;
-  gap: 2.2rem;
-  padding: 1.35rem;
-  background: rgba(28, 42, 60, 0.65);
+  gap: 2.6rem;
+  padding: 1.6rem;
+  background: #FFFFFF;
 }
 
 .memory-card[data-layout="editorial"] .memory-img-wrap {
   flex: 0 0 54%;
   aspect-ratio: 16 / 10;
-  min-height: 280px;
+  min-height: 320px;
 }
 
 .memory-card[data-layout="editorial"] .memory-meta {
@@ -1056,84 +1073,20 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0.5rem 0.8rem;
-  gap: 0.55rem;
+  padding: 0.8rem 1rem;
+  gap: 0.65rem;
 }
 
 .memory-card[data-layout="editorial"] .memory-title {
-  font-size: 1.35rem;
+  font-size: 1.45rem;
   line-height: 1.3;
 }
 
 .memory-card[data-layout="editorial"] .memory-caption-preview {
   -webkit-line-clamp: 4;
-  font-size: var(--fs-body);
-  opacity: 0.88;
-  line-height: 1.7;
-}
-
-/* ═══════════════════════════════════════════════════════════
-   BAGIAN 4 — CLOSING LETTER (WARM MOONLIGHT SANCTUARY)
-   ═══════════════════════════════════════════════════════════ */
-.closing-letter {
-  background: rgba(253, 251, 247, 0.94);
-  border: 1px solid rgba(196, 204, 212, 0.35);
-  border-radius: 3px;
-  padding: clamp(2.8rem, 6vw, 4.8rem) clamp(2.2rem, 5vw, 3.8rem);
-  box-shadow: 0 16px 48px rgba(16, 26, 42, 0.08), 0 2px 8px rgba(0, 0, 0, 0.02);
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  position: relative;
-  backdrop-filter: blur(12px);
-}
-
-.closing-letter::before {
-  content: '♡';
-  display: block;
-  text-align: center;
-  font-size: 1.25rem;
-  color: #7B90A4;
-  margin-bottom: 0.8rem;
-  opacity: 0.75;
-  line-height: 1;
-}
-
-.closing-text {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.closing-text p {
-  font-size: var(--fs-body);
-  color: var(--ink-navy);
-  line-height: 1.95;
+  font-size: 1rem;
   opacity: 0.92;
-}
-
-.closing-signature-block {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.5rem;
-  padding-top: 2rem;
-  margin-top: 0.5rem;
-}
-
-.closing-salutation {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: var(--fs-body);
-  color: var(--slate-muted);
-}
-
-.closing-signature {
-  font-family: var(--font-serif);
-  font-size: clamp(1.4rem, 3vw, 1.85rem);
-  font-style: italic;
-  color: var(--ink-navy);
-  letter-spacing: 0.01em;
+  line-height: 1.75;
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -1147,38 +1100,38 @@ a {
   align-items: center;
   text-align: center;
   gap: 0;
-  max-width: 680px;
+  max-width: 720px;
   margin: 0 auto;
 }
 
 .final-line {
   font-family: var(--font-serif);
-  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-size: clamp(2.2rem, 5.5vw, 3.8rem);
   font-weight: 400;
   font-style: italic;
-  color: #FAF8F4;
+  color: #F8F6F2;
   line-height: 1.35;
   letter-spacing: -0.015em;
-  margin-bottom: 2rem;
-  text-shadow: 0 2px 24px rgba(250, 248, 244, 0.12);
+  margin-bottom: 2.2rem;
+  text-shadow: 0 4px 30px rgba(248, 246, 242, 0.2);
 }
 
 .final-name {
   font-family: var(--font-sans);
-  font-size: clamp(0.85rem, 1.8vw, 1.05rem);
+  font-size: clamp(0.95rem, 2vw, 1.2rem);
   font-weight: 500;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--silver-soft);
-  margin-bottom: 2.8rem;
-  opacity: 0.92;
+  color: var(--moonlight-silver);
+  margin-bottom: 3rem;
+  opacity: 0.95;
 }
 
 .final-heart {
-  font-size: 2rem;
+  font-size: 2.2rem;
   color: #FFFFFF;
   line-height: 1;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+  text-shadow: 0 0 24px rgba(255, 255, 255, 0.7);
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -1191,7 +1144,7 @@ a {
   width: 100%;
   height: 100%;
   z-index: 1000;
-  background: rgba(10, 18, 28, 0.9);
+  background: rgba(16, 26, 40, 0.88);
   backdrop-filter: blur(18px);
   display: flex;
   align-items: center;
@@ -1205,11 +1158,11 @@ a {
 }
 
 .lightbox-dialog {
-  max-width: 720px;
+  max-width: 740px;
   width: 100%;
-  background: #142232;
+  background: #17263B;
   border: 1px solid var(--silver-line);
-  border-radius: 3px;
+  border-radius: 4px;
   overflow: hidden;
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
   position: relative;
@@ -1220,15 +1173,15 @@ a {
 
 .lightbox-close {
   position: absolute;
-  top: 0.75rem;
-  right: 0.85rem;
+  top: 0.85rem;
+  right: 0.95rem;
   font-size: 1.6rem;
   line-height: 1;
-  color: var(--moon-white);
+  color: var(--warm-ivory);
   background: rgba(0, 0, 0, 0.45);
   border-radius: 50%;
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1236,7 +1189,7 @@ a {
   transition: all 0.2s ease;
 }
 .lightbox-close:hover {
-  background: var(--deep-slate);
+  background: var(--moonlit-blue);
   transform: scale(1.1);
 }
 
@@ -1244,7 +1197,7 @@ a {
   width: 100%;
   max-height: 65vh;
   overflow: hidden;
-  background: #0A121C;
+  background: #0D1622;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1257,11 +1210,11 @@ a {
 }
 
 .lb-caption-frame {
-  padding: 1.5rem 1.8rem;
-  background: #142232;
+  padding: 1.6rem 1.8rem;
+  background: #17263B;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.55rem;
   border-top: 1px solid var(--silver-line);
 }
 
@@ -1272,37 +1225,37 @@ a {
 }
 .lb-counter {
   font-size: var(--fs-micro);
-  font-weight: 500;
-  color: var(--silver-soft);
+  font-weight: 600;
+  color: var(--moonlight-silver);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 .lb-date {
   font-size: var(--fs-micro);
-  color: #97A8B8;
-  font-weight: 400;
+  color: var(--silver-mist);
+  font-weight: 500;
 }
 
 .lb-title {
   font-family: var(--font-serif);
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   font-weight: 500;
-  color: var(--moon-white);
+  color: #F8F6F2;
   line-height: 1.3;
 }
 
 .lb-desc {
   font-size: var(--fs-small);
-  color: #CBD5E0;
+  color: #DCE2E8;
   line-height: 1.75;
-  opacity: 0.9;
+  opacity: 0.92;
 }
 
 .lb-nav-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 0.9rem;
+  padding-top: 1rem;
   margin-top: 0.4rem;
   border-top: 1px solid var(--silver-line);
 }
@@ -1310,20 +1263,20 @@ a {
 .lb-nav-btn {
   font-size: var(--fs-micro);
   font-weight: 500;
-  color: var(--silver);
-  padding: 0.45rem 0.85rem;
-  border-radius: 2px;
+  color: var(--moonlight-silver);
+  padding: 0.5rem 0.9rem;
+  border-radius: 3px;
   border: 1px solid var(--silver-line);
   transition: all 0.2s ease;
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.04em;
 }
 .lb-nav-btn:hover {
-  color: var(--moon-white);
-  border-color: var(--silver);
-  background: var(--silver-dim);
+  color: #FFFFFF;
+  border-color: var(--moonlight-silver);
+  background: rgba(185, 196, 208, 0.14);
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -1334,7 +1287,7 @@ a {
 @media (max-width: 960px) {
   .memory-grid {
     grid-template-columns: repeat(6, 1fr);
-    gap: 1.2rem;
+    gap: 1.4rem;
   }
 
   .memory-card {
@@ -1348,7 +1301,7 @@ a {
   .memory-card[data-layout="editorial"] {
     grid-column: span 6 !important;
     flex-direction: column;
-    gap: 1.2rem;
+    gap: 1.4rem;
   }
 
   .memory-card[data-layout="editorial"] .memory-img-wrap {
@@ -1361,8 +1314,8 @@ a {
 @media (max-width: 680px) {
   .memory-grid {
     grid-template-columns: 1fr;
-    gap: 1.6rem;
-    max-width: 440px;
+    gap: 1.8rem;
+    max-width: 460px;
     margin: 0 auto;
   }
 
@@ -1371,7 +1324,7 @@ a {
   .memory-card[data-layout="editorial"] {
     grid-column: span 1 !important;
     flex-direction: column !important;
-    padding: 0.85rem;
+    padding: 0.95rem;
     gap: 0;
   }
 
@@ -1383,7 +1336,7 @@ a {
   }
 
   .section {
-    padding: clamp(3.8rem, 8vw, 5.2rem) 1.2rem;
+    padding: clamp(4rem, 8vw, 5.5rem) 1.2rem;
   }
 
   .hero-inner {
@@ -1400,7 +1353,7 @@ a {
   }
 
   .s-hero {
-    padding: 4.5rem 1.2rem 3rem;
+    padding: 5rem 1.2rem 3.5rem;
   }
 
   .intro-card {
@@ -1413,20 +1366,20 @@ a {
   }
 
   .timeline-wrap {
-    padding-left: 1.6rem;
+    padding-left: 1.8rem;
   }
   .timeline-item::before {
-    left: -2rem;
+    left: -2.25rem;
   }
 
   .letter-paper,
   .closing-letter {
-    padding: 2.2rem 1.35rem;
+    padding: 2.4rem 1.4rem;
   }
 
   .music-pill {
-    bottom: 1.2rem;
-    right: 1.2rem;
+    bottom: 1.4rem;
+    right: 1.4rem;
   }
 
   .music-btn {
@@ -1443,11 +1396,11 @@ a {
   }
 
   .final-line {
-    font-size: clamp(1.65rem, 6vw, 2.2rem);
+    font-size: clamp(1.8rem, 6vw, 2.4rem);
   }
 
   .final-name {
-    font-size: clamp(0.75rem, 3vw, 0.9rem);
+    font-size: clamp(0.85rem, 3.2vw, 1rem);
   }
 }
 
@@ -1460,7 +1413,7 @@ a {
   }
 
   .hero-title {
-    font-size: clamp(2.2rem, 12vw, 3rem);
+    font-size: clamp(2.4rem, 12vw, 3.2rem);
   }
 }
 
