@@ -1,7 +1,7 @@
 /**
  * SAYANGNYA, AKU — MAIN APPLICATION
- * Handles intro typewriter, emotional section rendering,
- * modals, image lightboxes, scroll reveals, and ending screen.
+ * Surat cinta digital personal dari Hilyatul Ashfiya untuk pasangannya.
+ * Mengatur alur 4 bab, intro typewriter, pemutar musik Mahalini, dan lightbox foto.
  */
 
 import { siteData } from '../data.js';
@@ -9,38 +9,41 @@ import { initParticleEngine } from './particles.js';
 import { initAudioSystem, startAmbientBgm } from './audioPlayer.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Ambient particle canvas
+  // 1. Inisialisasi latar tekstur halus
   initParticleEngine();
 
-  // Audio system initialized with Mahalini track
+  // 2. Inisialisasi sistem audio dengan lagu Mahalini — Mencintaimu
   initAudioSystem(siteData.bgmTrack);
 
-  // Render content sections
+  // 3. Render seluruh bagian konten surat
+  renderHeroContent();
   renderChapter1();
   renderChapter2();
   renderChapter3();
   renderChapter4();
-  setupGlobalModalEvents();
 
-  // Start intro typewriter experience
-  startTypewriter();
+  // 4. Inisialisasi modal lightbox
+  setupLightbox();
 
-  // Initialize smooth scroll reveal observers
-  setTimeout(setupScrollObservers, 100);
+  // 5. Mulai intro interaktif (layar pembuka)
+  startIntroTypewriter();
+
+  // 6. Pasang scroll observer untuk transisi muncul yang anggun
+  setTimeout(setupScrollObservers, 150);
 });
 
-/* ─── TYPEWRITER INTRO ───────────────────────────────────── */
-function startTypewriter() {
+/* ─── INTRO ENVELOPE TYPEWRITER ──────────────────────────── */
+function startIntroTypewriter() {
   const outputEl = document.getElementById('tw-output');
   const enterBox = document.getElementById('intro-enter');
   const masukBtn = document.getElementById('masuk-btn');
   const introScreen = document.getElementById('intro-screen');
   const mainExp = document.getElementById('main-experience');
 
-  const lines = siteData.introLines || [
-    { text: 'Ada hal yang sudah lama ingin kusampaikan.', pause: 1800 },
-    { text: 'Tapi aku nggak selalu bisa bicara langsung.', pause: 1500 },
-    { text: 'Jadi aku tuliskan di sini.', pause: 1200 }
+  const lines = siteData.intro?.lines || [
+    { text: "Ada hal yang sudah lama ingin kusampaikan kepadamu...", pause: 1800 },
+    { text: "Tentang kita, tentang maaf yang terlambat, dan tentang bagaimana perasaanku yang sebenarnya.", pause: 1600 },
+    { text: "Jadi aku tuliskan semuanya di sini.", pause: 1200 }
   ];
 
   let lineIdx = 0;
@@ -48,18 +51,19 @@ function startTypewriter() {
   let currentText = '';
 
   function typeChar() {
+    if (!outputEl) return;
+
     if (lineIdx >= lines.length) {
       if (enterBox) enterBox.classList.remove('hidden');
       return;
     }
-    const target = lines[lineIdx].text;
-    if (charIdx < target.length) {
-      currentText += target.charAt(charIdx);
-      if (outputEl) {
-        outputEl.innerHTML = currentText + '<span class="tw-cursor">_</span>';
-      }
+
+    const targetLine = lines[lineIdx].text;
+    if (charIdx < targetLine.length) {
+      currentText += targetLine.charAt(charIdx);
+      outputEl.innerHTML = currentText + '<span class="tw-cursor">_</span>';
       charIdx++;
-      setTimeout(typeChar, 38 + Math.random() * 25);
+      setTimeout(typeChar, 36 + Math.random() * 24);
     } else {
       if (lineIdx < lines.length - 1) {
         currentText += '\n\n';
@@ -73,305 +77,236 @@ function startTypewriter() {
     }
   }
 
-  setTimeout(typeChar, 700);
+  // Mulai ketik setelah jeda awal yang tenang
+  setTimeout(typeChar, 800);
 
   if (masukBtn) {
     masukBtn.addEventListener('click', () => {
+      // Fade out layar intro
       if (introScreen) introScreen.classList.add('fade-out');
+
+      // Putar musik Mahalini dengan fade-in lembut
       startAmbientBgm();
+
       setTimeout(() => {
         if (introScreen) introScreen.style.display = 'none';
         if (mainExp) mainExp.classList.remove('hidden');
         triggerHeroReveal();
-      }, 1000);
+      }, 950);
     });
   }
 }
 
+/* ─── HERO REVEAL ────────────────────────────────────────── */
+function renderHeroContent() {
+  // Title & Subtitle disiapkan
+}
+
 function triggerHeroReveal() {
-  const elems = document.querySelectorAll('.h-line, .h-divider, .h-sub, .hero-scroll');
-  elems.forEach((el, i) => {
-    setTimeout(() => el.classList.add('visible'), i * 260);
+  const elems = document.querySelectorAll(
+    '.hero-envelope-mark, .hero-title, .hero-divider, .hero-subtitle, .hero-scroll-indicator'
+  );
+  elems.forEach((el, idx) => {
+    setTimeout(() => {
+      el.classList.add('visible');
+    }, idx * 240);
   });
 }
 
-/* ─── CHAPTER 1: AWAL CERITA ─────────────────────────────── */
+/* ─── BAGIAN 1: DARI SEBUAH PERTEMUAN SEDERHANA ──────────── */
 function renderChapter1() {
   const ch = siteData.chapter1;
   if (!ch) return;
 
-  const labelEl = document.getElementById('label-ch1');
-  const introEl = document.getElementById('intro-ch1');
+  const tagEl = document.getElementById('tag-ch1');
+  const titleEl = document.getElementById('title-ch1');
+  const subEl = document.getElementById('sub-ch1');
   const container = document.getElementById('timeline-container');
 
-  if (labelEl) labelEl.textContent = ch.sectionLabel;
-  if (introEl) introEl.textContent = ch.intro;
+  if (tagEl) tagEl.textContent = ch.tag;
+  if (titleEl) titleEl.textContent = ch.title;
+  if (subEl) subEl.textContent = ch.subtitle;
 
   if (container && ch.timeline) {
     container.innerHTML = ch.timeline.map(item => `
-      <div class="timeline-item rev">
+      <article class="timeline-item rev">
         <span class="tl-date">${item.date}</span>
         <h3 class="tl-title">${item.title}</h3>
-        <p class="tl-story">${item.story}</p>
-        <span class="tl-note">${item.note}</span>
-      </div>
+        <p class="tl-desc">${item.description}</p>
+        <p class="tl-note">${item.note}</p>
+      </article>
     `).join('');
   }
 }
 
-/* ─── CHAPTER 2: PERMINTAAN MAAF ────────────────────────── */
+/* ─── BAGIAN 2: MAAF, KARENA AKU BELUM SELALU TAHU CARANYA ── */
 function renderChapter2() {
   const ch = siteData.chapter2;
   if (!ch) return;
 
-  const labelEl = document.getElementById('label-ch2');
-  const introEl = document.getElementById('intro-ch2');
-  const container = document.getElementById('apologies-container');
-  const closingEl = document.getElementById('apologies-closing');
+  const tagEl = document.getElementById('tag-ch2');
+  const titleEl = document.getElementById('title-ch2');
+  const subEl = document.getElementById('sub-ch2');
+  const bodyContainer = document.getElementById('letter-body-container');
+  const quoteContainer = document.getElementById('letter-closing-reflect');
 
-  if (labelEl) labelEl.textContent = ch.sectionLabel;
-  if (introEl) introEl.textContent = ch.intro;
-  if (closingEl) closingEl.textContent = ch.closing;
+  if (tagEl) tagEl.textContent = ch.tag;
+  if (titleEl) titleEl.textContent = ch.title;
+  if (subEl) subEl.textContent = ch.subtitle;
 
-  if (container && ch.apologies) {
-    container.innerHTML = ch.apologies.map(item => `
-      <div class="apology-item rev">
-        <h3 class="apology-title">${item.title}</h3>
-        <p class="apology-body">${item.body}</p>
-      </div>
+  if (bodyContainer && ch.paragraphs) {
+    bodyContainer.innerHTML = ch.paragraphs.map(p => `
+      <p>${p}</p>
     `).join('');
+  }
+
+  if (quoteContainer && ch.closingReflect) {
+    quoteContainer.innerHTML = `
+      <p>“${ch.closingReflect}”</p>
+    `;
   }
 }
 
-/* ─── CHAPTER 3: KETULUSAN DAN KENANGAN ──────────────────── */
+/* ─── BAGIAN 3: KALAU AKU MASIH BOLEH BELAJAR MENCINTAIMU ─── */
 function renderChapter3() {
   const ch = siteData.chapter3;
   if (!ch) return;
 
-  const labelEl = document.getElementById('label-ch3');
-  const introEl = document.getElementById('intro-ch3');
-  const obsContainer = document.getElementById('observations-container');
-  const photosContainer = document.getElementById('photos-container');
+  const tagEl = document.getElementById('tag-ch3');
+  const titleEl = document.getElementById('title-ch3');
+  const subEl = document.getElementById('sub-ch3');
+  const learningEl = document.getElementById('learning-content');
+  const photosTitleEl = document.getElementById('photos-title');
+  const photosSubEl = document.getElementById('photos-subtitle');
+  const photosGrid = document.getElementById('photos-grid');
 
-  if (labelEl) labelEl.textContent = ch.sectionLabel;
-  if (introEl) introEl.textContent = ch.intro;
+  if (tagEl) tagEl.textContent = ch.tag;
+  if (titleEl) titleEl.textContent = ch.title;
+  if (subEl) subEl.textContent = ch.subtitle;
 
-  if (obsContainer && ch.observations) {
-    obsContainer.innerHTML = ch.observations.map((item, idx) => `
-      <div class="obs-item rev">
-        <span class="obs-idx">0${idx + 1}</span>
-        <p class="obs-text">${item.text}</p>
-      </div>
+  if (learningEl && ch.paragraphs) {
+    learningEl.innerHTML = ch.paragraphs.map(p => `
+      <p>${p}</p>
     `).join('');
   }
 
-  if (photosContainer && ch.photos) {
-    photosContainer.innerHTML = ch.photos.map(photo => `
-      <div class="photo-card rev" data-img="${photo.image}" data-num="${photo.number}" data-note="${photo.note}" tabindex="0" role="button" aria-label="Lihat ${photo.number}">
-        <div class="photo-card-img">
-          <img src="${photo.image}" alt="${photo.number}" loading="lazy" />
+  if (photosTitleEl && ch.photosTitle) photosTitleEl.textContent = ch.photosTitle;
+  if (photosSubEl && ch.photosSubtitle) photosSubEl.textContent = ch.photosSubtitle;
+
+  if (photosGrid && ch.photos) {
+    photosGrid.innerHTML = ch.photos.map(photo => `
+      <div class="photo-card" 
+           data-img="${photo.image}" 
+           data-caption="${photo.caption}" 
+           data-desc="${photo.description}"
+           tabindex="0" 
+           role="button" 
+           aria-label="Lihat foto: ${photo.caption}">
+        <div class="photo-img-wrapper">
+          <img src="${photo.image}" alt="${photo.caption}" loading="lazy" />
         </div>
-        <div class="photo-card-meta">
-          <span class="photo-num">${photo.number}</span>
-          <p class="photo-note">${photo.note}</p>
+        <div class="photo-meta">
+          <h4 class="photo-caption">${photo.caption}</h4>
+          <p class="photo-desc">${photo.description}</p>
         </div>
       </div>
     `).join('');
-
-    // Setup lightbox trigger
-    const lightbox = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lb-img');
-    const lbNum = document.getElementById('lb-num');
-    const lbNote = document.getElementById('lb-note');
-    const lbClose = document.getElementById('lb-close');
-
-    function openLightbox(img, num, note) {
-      if (lbImg) lbImg.src = img;
-      if (lbNum) lbNum.textContent = num;
-      if (lbNote) lbNote.textContent = note;
-      if (lightbox) {
-        lightbox.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-      }
-    }
-
-    function closeLightbox() {
-      if (lightbox) {
-        lightbox.classList.add('hidden');
-        document.body.style.overflow = '';
-      }
-    }
-
-    photosContainer.querySelectorAll('.photo-card').forEach(card => {
-      card.addEventListener('click', () => {
-        openLightbox(
-          card.getAttribute('data-img'),
-          card.getAttribute('data-num'),
-          card.getAttribute('data-note')
-        );
-      });
-      card.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          openLightbox(
-            card.getAttribute('data-img'),
-            card.getAttribute('data-num'),
-            card.getAttribute('data-note')
-          );
-        }
-      });
-    });
-
-    if (lbClose && lightbox) {
-      lbClose.addEventListener('click', closeLightbox);
-      lightbox.addEventListener('click', e => {
-        if (e.target === lightbox) closeLightbox();
-      });
-    }
   }
 }
 
-/* ─── CHAPTER 4: PENUTUP ─────────────────────────────────── */
+/* ─── BAGIAN 4: AKU HANYA INGIN KAMU TAHU ────────────────── */
 function renderChapter4() {
   const ch = siteData.chapter4;
   if (!ch) return;
 
-  const labelEl = document.getElementById('label-ch4');
-  const teaserEl = document.getElementById('teaser-container');
-  const openBtn = document.getElementById('open-letter-btn');
-  const letterModal = document.getElementById('letter-modal');
-  const letterClose = document.getElementById('letter-close');
-  const letterDone = document.getElementById('letter-done-btn');
-  const salutationEl = document.getElementById('letter-salutation');
-  const bodyEl = document.getElementById('letter-body');
-  const closingEl = document.getElementById('letter-closing');
-  const senderEl = document.getElementById('letter-sender');
+  const tagEl = document.getElementById('tag-ch4');
+  const titleEl = document.getElementById('title-ch4');
+  const subEl = document.getElementById('sub-ch4');
+  const closingContainer = document.getElementById('closing-paragraphs');
+  const salutationEl = document.getElementById('closing-salutation');
+  const signatureEl = document.getElementById('closing-signature');
 
-  if (labelEl) labelEl.textContent = ch.sectionLabel;
+  if (tagEl) tagEl.textContent = ch.tag;
+  if (titleEl) titleEl.textContent = ch.title;
+  if (subEl) subEl.textContent = ch.subtitle;
 
-  if (teaserEl && ch.teaser) {
-    teaserEl.innerHTML = ch.teaser.map(line => `
-      <p class="teaser-line rev">${line}</p>
+  if (closingContainer && ch.paragraphs) {
+    closingContainer.innerHTML = ch.paragraphs.map(p => `
+      <p>${p}</p>
     `).join('');
   }
 
-  const letter = ch.letter;
-  if (letter) {
-    if (salutationEl) salutationEl.textContent = letter.salutation;
-    if (bodyEl && letter.paragraphs) {
-      bodyEl.innerHTML = letter.paragraphs.map(p => `<p>${p}</p>`).join('');
-    }
-    if (closingEl) closingEl.textContent = letter.closing;
-    if (senderEl) senderEl.textContent = letter.sender;
-  }
-
-  function openLetter() {
-    if (letterModal) {
-      letterModal.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-    }
-  }
-
-  function closeLetter() {
-    if (letterModal) {
-      letterModal.classList.add('hidden');
-      document.body.style.overflow = '';
-    }
-  }
-
-  if (openBtn) {
-    openBtn.addEventListener('click', openLetter);
-  }
-  if (letterClose) {
-    letterClose.addEventListener('click', closeLetter);
-  }
-  if (letterModal) {
-    letterModal.addEventListener('click', (e) => {
-      if (e.target === letterModal) closeLetter();
-    });
-  }
-  if (letterDone) {
-    letterDone.addEventListener('click', () => {
-      closeLetter();
-      triggerEnding();
-    });
-  }
+  if (salutationEl && ch.closingSalutation) salutationEl.textContent = ch.closingSalutation;
+  if (signatureEl && ch.signature) signatureEl.textContent = ch.signature;
 }
 
-/* ─── ENDING SCREEN ──────────────────────────────────────── */
-function triggerEnding() {
-  const ending = siteData.ending;
-  const screen = document.getElementById('final-ending');
-  if (!screen || !ending) return;
+/* ─── LIGHTBOX MODAL SETUP ───────────────────────────────── */
+function setupLightbox() {
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lb-img');
+  const lbCaption = document.getElementById('lb-caption');
+  const lbDesc = document.getElementById('lb-desc');
+  const lbClose = document.getElementById('lb-close');
 
-  const e1 = document.getElementById('e1');
-  const e2 = document.getElementById('e2');
-  const e3 = document.getElementById('e3');
-  const eRule = screen.querySelector('.e-rule');
-  const eSig = screen.querySelector('.e-sig');
-  const eReplay = document.getElementById('e-replay');
-  const eReplayBtn = document.getElementById('e-replay-btn');
+  function openLightbox(img, caption, desc) {
+    if (!lightbox) return;
+    if (lbImg) lbImg.src = img;
+    if (lbCaption) lbCaption.textContent = caption;
+    if (lbDesc) lbDesc.textContent = desc;
 
-  if (e1) e1.textContent = ending.line1;
-  if (e2) e2.textContent = ending.line2;
-  if (e3) e3.textContent = ending.final;
+    lightbox.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
 
-  // Reveal ending container
-  screen.classList.remove('hidden');
-  document.body.style.overflow = 'hidden';
-  setTimeout(() => screen.classList.add('active'), 50);
+  function closeLightbox() {
+    if (!lightbox) return;
+    lightbox.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
 
-  const reveals = [
-    { el: e1, delay: 800 },
-    { el: e2, delay: 2200 },
-    { el: eRule, delay: 3500 },
-    { el: e3, delay: 4800 },
-    { el: eSig, delay: 6000 },
-    { el: eReplay, delay: 7200 }
-  ];
-
-  reveals.forEach(({ el, delay }) => {
-    if (el) setTimeout(() => el.classList.add('show'), delay);
+  // Delegasi klik pada kartu foto
+  document.addEventListener('click', (e) => {
+    const card = e.target.closest('.photo-card');
+    if (card) {
+      openLightbox(
+        card.getAttribute('data-img'),
+        card.getAttribute('data-caption'),
+        card.getAttribute('data-desc')
+      );
+    }
   });
 
-  if (eReplayBtn) {
-    eReplayBtn.onclick = () => {
-      screen.classList.remove('active');
-      document.body.style.overflow = '';
-      setTimeout(() => {
-        screen.classList.add('hidden');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }, 600);
-    };
+  // Dukungan aksesibilitas keyboard (Enter / Spasi)
+  document.addEventListener('keydown', (e) => {
+    if ((e.key === 'Enter' || e.key === ' ') && document.activeElement.classList.contains('photo-card')) {
+      e.preventDefault();
+      const card = document.activeElement;
+      openLightbox(
+        card.getAttribute('data-img'),
+        card.getAttribute('data-caption'),
+        card.getAttribute('data-desc')
+      );
+    }
+
+    if (e.key === 'Escape' && lightbox && !lightbox.classList.contains('hidden')) {
+      closeLightbox();
+    }
+  });
+
+  if (lbClose) {
+    lbClose.addEventListener('click', closeLightbox);
+  }
+
+  if (lightbox) {
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
   }
 }
 
-/* ─── GLOBAL MODAL ESCAPE LISTENER ───────────────────────── */
-function setupGlobalModalEvents() {
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      const lightbox = document.getElementById('lightbox');
-      const letterModal = document.getElementById('letter-modal');
-      const finalEnding = document.getElementById('final-ending');
-
-      if (lightbox && !lightbox.classList.contains('hidden')) {
-        lightbox.classList.add('hidden');
-        document.body.style.overflow = '';
-      }
-      if (letterModal && !letterModal.classList.contains('hidden')) {
-        letterModal.classList.add('hidden');
-        document.body.style.overflow = '';
-      }
-      if (finalEnding && !finalEnding.classList.contains('hidden') && finalEnding.classList.contains('active')) {
-        finalEnding.classList.remove('active');
-        document.body.style.overflow = '';
-        setTimeout(() => finalEnding.classList.add('hidden'), 500);
-      }
-    }
-  });
-}
-
-/* ─── SCROLL OBSERVERS ───────────────────────────────────── */
+/* ─── SCROLL REVEAL OBSERVERS ────────────────────────────── */
 function setupScrollObservers() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -380,27 +315,15 @@ function setupScrollObservers() {
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-
-  document.querySelectorAll('.rev, .apologies-closing').forEach(el => observer.observe(el));
-
-  // Teaser lines stagger
-  document.querySelectorAll('.teaser-line').forEach((el, i) => {
-    el.style.transitionDelay = `${i * 0.15}s`;
+  }, {
+    threshold: 0.08,
+    rootMargin: '0px 0px -40px 0px'
   });
 
-  // Timeline items stagger
-  document.querySelectorAll('.timeline-item').forEach((el, i) => {
-    el.style.transitionDelay = `${i * 0.1}s`;
-  });
+  document.querySelectorAll('.rev').forEach(el => observer.observe(el));
 
-  // Observation items stagger
-  document.querySelectorAll('.obs-item').forEach((el, i) => {
-    el.style.transitionDelay = `${i * 0.08}s`;
-  });
-
-  // Photo cards stagger
-  document.querySelectorAll('.photo-card').forEach((el, i) => {
-    el.style.transitionDelay = `${i * 0.1}s`;
+  // Staggering halus untuk timeline items
+  document.querySelectorAll('.timeline-item').forEach((el, idx) => {
+    el.style.transitionDelay = `${idx * 0.12}s`;
   });
 }

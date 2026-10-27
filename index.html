@@ -3,132 +3,190 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sayangnya, Aku</title>
-  <meta name="description" content="Surat kecil tentang hal yang ingin kusampaikan." />
+  <title>Sayangnya, Aku — Untuk Kamu</title>
+  <meta name="description" content="Surat pribadi dari Hilyatul Ashfiya untuk seseorang yang selalu punya tempat paling hangat di hati." />
+  
+  <!-- Google Fonts: Cormorant Garamond (Editorial Serif) & Plus Jakarta Sans (Clean Modern Sans) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="./src/css/main.css" />
 </head>
 <body>
-<canvas id="canvas-grain"></canvas>
-<div id="intro-screen">
-  <div class="tw-stage">
-    <div id="tw-output"><span class="tw-cursor" id="tw-cursor">_</span></div>
-    <div id="intro-enter" class="hidden">
-      <button id="masuk-btn" class="btn-masuk">buka</button>
-    </div>
-  </div>
-</div>
-<div id="main-experience" class="hidden">
-  <div id="music-pill">
-    <button id="bgm-btn" class="music-btn" aria-label="Putar atau hentikan musik">
-      <span id="bgm-icon">&#9835;</span>
-    </button>
-  </div>
-  <section id="s-hero" class="s-hero">
-    <div class="hero-inner">
-      <div class="hero-text">
-        <h1 class="h-line h-l1">Sayangnya,</h1>
-        <p class="h-line h-l2 h-italic">aku.</p>
-        <div class="h-divider"></div>
-        <p class="h-sub">Ada hal yang sudah lama ingin kusampaikan.</p>
+
+  <!-- Subtle Ambient Paper Grain Overlay -->
+  <canvas id="canvas-grain" aria-hidden="true"></canvas>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       INTRO ENVELOPE SCREEN
+       Layar pembuka yang lembut dengan efek ketik personal
+       ═══════════════════════════════════════════════════════════ -->
+  <div id="intro-screen">
+    <div class="intro-card">
+      <div class="intro-stamp">
+        <span class="stamp-heart">&#10084;</span>
+        <span class="stamp-text">Pribadi & Rahasia</span>
       </div>
-      <div class="hero-scroll">
-        <span class="scroll-label">gulir ke bawah</span>
-        <div class="scroll-line"></div>
+      <div id="tw-output" class="intro-text" aria-live="polite">
+        <span class="tw-cursor">_</span>
       </div>
-    </div>
-  </section>
-  <section id="s-awal" class="section">
-    <div class="section-inner">
-      <div class="section-tag">
-        <span class="tag-num">01</span>
-        <span class="tag-label" id="label-ch1"></span>
-      </div>
-      <p class="intro-quote" id="intro-ch1"></p>
-      <div id="timeline-container" class="timeline"></div>
-    </div>
-  </section>
-  <section id="s-maaf" class="section section-alt">
-    <div class="section-inner">
-      <div class="section-tag">
-        <span class="tag-num">02</span>
-        <span class="tag-label" id="label-ch2"></span>
-      </div>
-      <p class="intro-quote" id="intro-ch2"></p>
-      <div id="apologies-container" class="apologies-list"></div>
-      <p class="apologies-closing" id="apologies-closing"></p>
-    </div>
-  </section>
-  <section id="s-kenangan" class="section">
-    <div class="section-inner">
-      <div class="section-tag">
-        <span class="tag-num">03</span>
-        <span class="tag-label" id="label-ch3"></span>
-      </div>
-      <p class="intro-quote" id="intro-ch3"></p>
-      <div id="observations-container" class="observations-list"></div>
-      <div class="photos-header">
-        <span class="photos-label">Foto-foto yang kusimpan</span>
-      </div>
-      <div id="photos-container" class="photos-grid"></div>
-    </div>
-  </section>
-  <section id="s-penutup" class="section section-dark">
-    <div class="section-inner">
-      <div class="section-tag">
-        <span class="tag-num">04</span>
-        <span class="tag-label" id="label-ch4"></span>
-      </div>
-      <div id="teaser-container" class="teaser-block"></div>
-      <div class="btn-letter-wrap">
-        <button id="open-letter-btn" class="btn-open-letter">baca suratnya</button>
-      </div>
-    </div>
-  </section>
-  <footer class="site-footer">
-    <p class="footer-sig">&mdash; Hilya &#129293;</p>
-  </footer>
-</div>
-<div id="lightbox" class="modal-overlay hidden" role="dialog" aria-modal="true">
-  <div class="lightbox-card">
-    <button id="lb-close" class="modal-close" aria-label="Tutup">&times;</button>
-    <div class="lb-img-wrap"><img id="lb-img" src="" alt="Foto kenangan" /></div>
-    <div class="lb-caption-wrap">
-      <span id="lb-num" class="lb-num"></span>
-      <p id="lb-note" class="lb-note"></p>
-    </div>
-  </div>
-</div>
-<div id="letter-modal" class="modal-overlay letter-overlay hidden" role="dialog" aria-modal="true">
-  <div class="letter-wrap">
-    <button id="letter-close" class="letter-x">&times;</button>
-    <div class="letter-paper">
-      <p class="letter-salutation" id="letter-salutation"></p>
-      <div class="letter-body" id="letter-body"></div>
-      <div class="letter-closing-row">
-        <p class="letter-closing-text" id="letter-closing"></p>
-        <p class="letter-sender" id="letter-sender"></p>
-      </div>
-      <div class="letter-done-wrap">
-        <button id="letter-done-btn" class="btn-done">selesai membaca</button>
+      <div id="intro-enter" class="intro-action hidden">
+        <button id="masuk-btn" class="btn-open-letter" type="button">
+          <span class="btn-text">Buka Surat Ini</span>
+          <span class="btn-icon">&#10142;</span>
+        </button>
       </div>
     </div>
   </div>
-</div>
-<div id="final-ending" class="hidden" aria-live="polite">
-  <div class="ending-inner">
-    <p class="e-line" id="e1"></p>
-    <p class="e-line" id="e2"></p>
-    <div class="e-rule"></div>
-    <p class="e-line e-final" id="e3"></p>
-    <p class="e-sig">&mdash; Hilya &#129293;</p>
-    <div class="e-replay-wrap" id="e-replay">
-      <button id="e-replay-btn" class="e-replay-btn" type="button">baca kembali</button>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       MAIN LETTER EXPERIENCE
+       ═══════════════════════════════════════════════════════════ -->
+  <div id="main-experience" class="hidden">
+
+    <!-- FLOATING MUSIC PLAYER PILL -->
+    <aside id="music-pill" class="music-pill" aria-label="Pemutar Musik Latar">
+      <button id="bgm-btn" class="music-btn" type="button" aria-label="Putar atau jeda musik: Mahalini — Mencintaimu" title="Mahalini — Mencintaimu">
+        <div class="music-note-wrap">
+          <span class="music-bar bar-1"></span>
+          <span class="music-bar bar-2"></span>
+          <span class="music-bar bar-3"></span>
+        </div>
+        <div class="music-info">
+          <span class="music-track">Mencintaimu</span>
+          <span class="music-artist">Mahalini</span>
+        </div>
+      </button>
+    </aside>
+
+    <!-- ─── HERO HEADER ──────────────────────────────────────── -->
+    <header id="s-hero" class="s-hero">
+      <div class="hero-inner">
+        <div class="hero-envelope-mark">
+          <span class="envelope-icon">&#9993;</span>
+        </div>
+        <h1 class="hero-title">
+          <span class="hero-title-main">Sayangnya,</span>
+          <span class="hero-title-sub">aku.</span>
+        </h1>
+        <div class="hero-divider"></div>
+        <p class="hero-subtitle">Untuk kamu yang selalu punya tempat paling hangat di hatiku.</p>
+        <div class="hero-scroll-indicator">
+          <span class="scroll-text">gulir perlahan ke bawah</span>
+          <div class="scroll-arrow">&#8595;</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ─── BAGIAN 1: DARI SEBUAH PERTEMUAN SEDERHANA ────────── -->
+    <section id="s-pertemuan" class="section section-ivory">
+      <div class="section-container">
+        <div class="section-header rev">
+          <span class="section-tag" id="tag-ch1">01</span>
+          <h2 class="section-title" id="title-ch1">Dari Sebuah Pertemuan Sederhana</h2>
+          <p class="section-subtitle" id="sub-ch1"></p>
+        </div>
+        <div id="timeline-container" class="timeline-wrap">
+          <!-- Rendered dynamically from data.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── BAGIAN 2: MAAF, KARENA AKU BELUM SELALU TAHU CARANYA ─ -->
+    <section id="s-maaf" class="section section-cream">
+      <div class="section-container">
+        <div class="section-header rev">
+          <span class="section-tag" id="tag-ch2">02</span>
+          <h2 class="section-title" id="title-ch2">Maaf, Karena Aku Belum Selalu Tahu Caranya</h2>
+          <p class="section-subtitle" id="sub-ch2"></p>
+        </div>
+        <div class="letter-paper-wrap rev">
+          <div class="letter-paper">
+            <div class="letter-flourish">&#10086;</div>
+            <div id="letter-body-container" class="letter-paragraphs">
+              <!-- Rendered dynamically as flowing unified letter from data.js -->
+            </div>
+            <div id="letter-closing-reflect" class="letter-quote-box">
+              <!-- Dynamic closing reflection quote -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── BAGIAN 3: KALAU AKU MASIH BOLEH BELAJAR MENCINTAIMU ── -->
+    <section id="s-belajar" class="section section-ivory">
+      <div class="section-container">
+        <div class="section-header rev">
+          <span class="section-tag" id="tag-ch3">03</span>
+          <h2 class="section-title" id="title-ch3">Kalau Aku Masih Boleh Belajar Mencintaimu</h2>
+          <p class="section-subtitle" id="sub-ch3"></p>
+        </div>
+        
+        <div id="learning-content" class="learning-prose rev">
+          <!-- Prose paragraphs about continuous effort and commitment -->
+        </div>
+
+        <div class="photos-section rev">
+          <div class="photos-intro">
+            <h3 class="photos-title" id="photos-title">Kenangan yang Tersimpan</h3>
+            <p class="photos-subtitle" id="photos-subtitle"></p>
+          </div>
+          <div id="photos-grid" class="photos-curated-grid">
+            <!-- Rendered dynamically using genuine project photos -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── BAGIAN 4: AKU HANYA INGIN KAMU TAHU ───────────────── -->
+    <section id="s-penutup" class="section section-warm">
+      <div class="section-container">
+        <div class="section-header rev">
+          <span class="section-tag" id="tag-ch4">04</span>
+          <h2 class="section-title" id="title-ch4">Aku Hanya Ingin Kamu Tahu</h2>
+          <p class="section-subtitle" id="sub-ch4"></p>
+        </div>
+
+        <div class="closing-card rev">
+          <div id="closing-paragraphs" class="closing-text">
+            <!-- Dynamic final paragraphs -->
+          </div>
+          <div class="closing-signature-block">
+            <p class="closing-salutation" id="closing-salutation"></p>
+            <p class="closing-signature" id="closing-signature"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── MINIMAL FOOTER ───────────────────────────────────── -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="footer-note">Sebuah surat kecil tentang rasa yang sebenarnya.</p>
+        <p class="footer-sig">&mdash; Hilya &#129293;</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       LIGHTBOX MODAL FOR GENUINE PHOTOS
+       ═══════════════════════════════════════════════════════════ -->
+  <div id="lightbox" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-label="Lihat Foto Kenangan">
+    <div class="lightbox-dialog">
+      <button id="lb-close" class="lightbox-close" type="button" aria-label="Tutup foto">&times;</button>
+      <div class="lb-image-frame">
+        <img id="lb-img" src="" alt="Foto kenangan" />
+      </div>
+      <div class="lb-caption-frame">
+        <h4 id="lb-caption" class="lb-title"></h4>
+        <p id="lb-desc" class="lb-desc"></p>
+      </div>
     </div>
   </div>
-</div>
-<script type="module" src="./src/js/app.js"></script>
+
+  <script type="module" src="./src/js/app.js"></script>
 </body>
 </html>
