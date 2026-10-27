@@ -49,8 +49,8 @@ export function initParticleEngine() {
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
       ctx.fillStyle = p.isWarm 
-        ? `rgba(243, 241, 235, ${p.alpha})`
-        : `rgba(210, 220, 230, ${p.alpha})`;
+        ? `rgba(205, 185, 159, ${p.alpha})`
+        : `rgba(199, 208, 217, ${p.alpha})`;
       ctx.fill();
     }
 
