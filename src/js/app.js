@@ -1,12 +1,14 @@
 /**
  * SAYANGNYA, AKU — MAIN APPLICATION
  * Surat cinta digital personal dari Hilyatul Ashfiya untuk pasangannya.
- * Mengatur alur 4 bab, intro typewriter, pemutar musik Mahalini, dan lightbox foto.
+ * Mengatur alur 4 bab, intro typewriter, pemutar musik Mahalini, dan scrapbook 19 kenangan.
  */
 
 import { siteData } from '../data.js';
 import { initParticleEngine } from './particles.js';
 import { initAudioSystem, startAmbientBgm } from './audioPlayer.js';
+
+let activeMemoryIndex = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Inisialisasi latar tekstur halus
@@ -16,14 +18,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initAudioSystem(siteData.bgmTrack);
 
   // 3. Render seluruh bagian konten surat
-  renderHeroContent();
   renderChapter1();
   renderChapter2();
   renderChapter3();
   renderChapter4();
 
-  // 4. Inisialisasi modal lightbox
-  setupLightbox();
+  // 4. Inisialisasi modal scrapbook lightbox (19 dokumentasi)
+  setupScrapbookModal();
 
   // 5. Mulai intro interaktif (layar pembuka)
   startIntroTypewriter();
@@ -38,23 +39,45 @@ function startIntroTypewriter() {
   const enterBox = document.getElementById('intro-enter');
   const masukBtn = document.getElementById('masuk-btn');
   const introScreen = document.getElementById('intro-screen');
+  const introCard = document.getElementById('intro-card');
+  const skipBtn = document.getElementById('intro-skip-btn');
   const mainExp = document.getElementById('main-experience');
 
   const lines = siteData.intro?.lines || [
-    { text: "Ada hal yang sudah lama ingin kusampaikan kepadamu...", pause: 1800 },
-    { text: "Tentang kita, tentang maaf yang terlambat, dan tentang bagaimana perasaanku yang sebenarnya.", pause: 1600 },
-    { text: "Jadi aku tuliskan semuanya di sini.", pause: 1200 }
+    { text: "Ada hal yang sudah lama ingin kusampaikan kepadamu...", pause: 800 },
+    { text: "Tentang kita, tentang maaf yang terlambat, dan tentang bagaimana perasaanku yang sebenarnya.", pause: 900 },
+    { text: "Jadi aku tuliskan semuanya di sini.", pause: 600 }
   ];
 
   let lineIdx = 0;
   let charIdx = 0;
   let currentText = '';
+  let isTypingFinished = false;
+  let typeTimer = null;
+
+  function finishTypewriterInstantly() {
+    if (isTypingFinished) return;
+    isTypingFinished = true;
+    if (typeTimer) clearTimeout(typeTimer);
+
+    // Tampilkan seluruh teks secara utuh
+    const fullText = lines.map(l => l.text).join('\n\n');
+    if (outputEl) {
+      outputEl.innerHTML = fullText;
+    }
+    if (enterBox) {
+      enterBox.classList.remove('hidden');
+    }
+    if (skipBtn) {
+      skipBtn.style.display = 'none';
+    }
+  }
 
   function typeChar() {
-    if (!outputEl) return;
+    if (!outputEl || isTypingFinished) return;
 
     if (lineIdx >= lines.length) {
-      if (enterBox) enterBox.classList.remove('hidden');
+      finishTypewriterInstantly();
       return;
     }
 
@@ -63,25 +86,43 @@ function startIntroTypewriter() {
       currentText += targetLine.charAt(charIdx);
       outputEl.innerHTML = currentText + '<span class="tw-cursor">_</span>';
       charIdx++;
-      setTimeout(typeChar, 36 + Math.random() * 24);
+      typeTimer = setTimeout(typeChar, 24 + Math.random() * 16);
     } else {
       if (lineIdx < lines.length - 1) {
         currentText += '\n\n';
         charIdx = 0;
         lineIdx++;
-        setTimeout(typeChar, lines[lineIdx - 1].pause || 1400);
+        typeTimer = setTimeout(typeChar, lines[lineIdx - 1].pause || 800);
       } else {
         lineIdx++;
-        setTimeout(typeChar, 500);
+        typeTimer = setTimeout(typeChar, 400);
       }
     }
   }
 
   // Mulai ketik setelah jeda awal yang tenang
-  setTimeout(typeChar, 800);
+  typeTimer = setTimeout(typeChar, 500);
+
+  // Tombol skip untuk langsung menampilkan seluruh teks
+  if (skipBtn) {
+    skipBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      finishTypewriterInstantly();
+    });
+  }
+
+  // Klik kartu intro juga menyelesaikan animasi tanpa menunggu
+  if (introCard) {
+    introCard.addEventListener('click', (e) => {
+      if (!isTypingFinished && e.target !== masukBtn) {
+        finishTypewriterInstantly();
+      }
+    });
+  }
 
   if (masukBtn) {
-    masukBtn.addEventListener('click', () => {
+    masukBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
       // Fade out layar intro
       if (introScreen) introScreen.classList.add('fade-out');
 
@@ -92,16 +133,12 @@ function startIntroTypewriter() {
         if (introScreen) introScreen.style.display = 'none';
         if (mainExp) mainExp.classList.remove('hidden');
         triggerHeroReveal();
-      }, 950);
+      }, 850);
     });
   }
 }
 
 /* ─── HERO REVEAL ────────────────────────────────────────── */
-function renderHeroContent() {
-  // Title & Subtitle disiapkan
-}
-
 function triggerHeroReveal() {
   const elems = document.querySelectorAll(
     '.hero-envelope-mark, .hero-title, .hero-divider, .hero-subtitle, .hero-scroll-indicator'
@@ -109,7 +146,7 @@ function triggerHeroReveal() {
   elems.forEach((el, idx) => {
     setTimeout(() => {
       el.classList.add('visible');
-    }, idx * 240);
+    }, idx * 200);
   });
 }
 
@@ -176,9 +213,9 @@ function renderChapter3() {
   const titleEl = document.getElementById('title-ch3');
   const subEl = document.getElementById('sub-ch3');
   const learningEl = document.getElementById('learning-content');
-  const photosTitleEl = document.getElementById('photos-title');
-  const photosSubEl = document.getElementById('photos-subtitle');
-  const photosGrid = document.getElementById('photos-grid');
+  const scrapbookTitleEl = document.getElementById('scrapbook-title');
+  const scrapbookSubEl = document.getElementById('scrapbook-subtitle');
+  const scrapbookGrid = document.getElementById('scrapbook-grid');
 
   if (tagEl) tagEl.textContent = ch.tag;
   if (titleEl) titleEl.textContent = ch.title;
@@ -190,27 +227,39 @@ function renderChapter3() {
     `).join('');
   }
 
-  if (photosTitleEl && ch.photosTitle) photosTitleEl.textContent = ch.photosTitle;
-  if (photosSubEl && ch.photosSubtitle) photosSubEl.textContent = ch.photosSubtitle;
+  if (scrapbookTitleEl && ch.scrapbookTitle) scrapbookTitleEl.textContent = ch.scrapbookTitle;
+  if (scrapbookSubEl && ch.scrapbookSubtitle) scrapbookSubEl.textContent = ch.scrapbookSubtitle;
 
-  if (photosGrid && ch.photos) {
-    photosGrid.innerHTML = ch.photos.map(photo => `
-      <div class="photo-card" 
-           data-img="${photo.image}" 
-           data-caption="${photo.caption}" 
-           data-desc="${photo.description}"
-           tabindex="0" 
-           role="button" 
-           aria-label="Lihat foto: ${photo.caption}">
-        <div class="photo-img-wrapper">
-          <img src="${photo.image}" alt="${photo.caption}" loading="lazy" />
+  if (scrapbookGrid && ch.memories) {
+    scrapbookGrid.innerHTML = ch.memories.map((item, idx) => {
+      const numStr = item.id < 10 ? `0${item.id}` : `${item.id}`;
+      return `
+        <div class="polaroid-card rev" 
+             data-index="${idx}"
+             tabindex="0" 
+             role="button" 
+             aria-label="Buka kenangan nomor ${item.id}: ${item.title}">
+          <div class="polaroid-img-wrap">
+            <img class="polaroid-img" 
+                 src="./assets/images/${item.id}.jpg" 
+                 alt="${item.title}" 
+                 loading="lazy" 
+                 onerror="this.onerror=null; this.src='./assets/images/${item.id}.jpeg';" />
+          </div>
+          <div class="polaroid-meta">
+            <div class="polaroid-tag-row">
+              <span>#${numStr}</span>
+              <span>${item.date}</span>
+            </div>
+            <h4 class="polaroid-title">${item.title}</h4>
+            <p class="polaroid-caption-preview">${item.caption}</p>
+            <div class="polaroid-action-hint">
+              <span>baca cerita</span> &rarr;
+            </div>
+          </div>
         </div>
-        <div class="photo-meta">
-          <h4 class="photo-caption">${photo.caption}</h4>
-          <p class="photo-desc">${photo.description}</p>
-        </div>
-      </div>
-    `).join('');
+      `;
+    }).join('');
   }
 }
 
@@ -240,22 +289,45 @@ function renderChapter4() {
   if (signatureEl && ch.signature) signatureEl.textContent = ch.signature;
 }
 
-/* ─── LIGHTBOX MODAL SETUP ───────────────────────────────── */
-function setupLightbox() {
+/* ─── SCRAPBOOK DETAIL MODAL (LIGHTBOX) ──────────────────── */
+function setupScrapbookModal() {
   const lightbox = document.getElementById('lightbox');
   const lbImg = document.getElementById('lb-img');
-  const lbCaption = document.getElementById('lb-caption');
+  const lbCounter = document.getElementById('lb-counter');
+  const lbDate = document.getElementById('lb-date');
+  const lbTitle = document.getElementById('lb-title');
   const lbDesc = document.getElementById('lb-desc');
   const lbClose = document.getElementById('lb-close');
+  const lbPrev = document.getElementById('lb-prev');
+  const lbNext = document.getElementById('lb-next');
 
-  function openLightbox(img, caption, desc) {
-    if (!lightbox) return;
-    if (lbImg) lbImg.src = img;
-    if (lbCaption) lbCaption.textContent = caption;
-    if (lbDesc) lbDesc.textContent = desc;
+  const memories = siteData.chapter3?.memories || [];
+  const total = memories.length;
 
-    lightbox.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
+  function showMemory(idx) {
+    if (idx < 0) idx = total - 1;
+    if (idx >= total) idx = 0;
+    activeMemoryIndex = idx;
+
+    const item = memories[idx];
+    if (!item) return;
+
+    if (lbImg) {
+      lbImg.src = `./assets/images/${item.id}.jpg`;
+      lbImg.onerror = () => {
+        lbImg.src = `./assets/images/${item.id}.jpeg`;
+      };
+      lbImg.alt = item.title;
+    }
+    if (lbCounter) lbCounter.textContent = `Kenangan ${item.id} dari ${total}`;
+    if (lbDate) lbDate.textContent = item.date;
+    if (lbTitle) lbTitle.textContent = item.title;
+    if (lbDesc) lbDesc.textContent = item.caption;
+
+    if (lightbox) {
+      lightbox.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
   }
 
   function closeLightbox() {
@@ -264,37 +336,37 @@ function setupLightbox() {
     document.body.style.overflow = '';
   }
 
-  // Delegasi klik pada kartu foto
+  // Delegasi klik pada kartu polaroid
   document.addEventListener('click', (e) => {
-    const card = e.target.closest('.photo-card');
+    const card = e.target.closest('.polaroid-card');
     if (card) {
-      openLightbox(
-        card.getAttribute('data-img'),
-        card.getAttribute('data-caption'),
-        card.getAttribute('data-desc')
-      );
+      const idx = parseInt(card.getAttribute('data-index'), 10);
+      if (!isNaN(idx)) {
+        showMemory(idx);
+      }
     }
   });
 
-  // Dukungan aksesibilitas keyboard (Enter / Spasi)
-  document.addEventListener('keydown', (e) => {
-    if ((e.key === 'Enter' || e.key === ' ') && document.activeElement.classList.contains('photo-card')) {
-      e.preventDefault();
-      const card = document.activeElement;
-      openLightbox(
-        card.getAttribute('data-img'),
-        card.getAttribute('data-caption'),
-        card.getAttribute('data-desc')
-      );
-    }
+  // Tombol navigasi modal
+  if (lbPrev) {
+    lbPrev.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showMemory(activeMemoryIndex - 1);
+    });
+  }
 
-    if (e.key === 'Escape' && lightbox && !lightbox.classList.contains('hidden')) {
-      closeLightbox();
-    }
-  });
+  if (lbNext) {
+    lbNext.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showMemory(activeMemoryIndex + 1);
+    });
+  }
 
   if (lbClose) {
-    lbClose.addEventListener('click', closeLightbox);
+    lbClose.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeLightbox();
+    });
   }
 
   if (lightbox) {
@@ -304,6 +376,27 @@ function setupLightbox() {
       }
     });
   }
+
+  // Keyboard navigation (Escape, ArrowLeft, ArrowRight, Enter)
+  document.addEventListener('keydown', (e) => {
+    if (lightbox && !lightbox.classList.contains('hidden')) {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      } else if (e.key === 'ArrowLeft') {
+        showMemory(activeMemoryIndex - 1);
+      } else if (e.key === 'ArrowRight') {
+        showMemory(activeMemoryIndex + 1);
+      }
+    } else {
+      if ((e.key === 'Enter' || e.key === ' ') && document.activeElement.classList.contains('polaroid-card')) {
+        e.preventDefault();
+        const idx = parseInt(document.activeElement.getAttribute('data-index'), 10);
+        if (!isNaN(idx)) {
+          showMemory(idx);
+        }
+      }
+    }
+  });
 }
 
 /* ─── SCROLL REVEAL OBSERVERS ────────────────────────────── */
@@ -316,14 +409,19 @@ function setupScrollObservers() {
       }
     });
   }, {
-    threshold: 0.08,
-    rootMargin: '0px 0px -40px 0px'
+    threshold: 0.06,
+    rootMargin: '0px 0px -30px 0px'
   });
 
   document.querySelectorAll('.rev').forEach(el => observer.observe(el));
 
   // Staggering halus untuk timeline items
   document.querySelectorAll('.timeline-item').forEach((el, idx) => {
-    el.style.transitionDelay = `${idx * 0.12}s`;
+    el.style.transitionDelay = `${idx * 0.1}s`;
+  });
+
+  // Staggering halus untuk polaroid cards
+  document.querySelectorAll('.polaroid-card').forEach((el, idx) => {
+    el.style.transitionDelay = `${(idx % 3) * 0.08}s`;
   });
 }

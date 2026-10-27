@@ -23,14 +23,21 @@
        Layar pembuka yang lembut dengan efek ketik personal
        ═══════════════════════════════════════════════════════════ -->
   <div id="intro-screen">
-    <div class="intro-card">
-      <div class="intro-stamp">
-        <span class="stamp-heart">&#10084;</span>
-        <span class="stamp-text">Pribadi & Rahasia</span>
+    <div class="intro-card" id="intro-card">
+      <div class="intro-header-row">
+        <div class="intro-stamp">
+          <span class="stamp-heart">&#10084;</span>
+          <span class="stamp-text">Pribadi & Rahasia</span>
+        </div>
+        <button id="intro-skip-btn" class="intro-skip-btn" type="button" title="Lewati animasi ketik">
+          Tampilkan Semua &rarr;
+        </button>
       </div>
+
       <div id="tw-output" class="intro-text" aria-live="polite">
         <span class="tw-cursor">_</span>
       </div>
+
       <div id="intro-enter" class="intro-action hidden">
         <button id="masuk-btn" class="btn-open-letter" type="button">
           <span class="btn-text">Buka Surat Ini</span>
@@ -128,13 +135,14 @@
           <!-- Prose paragraphs about continuous effort and commitment -->
         </div>
 
-        <div class="photos-section rev">
-          <div class="photos-intro">
-            <h3 class="photos-title" id="photos-title">Kenangan yang Tersimpan</h3>
-            <p class="photos-subtitle" id="photos-subtitle"></p>
+        <!-- SCRAPBOOK ALBUM SECTION -->
+        <div class="scrapbook-section rev">
+          <div class="scrapbook-intro">
+            <h3 class="scrapbook-title" id="scrapbook-title">Scrapbook Kecil Tentang Kita</h3>
+            <p class="scrapbook-subtitle" id="scrapbook-subtitle">19 dokumentasi dan cerita yang selalu kupeluk dalam ingatan. Klik foto mana saja untuk membaca cerita lengkapnya.</p>
           </div>
-          <div id="photos-grid" class="photos-curated-grid">
-            <!-- Rendered dynamically using genuine project photos -->
+          <div id="scrapbook-grid" class="scrapbook-grid">
+            <!-- 19 Polaroid cards rendered dynamically from data.js -->
           </div>
         </div>
       </div>
@@ -172,17 +180,36 @@
   </div>
 
   <!-- ═══════════════════════════════════════════════════════════
-       LIGHTBOX MODAL FOR GENUINE PHOTOS
+       SCRAPBOOK DETAIL MODAL (LIGHTBOX)
        ═══════════════════════════════════════════════════════════ -->
-  <div id="lightbox" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-label="Lihat Foto Kenangan">
+  <div id="lightbox" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-label="Lihat Dokumentasi Scrapbook">
     <div class="lightbox-dialog">
-      <button id="lb-close" class="lightbox-close" type="button" aria-label="Tutup foto">&times;</button>
+      <!-- Close button -->
+      <button id="lb-close" class="lightbox-close" type="button" aria-label="Tutup detail foto">&times;</button>
+      
+      <!-- Photo display frame -->
       <div class="lb-image-frame">
-        <img id="lb-img" src="" alt="Foto kenangan" />
+        <img id="lb-img" class="detail-img" src="" alt="Foto kenangan" />
       </div>
+
+      <!-- Navigation & Caption Area -->
       <div class="lb-caption-frame">
-        <h4 id="lb-caption" class="lb-title"></h4>
+        <div class="lb-meta-row">
+          <span id="lb-counter" class="lb-counter">1 / 19</span>
+          <span id="lb-date" class="lb-date"></span>
+        </div>
+        <h3 id="lb-title" class="lb-title"></h3>
         <p id="lb-desc" class="lb-desc"></p>
+        
+        <!-- Next / Prev Controls -->
+        <div class="lb-nav-row">
+          <button id="lb-prev" class="lb-nav-btn" type="button" aria-label="Foto sebelumnya">
+            &larr; Sebelumnya
+          </button>
+          <button id="lb-next" class="lb-nav-btn" type="button" aria-label="Foto selanjutnya">
+            Selanjutnya &rarr;
+          </button>
+        </div>
       </div>
     </div>
   </div>
