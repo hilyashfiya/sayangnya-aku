@@ -3,426 +3,132 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ARSIP KECIL TENTANG KITA</title>
-  <meta name="description" content="Hal-hal yang tak ingin kulupakan — tentang kamu, tentang aku, dan tentang hal-hal kecil yang akhirnya menjadi berarti." />
+  <title>Sayangnya, Aku</title>
+  <meta name="description" content="Surat kecil tentang hal yang ingin kusampaikan." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./src/css/main.css" />
 </head>
 <body>
-
-<!-- Canvas Grain -->
 <canvas id="canvas-grain"></canvas>
-<div class="film-grain-overlay"></div>
-
-<!-- ==============================================================
-     INTRO SCREEN — Typewriter Confession
-     ============================================================== -->
 <div id="intro-screen">
-  <div class="typewriter-stage">
-    <div id="typewriter-output">
-      <span class="tw-cursor" id="tw-cursor">_</span>
-    </div>
+  <div class="tw-stage">
+    <div id="tw-output"><span class="tw-cursor" id="tw-cursor">_</span></div>
     <div id="intro-enter" class="hidden">
-      <button id="masuk-btn" class="btn-enter">[ MASUK ]</button>
+      <button id="masuk-btn" class="btn-masuk">buka</button>
     </div>
   </div>
 </div>
-
-<!-- ==============================================================
-     MAIN EXPERIENCE
-     ============================================================== -->
 <div id="main-experience" class="hidden">
-
-  <!-- FLOATING MINIMAL NAVIGATION -->
-  <div id="floating-nav">
-    <button id="index-toggle-btn" class="index-pill" aria-label="Daftar Arsip">
-      <div class="pill-dots"><span></span><span></span><span></span></div>
-    </button>
-    <button id="bgm-floating-btn" class="bgm-pill" aria-label="Putar atau Hentikan Musik" title="Musik Latar">
-      <span id="bgm-icon">♪</span>
+  <div id="music-pill">
+    <button id="bgm-btn" class="music-btn" aria-label="Putar atau hentikan musik">
+      <span id="bgm-icon">&#9835;</span>
     </button>
   </div>
-
-  <!-- INDEX DRAWER (slides in from right) -->
-  <div id="index-drawer" class="index-drawer hidden">
-    <div class="index-drawer-inner">
-      <div class="index-drawer-header">
-        <span class="archive-label">DAFTAR ARSIP</span>
-        <button id="index-close-btn" class="index-close">&times;</button>
-      </div>
-      <nav class="index-nav">
-        <a href="#hero-section"   class="idx-link"><em>00</em> MULAI</a>
-        <a href="#kenangan"       class="idx-link"><em>01</em> SEBUAH KENANGAN</a>
-        <a href="#lupa"           class="idx-link"><em>02</em> KAMU MUNGKIN SUDAH LUPA INI</a>
-        <a href="#kebiasaan"      class="idx-link"><em>03</em> KEBIASAAN KECILMU</a>
-        <a href="#suka"           class="idx-link"><em>04</em> HAL-HAL KECIL YANG AKU SUKA</a>
-        <a href="#suara"          class="idx-link"><em>05</em> SUARA YANG KUKENAL</a>
-        <a href="#tempat"         class="idx-link"><em>06</em> TEMPAT-TEMPAT KITA</a>
-        <a href="#bukti"          class="idx-link"><em>07</em> BUKTI-BUKTI KECIL</a>
-        <a href="#biasa"          class="idx-link"><em>08</em> HARI-HARI YANG BIASA</a>
-        <a href="#statistik"      class="idx-link"><em>09</em> STATISTIK ARSIP</a>
-        <a href="#humor"          class="idx-link"><em>10</em> ABSURD TAPI KITA</a>
-        <a href="#pertanyaan"     class="idx-link"><em>11</em> SATU PERTANYAAN</a>
-        <a href="#masa-depan"     class="idx-link"><em>12</em> UNTUK MASA DEPAN</a>
-        <a href="#terakhir"       class="idx-link"><em>13</em> SATU HAL TERAKHIR</a>
-      </nav>
-    </div>
-  </div>
-
-  <!-- ==============================================================
-       HERO — Cinematic Thesis
-       ============================================================== -->
-  <section id="hero-section" class="s-hero">
+  <section id="s-hero" class="s-hero">
     <div class="hero-inner">
-      <div class="hero-corpus">
-        <p class="h-line h-l1">Aku nggak takut lupa.</p>
-        <p class="h-line h-l2">Aku cuma takut suatu hari nanti</p>
-        <p class="h-line h-l3 h-emphasis">lupa <em>rasanya</em>.</p>
-        <div class="h-rule"></div>
-        <p class="h-sub">Jadi aku menyimpan sedikit tentang kita di sini.</p>
-        <div class="h-meta">
-          <span class="archive-label data-archive-no">ARSIP #001</span>
-          <span class="h-date">Dimulai pada <span class="data-archive-date">9 Agustus 2026</span></span>
-        </div>
+      <div class="hero-text">
+        <h1 class="h-line h-l1">Sayangnya,</h1>
+        <p class="h-line h-l2 h-italic">aku.</p>
+        <div class="h-divider"></div>
+        <p class="h-sub">Ada hal yang sudah lama ingin kusampaikan.</p>
       </div>
-      <div class="hero-scroll-cue">
-        <span class="scroll-cue-text">gulir ke bawah</span>
-        <div class="scroll-cue-line"></div>
+      <div class="hero-scroll">
+        <span class="scroll-label">gulir ke bawah</span>
+        <div class="scroll-line"></div>
       </div>
     </div>
   </section>
-
-  <!-- ==============================================================
-       01 — SEBUAH KENANGAN
-       ============================================================== -->
-  <section id="kenangan" class="exp-s s-kenangan">
-    <div class="s-label-strip">
-      <span class="s-num">01</span>
-      <span class="s-name">SEBUAH KENANGAN</span>
-    </div>
-    <div class="s-content">
-      <div class="s-intro">
-        <p class="s-intro-q">"Bukan kenangan besar yang dramatis."</p>
-        <p class="s-intro-sub">Tapi hari-hari yang aku masih ingat <em>rasanya</em>.</p>
+  <section id="s-awal" class="section">
+    <div class="section-inner">
+      <div class="section-tag">
+        <span class="tag-num">01</span>
+        <span class="tag-label" id="label-ch1"></span>
       </div>
-      <div id="memories-files" class="memory-files-grid"></div>
+      <p class="intro-quote" id="intro-ch1"></p>
+      <div id="timeline-container" class="timeline"></div>
     </div>
   </section>
-
-  <!-- ==============================================================
-       02 — KAMU MUNGKIN SUDAH LUPA INI (Blur Reveal)
-       ============================================================== -->
-  <section id="lupa" class="exp-s s-lupa">
-    <div class="s-label-strip">
-      <span class="s-num">02</span>
-      <span class="s-name">KAMU MUNGKIN SUDAH LUPA INI</span>
-    </div>
-    <div class="s-content">
-      <div class="s-intro">
-        <p class="s-intro-q">"Ada beberapa hal yang mungkin sudah lewat begitu saja bagimu."</p>
-        <p class="s-intro-sub">Biarkan aku coba ingatkan.</p>
+  <section id="s-maaf" class="section section-alt">
+    <div class="section-inner">
+      <div class="section-tag">
+        <span class="tag-num">02</span>
+        <span class="tag-label" id="label-ch2"></span>
       </div>
-      <div id="blur-memories-container" class="blur-grid"></div>
+      <p class="intro-quote" id="intro-ch2"></p>
+      <div id="apologies-container" class="apologies-list"></div>
+      <p class="apologies-closing" id="apologies-closing"></p>
     </div>
   </section>
-
-  <!-- ==============================================================
-       03 — KEBIASAAN KECILMU (Numbered Click-Reveal)
-       ============================================================== -->
-  <section id="kebiasaan" class="exp-s s-kebiasaan">
-    <div class="s-label-strip">
-      <span class="s-num">03</span>
-      <span class="s-name">KEBIASAAN KECILMU</span>
-    </div>
-    <div class="s-content">
-      <div class="s-intro">
-        <p class="s-intro-big">"Ada hal-hal tentang kamu</p>
-        <p class="s-intro-big">yang nggak pernah kamu ceritakan."</p>
-        <p class="s-intro-pause">Tapi aku tahu.</p>
-        <p class="s-intro-cue">Klik untuk membuka.</p>
+  <section id="s-kenangan" class="section">
+    <div class="section-inner">
+      <div class="section-tag">
+        <span class="tag-num">03</span>
+        <span class="tag-label" id="label-ch3"></span>
       </div>
-      <div id="habits-container" class="habits-num-grid"></div>
-    </div>
-  </section>
-
-  <!-- ==============================================================
-       04 — HAL-HAL KECIL YANG AKU SUKA
-       ============================================================== -->
-  <section id="suka" class="exp-s s-suka">
-    <div class="s-label-strip">
-      <span class="s-num">04</span>
-      <span class="s-name">HAL-HAL KECIL YANG AKU SUKA</span>
-    </div>
-    <div class="s-content">
-      <div class="s-intro">
-        <p class="s-intro-q">"Bukan hal-hal romantis yang biasa orang bilang."</p>
-        <p class="s-intro-sub">Cuma hal-hal kecil yang entah kenapa aku perhatikan.</p>
+      <p class="intro-quote" id="intro-ch3"></p>
+      <div id="observations-container" class="observations-list"></div>
+      <div class="photos-header">
+        <span class="photos-label">Foto-foto yang kusimpan</span>
       </div>
-      <div id="small-loves-container" class="small-loves-list"></div>
+      <div id="photos-container" class="photos-grid"></div>
     </div>
   </section>
-
-  <!-- ==============================================================
-       05 — SUARA YANG KUKENAL
-       ============================================================== -->
-  <section id="suara" class="exp-s s-suara">
-    <div class="s-label-strip">
-      <span class="s-num">05</span>
-      <span class="s-name">SUARA YANG KUKENAL</span>
-    </div>
-    <div class="s-content">
-      <div class="s-intro">
-        <p class="s-intro-big">"Ada suara-suara yang mungkin nggak akan</p>
-        <p class="s-intro-big">dianggap penting oleh orang lain."</p>
-        <p class="s-intro-pause">Tapi aku mengenalnya.</p>
+  <section id="s-penutup" class="section section-dark">
+    <div class="section-inner">
+      <div class="section-tag">
+        <span class="tag-num">04</span>
+        <span class="tag-label" id="label-ch4"></span>
       </div>
-      <div id="sounds-container" class="sound-objects"></div>
-    </div>
-  </section>
-
-  <!-- ==============================================================
-       06 — TEMPAT-TEMPAT KITA
-       ============================================================== -->
-  <section id="tempat" class="exp-s s-tempat">
-    <div class="s-label-strip">
-      <span class="s-num">06</span>
-      <span class="s-name">TEMPAT-TEMPAT KITA</span>
-    </div>
-    <div class="s-content">
-      <div class="s-intro">
-        <p class="s-intro-q">"Kalau tempat-tempat ini bisa bicara..."</p>
-        <p class="s-intro-sub">mungkin mereka tahu terlalu banyak tentang kita.</p>
-      </div>
-      <div id="map-container"></div>
-    </div>
-  </section>
-
-  <!-- ==============================================================
-       07 — BUKTI-BUKTI KECIL (Scattered Photos)
-       ============================================================== -->
-  <section id="bukti" class="exp-s s-bukti">
-    <div class="s-label-strip">
-      <span class="s-num">07</span>
-      <span class="s-name">BUKTI-BUKTI KECIL</span>
-    </div>
-    <div class="s-content">
-      <div class="s-intro">
-        <p class="s-intro-q">"Bukan foto terbaik kita."</p>
-        <p class="s-intro-sub">Tapi foto-foto yang paling aku ingat <em>rasanya</em>.</p>
-      </div>
-      <div id="evidence-container" class="scattered-stage"></div>
-    </div>
-  </section>
-
-  <!-- ==============================================================
-       08 — HARI-HARI YANG BIASA
-       ============================================================== -->
-  <section id="biasa" class="exp-s s-biasa">
-    <div class="s-label-strip">
-      <span class="s-num">08</span>
-      <span class="s-name">HARI-HARI YANG BIASA</span>
-    </div>
-    <div class="s-content">
-      <div class="biasa-statement">
-        <p class="biasa-q">"Nggak semua kenangan kita punya cerita besar."</p>
-        <p class="biasa-q biasa-q-em">Dan ternyata, aku suka yang seperti ini.</p>
-      </div>
-      <div id="ordinary-days-container" class="ordinary-list"></div>
-    </div>
-  </section>
-
-  <!-- ==============================================================
-       09 — STATISTIK ARSIP
-       ============================================================== -->
-  <section id="statistik" class="exp-s s-statistik">
-    <div class="s-content stat-content">
-      <div class="stat-header">
-        <span class="archive-label">STATISTIK ARSIP</span>
-        <p class="stat-sub">Sejauh ini, ini yang berhasil aku kumpulkan.</p>
-      </div>
-      <div id="stats-display" class="stats-grid"></div>
-    </div>
-  </section>
-
-  <!-- ==============================================================
-       10 — ABSURD TAPI KITA
-       ============================================================== -->
-  <section id="humor" class="exp-s s-humor">
-    <div class="s-label-strip">
-      <span class="s-num">10</span>
-      <span class="s-name">ABSURD TAPI KITA</span>
-    </div>
-    <div class="s-content">
-      <div class="s-intro">
-        <p class="s-intro-q">"Bukti kalau kita sebenarnya agak absurd."</p>
-        <p class="s-intro-sub">Dan aku nggak mau menukarnya dengan apapun.</p>
-      </div>
-      <div id="jokes-container" class="humor-grid"></div>
-    </div>
-  </section>
-
-  <!-- ==============================================================
-       11 — SATU PERTANYAAN (Full-Screen Dark Pause)
-       ============================================================== -->
-  <section id="pertanyaan" class="exp-s s-pertanyaan">
-    <div class="question-stage">
-      <p class="q-line" id="q1">Aku punya satu pertanyaan.</p>
-      <p class="q-line" id="q2">Kalau nanti kita sudah tua...</p>
-      <p class="q-line q-emphasis" id="q3">menurut kamu, hal kecil apa tentang kita<br>yang masih akan kamu ingat?</p>
-      <p class="q-answer" id="q4">Aku punya jawabanku sendiri.</p>
-    </div>
-  </section>
-
-  <!-- ==============================================================
-       12 — UNTUK KITA DI MASA DEPAN
-       ============================================================== -->
-  <section id="masa-depan" class="exp-s s-masa-depan">
-    <div class="s-label-strip">
-      <span class="s-num">12</span>
-      <span class="s-name">UNTUK KITA DI MASA DEPAN</span>
-    </div>
-    <div class="s-content">
-      <div class="capsule-doc" id="capsule-doc">
-        <div class="capsule-doc-top">
-          <span class="capsule-label">DOKUMEN TERSEGEL</span>
-          <span class="capsule-date" id="capsule-date-display">—</span>
-        </div>
-        <div class="capsule-seal-area">
-          <button class="wax-seal" id="unseal-capsule-btn" aria-label="Buka Surat Masa Depan">A</button>
-          <p class="capsule-seal-text" id="capsule-seal-text">Buka Jika Kamu Menemukan Ini Lagi</p>
-        </div>
-        <div id="capsule-letter-body" class="capsule-body hidden"></div>
+      <div id="teaser-container" class="teaser-block"></div>
+      <div class="btn-letter-wrap">
+        <button id="open-letter-btn" class="btn-open-letter">baca suratnya</button>
       </div>
     </div>
   </section>
-
-  <!-- ==============================================================
-       13 — SATU HAL TERAKHIR
-       ============================================================== -->
-  <section id="terakhir" class="exp-s s-terakhir">
-    <div class="s-content">
-      <div class="final-trigger-block">
-        <p class="final-pre">"Kalau sampai di sini,</p>
-        <p class="final-pre">berarti kamu sudah melihat terlalu banyak."</p>
-        <p class="final-pre final-pre-sub">Ada satu hal terakhir yang ingin kusampaikan.</p>
-        <button id="open-final-letter-btn" class="btn-final">[ BUKA ]</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
   <footer class="site-footer">
-    <div class="footer-inner">
-      <span class="footer-no data-archive-no">ARSIP #001</span>
-      <!-- Secret trigger: triple-click the archive number in footer -->
-      <span class="footer-status">MASIH BERLANJUT</span>
-    </div>
+    <p class="footer-sig">&mdash; Hilya &#129293;</p>
   </footer>
-
-</div><!-- /#main-experience -->
-
-<!-- ==============================================================
-     MODALS
-     ============================================================== -->
-
-<!-- Memory Archive File Modal -->
-<div id="memory-modal" class="modal-overlay hidden" role="dialog" aria-modal="true">
-  <div class="modal-file-card">
-    <button class="modal-close" id="memory-modal-close" aria-label="Tutup">&times;</button>
-    <div class="modal-file-meta">
-      <span id="mmod-no" class="archive-label"></span>
-      <span id="mmod-date" class="modal-date"></span>
-    </div>
-    <div class="modal-photo">
-      <img id="mmod-img" src="" alt="" loading="lazy" />
-    </div>
-    <h2 id="mmod-title" class="modal-title heading-serif"></h2>
-    <p class="modal-location" id="mmod-loc"></p>
-    <p id="mmod-story" class="modal-story"></p>
-    <blockquote id="mmod-note" class="modal-note"></blockquote>
-  </div>
 </div>
-
-<!-- Lightbox (evidence scattered photos) -->
-<div id="lightbox-modal" class="modal-overlay hidden" role="dialog" aria-modal="true">
-  <div class="lightbox-inner">
-    <button id="lightbox-close-btn" class="modal-close lb-close">&times;</button>
-    <div class="lb-photo-frame">
-      <img id="lightbox-img" src="" alt="Foto Kenangan" />
-    </div>
-    <div class="lb-caption">
-      <span id="lb-tag" class="archive-label"></span>
-      <p id="lb-note" class="lb-note-text"></p>
+<div id="lightbox" class="modal-overlay hidden" role="dialog" aria-modal="true">
+  <div class="lightbox-card">
+    <button id="lb-close" class="modal-close" aria-label="Tutup">&times;</button>
+    <div class="lb-img-wrap"><img id="lb-img" src="" alt="Foto kenangan" /></div>
+    <div class="lb-caption-wrap">
+      <span id="lb-num" class="lb-num"></span>
+      <p id="lb-note" class="lb-note"></p>
     </div>
   </div>
 </div>
-
-<!-- Final Letter Fullscreen Modal -->
 <div id="letter-modal" class="modal-overlay letter-overlay hidden" role="dialog" aria-modal="true">
-  <div class="letter-stage">
-    <button id="letter-close-btn" class="letter-x-btn">&times;</button>
+  <div class="letter-wrap">
+    <button id="letter-close" class="letter-x">&times;</button>
     <div class="letter-paper">
-      <div class="letter-paper-header">
-        <span class="archive-label">SATU HAL TERAKHIR</span>
+      <p class="letter-salutation" id="letter-salutation"></p>
+      <div class="letter-body" id="letter-body"></div>
+      <div class="letter-closing-row">
+        <p class="letter-closing-text" id="letter-closing"></p>
+        <p class="letter-sender" id="letter-sender"></p>
       </div>
-      <p class="letter-salutation">Untuk kamu,</p>
-      <div id="final-letter-paragraphs" class="letter-body"></div>
-      <div class="letter-closing-block">
-        <p class="letter-closing">Dengan penuh rasa sayang,</p>
-        <p class="letter-sender">Aku yang selalu mengingatmu</p>
-      </div>
-      <div class="letter-finish-wrap">
-        <button id="letter-finish-btn" class="btn-final">[ SELESAI MEMBACA ]</button>
+      <div class="letter-done-wrap">
+        <button id="letter-done-btn" class="btn-done">selesai membaca</button>
       </div>
     </div>
   </div>
 </div>
-
-<!-- Secret Room Modal -->
-<div id="secret-modal" class="modal-overlay hidden" role="dialog" aria-modal="true">
-  <div class="secret-card">
-    <button id="secret-close-btn" class="modal-close">&times;</button>
-    <div id="secret-lock-view">
-      <p class="secret-disc-line">"Oh."</p>
-      <p class="secret-disc-line">"Kamu nemu."</p>
-      <p class="secret-disc-sub">"Padahal aku sengaja menyembunyikannya."</p>
-      <div class="secret-input-wrap">
-        <input type="password" id="secret-password-input" class="secret-input" placeholder="kode rahasia" maxlength="10" autocomplete="off" />
-        <p id="secret-error-msg" class="secret-err"></p>
-        <button id="secret-submit-btn" class="btn-final" style="margin-top: 1rem; width: 100%;">[ BUKA ]</button>
-      </div>
-    </div>
-    <div id="secret-revealed-view" class="secret-revealed hidden">
-      <p class="secret-reveal-title heading-serif" id="secret-reveal-heading"></p>
-      <div id="secret-message-content" class="secret-msg"></div>
-    </div>
-  </div>
-</div>
-
-<!-- FINAL ENDING SCREEN -->
 <div id="final-ending" class="hidden" aria-live="polite">
-  <div class="ending-stage">
-    <p class="e-line e-big" id="e1">ARSIP INI BELUM SELESAI.</p>
-    <div class="e-sep"></div>
-    <p class="e-line" id="e2">Karena kita juga belum selesai.</p>
-    <p class="e-line" id="e3">Masih ada tempat yang belum kita datangi.</p>
-    <p class="e-line" id="e4">Masih ada foto yang belum kita ambil.</p>
-    <p class="e-line" id="e5">Masih ada cerita yang belum kita tahu.</p>
-    <div class="e-pause-gap"></div>
-    <p class="e-line e-jadi" id="e6">Jadi...</p>
-    <p class="e-line e-final" id="e7">Sampai nanti.</p>
-    <div class="e-archive-tag">
-      <span>ARSIP 001 — MASIH BERLANJUT</span>
-      <span class="blinking-cursor"></span>
+  <div class="ending-inner">
+    <p class="e-line" id="e1"></p>
+    <p class="e-line" id="e2"></p>
+    <div class="e-rule"></div>
+    <p class="e-line e-final" id="e3"></p>
+    <p class="e-sig">&mdash; Hilya &#129293;</p>
+    <div class="e-replay-wrap" id="e-replay">
+      <button id="e-replay-btn" class="e-replay-btn" type="button">baca kembali</button>
     </div>
   </div>
 </div>
-
-<!-- Leaflet -->
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <script type="module" src="./src/js/app.js"></script>
 </body>
 </html>
